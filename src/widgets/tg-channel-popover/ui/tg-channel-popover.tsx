@@ -19,7 +19,7 @@ export const TgChannelPopover = () => {
             </Button>
 
             <Popover.Close className={styles["close-button"]}>
-                <Cross />
+                <Cross className="text-green" />
             </Popover.Close>
         </Popover.Content>
     );

@@ -11,23 +11,27 @@
     --blue-blue: #1bfdeb;
     --blue-light-blue: #cbfffb;
 
+    --pink-pink: #e438f3;
     --pink-light-pink: #fbceff;
-    --blue-light-blue: #cbfffb;
 
     --rounded-full: 1000px;
 
+    --bg-green: rgba(14, 118, 49, 0.35);
     --bg-blue: rgba(27, 253, 235, 0.35);
 
     --border-green: 2px solid var(--green-light-green);
     --border-blue: 2px solid var(--blue-light-blue);
+    --border-pink: 2px solid var(--pink-light-pink);
 
     --box-shadow-green: 0 0 0px 0 var(--green-green),
-        0 0 1px 0 var(--green-green), 0 0 2px 0 var(--green-green),
-        0 0 4px 0 var(--green-green), 0 0 7px 0 var(--green-green),
-        0 0 13px 0 var(--green-green);
+        0 0 1px 0 var(--green-green), 0 0 3px 0 var(--green-green),
+        0 0 5px 0 var(--green-green), 0 0 9px 0 var(--green-green);
     --box-shadow-blue: 0 0 0px 0 var(--blue-blue), 0 0 1px 0 var(--blue-blue),
         0 0 3px 0 var(--blue-blue), 0 0 5px 0 var(--blue-blue),
         0 0 9px 0 var(--blue-blue);
+    --box-shadow-pink: 0 0 0px 0 var(--pink-pink), 0 0 1px 0 var(--pink-pink),
+        0 0 3px 0 var(--pink-pink), 0 0 5px 0 var(--pink-pink),
+        0 0 9px 0 var(--pink-pink);
 
     --text-green: var(--green-light-green);
     --text-blue: var(--blue-light-blue);
@@ -38,6 +42,25 @@
     --text-shadow-blue: 0 0 0px var(--blue-blue), 0 0 1px var(--blue-blue),
         0 0 3px var(--blue-blue), 0 0 5px var(--blue-blue),
         0 0 9px var(--blue-blue);
+    --text-shadow-pink: 0 0 0px var(--pink-pink), 0 0 1px var(--pink-pink),
+        0 0 3px var(--pink-pink), 0 0 5px var(--pink-pink),
+        0 0 9px var(--pink-pink);
+
+    --svg-shadow-green: drop-shadow(0 0 0px var(--green-green))
+        drop-shadow(0 0 1px var(--green-green))
+        drop-shadow(0 0 3px var(--green-green))
+        drop-shadow(0 0 5px var(--green-green))
+        drop-shadow(0 0 9px var(--green-green));
+    --svg-shadow-blue: drop-shadow(0 0 0px var(--blue-blue))
+        drop-shadow(0 0 1px var(--blue-blue))
+        drop-shadow(0 0 3px var(--blue-blue))
+        drop-shadow(0 0 5px var(--blue-blue))
+        drop-shadow(0 0 9px var(--blue-blue));
+    --svg-shadow-pink: drop-shadow(0 0 0px var(--pink-pink))
+        drop-shadow(0 0 1px var(--pink-pink))
+        drop-shadow(0 0 3px var(--pink-pink))
+        drop-shadow(0 0 5px var(--pink-pink))
+        drop-shadow(0 0 9px var(--pink-pink));
 
     font-family: var(--font-primary);
     line-height: 1.2;
@@ -150,17 +173,6 @@ li {
     row-gap: 2.5rem;
 }
 
-/* .button-blue {
-    border: 2px solid var(--blue-light-blue);
-    background: rgba(27, 253, 235, 0.35);
-    text-shadow:
-        0 0 0px var(--blue-blue),
-        0 0 1px var(--blue-blue),
-        0 0 3px var(--blue-blue),
-        0 0 5px var(--blue-blue),
-        0 0 9px var(--blue-blue);
-} */
-
 .w-full {
     width: 100%;
 }
@@ -245,16 +257,20 @@ li {
 }
 
 .text-blue {
-    color: var(--blue-blue);
+    color: var(--blue-light-blue);
+}
+
+.text-pink {
+    color: var(--pink-light-pink);
 }
 
 .text-shadow-pink {
     text-shadow:
-        0 0 0px var(--green-green),
-        0 0 1px var(--green-green),
-        0 0 3px var(--green-green),
-        0 0 5px var(--green-green),
-        0 0 9px var(--green-green);
+        0 0 0px var(--pink-pink),
+        0 0 1px var(--pink-pink),
+        0 0 3px var(--pink-pink),
+        0 0 5px var(--pink-pink),
+        0 0 9px var(--pink-pink);
 }
 
 .text-shadow-green {
@@ -303,4 +319,16 @@ li {
         0 0 3px 0 var(--blue-blue),
         0 0 5px 0 var(--blue-blue),
         0 0 9px 0 var(--blue-blue);
+}
+
+.svg-shadow-green {
+    filter: var(--svg-shadow-green);
+}
+
+.svg-shadow-blue {
+    filter: var(--svg-shadow-blue);
+}
+
+.svg-shadow-pink {
+    filter: var(--svg-shadow-pink);
 }

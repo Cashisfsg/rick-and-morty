@@ -18,7 +18,7 @@ export const ReferralPage = () => {
                     className=""
                 >
                     <Button
-                        className="button-blue font-secondary"
+                        className="button-pink font-secondary"
                         style={{ fontSize: "22px", flexBasis: "100%" }}
                     >
                         Invite a friend

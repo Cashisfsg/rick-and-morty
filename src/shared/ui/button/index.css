@@ -7,41 +7,75 @@
     font-size: 1.375rem;
     line-height: 1.25;
 
-    will-change: background, border, text-shadow, box-shadow;
-    transition:
-        background,
-        border,
-        text-shadow,
-        box-shadow 0.3s ease-in-out;
+    will-change: background;
+    transition: background 0.3s ease-in-out;
 
     &:disabled {
         color: #898989;
+        text-shadow: unset;
+        box-shadow: unset;
         border: 2px solid #898989;
+        background: rgba(137 137 137 / 0.35);
         pointer-events: none;
     }
 }
 
 .button-pink {
-    background: var(--bg-pink);
+    background: rgba(228 56 243 / 0.35);
     border: var(--border-pink);
     text-shadow: var(--text-shadow-pink);
     box-shadow: var(--box-shadow-pink);
 
     &:active {
-        border: 2px solid #fbceff;
+        background: linear-gradient(
+                0deg,
+                rgba(228 56 243 / 0.35),
+                rgba(228 56 243 / 0.35)
+            ),
+            linear-gradient(
+                0deg,
+                rgba(255 255 255 / 0.2),
+                rgba(255 255 255 / 0.2)
+            );
     }
 }
 
 .button-green {
-    background: var(--bg-green);
+    background: rgba(14 118 49 / 0.35);
     border: var(--border-green);
     text-shadow: var(--text-shadow-green);
     box-shadow: var(--box-shadow-green);
+
+    &:active {
+        background: linear-gradient(
+                0deg,
+                rgba(14 118 49 / 0.35),
+                rgba(14 118 49 / 0.35)
+            ),
+            linear-gradient(
+                0deg,
+                rgba(255 255 255 / 0.2),
+                rgba(255 255 255 / 0.2)
+            );
+    }
 }
 
 .button-blue {
-    background: var(--bg-blue);
+    background: rgba(27 253 235 / 0.35);
     border: var(--border-blue);
     text-shadow: var(--text-shadow-blue);
     box-shadow: var(--box-shadow-blue);
+
+    &:active {
+        background: linear-gradient(
+                0deg,
+                rgba(27 253 235 / 0.35),
+                rgba(27 253 235 / 0.35)
+            ),
+            linear-gradient(
+                0deg,
+                rgba(255 255 255 / 0.2),
+                rgba(255 255 255 / 0.2)
+            );
+    }
 }

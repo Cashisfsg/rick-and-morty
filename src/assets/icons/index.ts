@@ -1,5 +1,6 @@
 export { Account } from "./account";
 export { Arrow } from "./arrow";
+export { CheckCircle } from "./check-circle";
 export { ChevronLeft } from "./chevron-left";
 export { ChevronRight } from "./chevron-right";
 export { Copy } from "./copy";

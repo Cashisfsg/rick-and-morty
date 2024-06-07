@@ -5,7 +5,7 @@ import { Games } from "@/assets/icons";
 import { Quests } from "@/assets/icons";
 import { Referral } from "@/assets/icons";
 
-import Navigation from "./index.module.css";
+import styles from "./index.module.css";
 
 const links = [
     {
@@ -32,18 +32,18 @@ const links = [
 
 export const NavigationMenu = () => {
     return (
-        <nav className="w-full">
+        <nav className="w-full bg-image">
             <ul
                 role="menubar"
-                className={`${Navigation.menu} bg-green border-green shadow-green`}
+                className={`${styles.menu} bg-green border-green shadow-green`}
             >
                 {links.map((link) => (
                     <li key={link.url} role="none">
                         <NavLink
                             to={link.url}
-                            className={`${Navigation["menu-item"]} text-shadow-green font-tertiary`}
+                            className={`${styles["menu-item"]} text-shadow-green font-tertiary`}
                         >
-                            <link.icon />
+                            <link.icon height={32} width={32} />
                             <span className="text-shadow-green font-tertiary">
                                 {link.title}
                             </span>

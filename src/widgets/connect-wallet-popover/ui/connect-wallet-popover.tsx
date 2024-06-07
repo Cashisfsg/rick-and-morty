@@ -42,7 +42,7 @@ export const ConnectWalletPopover = () => {
                 <header>
                     <ScanQRButton />
                     <Popover.Close>
-                        <Cross />
+                        <Cross className="text-green" />
                     </Popover.Close>
                 </header>
 
@@ -53,9 +53,7 @@ export const ConnectWalletPopover = () => {
                     </p>
                 </hgroup>
 
-                <Button className="bg-image button-blue">
-                    Open Wallet in Telegram
-                </Button>
+                <Button className="button-blue">Open Wallet in Telegram</Button>
 
                 <ul>
                     {wallets.map((wallet) => (

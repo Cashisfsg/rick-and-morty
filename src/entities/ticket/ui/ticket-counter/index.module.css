@@ -1,0 +1,17 @@
+.ticket-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.25rem;
+
+    color: var(--text-blue);
+    text-shadow: var(--text-shadow-blue);
+}
+
+.ticket-counter-small {
+    font-size: 1rem;
+}
+
+.ticket-counter-large {
+    font-size: 3rem;
+}

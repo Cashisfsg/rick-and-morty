@@ -12,14 +12,14 @@ export const Cross: React.FC<CrossProps> = (props) => {
         >
             <path
                 d="M18 6L6 18"
-                stroke="#B2F8C0"
+                stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="square"
                 strokeLinejoin="round"
             />
             <path
                 d="M6 6L18 18"
-                stroke="#B2F8C0"
+                stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="square"
                 strokeLinejoin="round"

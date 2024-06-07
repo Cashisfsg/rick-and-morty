@@ -10,15 +10,6 @@
 
     line-height: 1.2;
 
-    & > p {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        align-self: start;
-        row-gap: 0.25rem;
-        font-size: 3rem;
-    }
-
     & hgroup > * {
         font-size: 1.75rem;
     }

@@ -16,11 +16,13 @@ export const ChannelsList = () => {
                         .map((_, index) => (
                             <li key={index}>
                                 <Popover.Trigger
-                                    className={`${styles["channel-list-item"]} bg-green border-green shadow-green rounded-xl`}
+                                    className={`${styles["channel-list-item"]} bg-green border-green bg-image shadow-green rounded-xl`}
                                 >
                                     <img
                                         src=""
                                         alt=""
+                                        height="32"
+                                        width="32"
                                         className={`${styles["channel-logo"]} rounded-full`}
                                     />
                                     <span
@@ -28,7 +30,7 @@ export const ChannelsList = () => {
                                     >
                                         Name TG Channel
                                     </span>
-                                    <ChevronRight />
+                                    <ChevronRight className="text-green" />
                                 </Popover.Trigger>
                             </li>
                         ))}

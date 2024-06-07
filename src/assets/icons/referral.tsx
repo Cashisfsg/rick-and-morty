@@ -3,125 +3,19 @@ interface ReferralProps extends React.ComponentPropsWithoutRef<"svg"> {}
 export const Referral: React.FC<ReferralProps> = (props) => {
     return (
         <svg
-            width="42"
-            height="40"
-            viewBox="0 0 42 40"
+            width="1em"
+            height="1em"
+            viewBox="0 0 32 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             {...props}
         >
-            <g filter="url(#filter0_ddddd_4176_2086)">
-                <path
-                    d="M28 30.25C28 27.8631 27.0518 25.5739 25.364 23.886C23.6761 22.1982 21.3869 21.25 19 21.25M19 21.25C16.6131 21.25 14.3239 22.1982 12.636 23.886C10.9482 25.5739 10 27.8631 10 30.25M19 21.25C22.1066 21.25 24.625 18.7316 24.625 15.625C24.625 12.5184 22.1066 10 19 10C15.8934 10 13.375 12.5184 13.375 15.625C13.375 18.7316 15.8934 21.25 19 21.25ZM32.5004 29.1251C32.5004 25.3338 30.2504 21.8126 28.0004 20.1251C28.74 19.5702 29.3314 18.8416 29.7223 18.0036C30.1132 17.1657 30.2915 16.2444 30.2414 15.3211C30.1914 14.3979 29.9145 13.5012 29.4353 12.7104C28.9561 11.9197 28.2894 11.2593 27.4941 10.7876"
-                    stroke="#C6FFDD"
-                    strokeLinecap="square"
-                    strokeLinejoin="round"
-                />
-            </g>
-            <defs>
-                <filter
-                    id="filter0_ddddd_4176_2086"
-                    x="0.564965"
-                    y="0.564965"
-                    width="41.3705"
-                    height="39.1201"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                    />
-                    <feOffset />
-                    <feGaussianBlur stdDeviation="0.186147" />
-                    <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0.0941176 0 0 0 0 0.831373 0 0 0 0 0.388235 0 0 0 1 0"
-                    />
-                    <feBlend
-                        mode="normal"
-                        in2="BackgroundImageFix"
-                        result="effect1_dropShadow_4176_2086"
-                    />
-                    <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                    />
-                    <feOffset />
-                    <feGaussianBlur stdDeviation="0.372293" />
-                    <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0.0941176 0 0 0 0 0.831373 0 0 0 0 0.388235 0 0 0 1 0"
-                    />
-                    <feBlend
-                        mode="normal"
-                        in2="effect1_dropShadow_4176_2086"
-                        result="effect2_dropShadow_4176_2086"
-                    />
-                    <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                    />
-                    <feOffset />
-                    <feGaussianBlur stdDeviation="1.30303" />
-                    <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0.0941176 0 0 0 0 0.831373 0 0 0 0 0.388235 0 0 0 1 0"
-                    />
-                    <feBlend
-                        mode="normal"
-                        in2="effect2_dropShadow_4176_2086"
-                        result="effect3_dropShadow_4176_2086"
-                    />
-                    <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                    />
-                    <feOffset />
-                    <feGaussianBlur stdDeviation="2.60605" />
-                    <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0.0941176 0 0 0 0 0.831373 0 0 0 0 0.388235 0 0 0 1 0"
-                    />
-                    <feBlend
-                        mode="normal"
-                        in2="effect3_dropShadow_4176_2086"
-                        result="effect4_dropShadow_4176_2086"
-                    />
-                    <feColorMatrix
-                        in="SourceAlpha"
-                        type="matrix"
-                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                        result="hardAlpha"
-                    />
-                    <feOffset />
-                    <feGaussianBlur stdDeviation="4.46752" />
-                    <feColorMatrix
-                        type="matrix"
-                        values="0 0 0 0 0.0941176 0 0 0 0 0.831373 0 0 0 0 0.388235 0 0 0 1 0"
-                    />
-                    <feBlend
-                        mode="normal"
-                        in2="effect4_dropShadow_4176_2086"
-                        result="effect5_dropShadow_4176_2086"
-                    />
-                    <feBlend
-                        mode="normal"
-                        in="SourceGraphic"
-                        in2="effect5_dropShadow_4176_2086"
-                        result="shape"
-                    />
-                </filter>
-            </defs>
+            <path
+                d="M23 26.25C23 23.8631 22.0518 21.5739 20.364 19.886C18.6761 18.1982 16.3869 17.25 14 17.25M14 17.25C11.6131 17.25 9.32387 18.1982 7.63604 19.886C5.94821 21.5739 5 23.8631 5 26.25M14 17.25C17.1066 17.25 19.625 14.7316 19.625 11.625C19.625 8.5184 17.1066 6 14 6C10.8934 6 8.375 8.5184 8.375 11.625C8.375 14.7316 10.8934 17.25 14 17.25ZM27.5004 25.1251C27.5004 21.3338 25.2504 17.8126 23.0004 16.1251C23.74 15.5702 24.3314 14.8416 24.7223 14.0036C25.1132 13.1657 25.2915 12.2444 25.2414 11.3211C25.1914 10.3979 24.9145 9.50119 24.4353 8.71045C23.9561 7.9197 23.2894 7.25927 22.4941 6.7876"
+                stroke="currentColor"
+                strokeLinecap="square"
+                strokeLinejoin="round"
+            />
         </svg>
     );
 };

@@ -13,16 +13,16 @@ export const LoginPage = () => {
                 your phone!
             </h1>
             <figure>
-                <img src={QR} alt="QR code" />
+                <img src={QR} alt="QR code" height="210" width="210" />
                 <figcaption>@tgbotname_bot</figcaption>
             </figure>
             <footer>
                 <Link to="/app" className="bg-image bg-blue">
-                    <Telegram />
+                    <Telegram className="svg-shadow-blue" />
                     Telegram
                 </Link>
                 <Link to="/" className="bg-image bg-blue">
-                    <X />X
+                    <X className="svg-shadow-blue" />X
                 </Link>
             </footer>
         </main>

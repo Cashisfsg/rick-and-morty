@@ -19,7 +19,7 @@ export const ScanQRButton: React.FC<ScanQRButtonProps> = ({
 
     return (
         <button onClick={composeEventHandlers(onClick, scanQRCode)} {...props}>
-            <QRCode />
+            <QRCode className="text-green" />
         </button>
     );
 };

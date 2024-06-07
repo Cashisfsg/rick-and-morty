@@ -1,0 +1,7 @@
+.account-page {
+    & > hgroup {
+        & > p {
+            margin-block-start: 0.5rem;
+        }
+    }
+}
