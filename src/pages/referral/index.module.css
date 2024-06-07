@@ -1,0 +1,16 @@
+.referrals {
+    position: relative;
+    background: url("@/assets/img/Hologram.png") center/cover no-repeat;
+    aspect-ratio: 377/419;
+
+    /* border: 2px solid white; */
+}
+
+.referrals-title {
+    position: absolute;
+    text-align: start;
+    top: 5.5%;
+    left: 7%;
+    /* padding-block-start: 1.35rem; */
+    /* padding-inline-start: 1.75rem; */
+}

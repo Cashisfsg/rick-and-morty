@@ -1,0 +1,27 @@
+.tooltip:popover-open {
+    /* width: 200px; */
+    /* height: 100px; */
+    position: absolute;
+    padding: 0.25rem;
+    inset-block-start: 0.25rem;
+    /* inset: unset;
+    bottom: 5px;
+    right: 5px; */
+    margin-inline: auto;
+    background: rgba(23, 79, 42, 0.26);
+    border-radius: 1000px;
+    /* color: white; */
+    font-size: 0.625rem;
+    line-height: 1.2;
+    animation: fade-out 5s linear forwards;
+    border: none;
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

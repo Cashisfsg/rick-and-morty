@@ -1,0 +1,20 @@
+@font-face {
+    font-family: "Electrolize";
+    src: url("@/assets/fonts/Electrolize-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Freckle Face";
+    src: url("@/assets/fonts/FreckleFace-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Karton2";
+    src: url("@/assets/fonts/Karton2-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}

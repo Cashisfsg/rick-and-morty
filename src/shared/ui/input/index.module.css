@@ -1,0 +1,23 @@
+.input {
+    width: 100%;
+    font-size: 0.875rem;
+    padding-block: 1.25rem;
+    padding-inline: 1rem;
+
+    border-radius: 12px;
+    border: var(--border-green);
+
+    background: rgba(0 0 0 / 0.35);
+
+    font-size: 0.875rem;
+    /* font-family: ; */
+    color: var(--text-green);
+    line-height: 1.15;
+    text-shadow: var(--text-shadow-green);
+
+    backdrop-filter: blur(8px);
+
+    &::placeholder {
+        color: #757575;
+    }
+}

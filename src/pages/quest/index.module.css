@@ -1,0 +1,25 @@
+.referral-page {
+    display: grid;
+    align-self: start;
+}
+
+.header {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2 / span 2;
+
+    line-height: 1.2;
+
+    & > p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: start;
+        row-gap: 0.25rem;
+        font-size: 3rem;
+    }
+
+    & hgroup > * {
+        font-size: 1.75rem;
+    }
+}

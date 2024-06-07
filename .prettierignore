@@ -1,0 +1,16 @@
+# Игнорировать все файлы в папке node_modules
+node_modules/
+index.html
+
+# Игнорировать конкретные файлы
+src/some-specific-file.js
+src/another-file-to-ignore.ts
+
+# Игнорировать все файлы в папке dist
+dist/
+
+# Игнорировать все файлы в папке build
+build/
+
+# Игнорировать все файлы в папке logs
+logs/

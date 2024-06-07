@@ -1,0 +1,306 @@
+@import url("./fonts.css");
+
+:root {
+    --font-primary: Electrolize, sans-serif;
+    --font-secondary: Freckle Face, sans-serif;
+    --font-tertiary: Karton2, sans-serif;
+
+    --green-green: #18d463;
+    --green-light-green: #c6ffdd;
+
+    --blue-blue: #1bfdeb;
+    --blue-light-blue: #cbfffb;
+
+    --pink-light-pink: #fbceff;
+    --blue-light-blue: #cbfffb;
+
+    --rounded-full: 1000px;
+
+    --bg-blue: rgba(27, 253, 235, 0.35);
+
+    --border-green: 2px solid var(--green-light-green);
+    --border-blue: 2px solid var(--blue-light-blue);
+
+    --box-shadow-green: 0 0 0px 0 var(--green-green),
+        0 0 1px 0 var(--green-green), 0 0 2px 0 var(--green-green),
+        0 0 4px 0 var(--green-green), 0 0 7px 0 var(--green-green),
+        0 0 13px 0 var(--green-green);
+    --box-shadow-blue: 0 0 0px 0 var(--blue-blue), 0 0 1px 0 var(--blue-blue),
+        0 0 3px 0 var(--blue-blue), 0 0 5px 0 var(--blue-blue),
+        0 0 9px 0 var(--blue-blue);
+
+    --text-green: var(--green-light-green);
+    --text-blue: var(--blue-light-blue);
+
+    --text-shadow-green: 0 0 0px var(--green-green), 0 0 1px var(--green-green),
+        0 0 3px var(--green-green), 0 0 5px var(--green-green),
+        0 0 9px var(--green-green);
+    --text-shadow-blue: 0 0 0px var(--blue-blue), 0 0 1px var(--blue-blue),
+        0 0 3px var(--blue-blue), 0 0 5px var(--blue-blue),
+        0 0 9px var(--blue-blue);
+
+    font-family: var(--font-primary);
+    line-height: 1.2;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    color: white;
+    background: black;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+#root {
+    text-align: center;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-height: 100vh;
+    text-wrap: balance;
+}
+
+.main-container {
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    min-height: 100vh;
+    width: 100%;
+    /* padding-inline: 1.125rem; */
+    padding-block: 3rem;
+    row-gap: 2rem;
+    place-items: center;
+
+    color: white;
+    text-align: center;
+    z-index: 1;
+    grid-area: 1 / 1;
+}
+
+.content-wrapper {
+    margin-inline: auto;
+    max-width: 768px;
+    padding-inline: 1.25rem;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    font-style: italic;
+    background-repeat: no-repeat;
+    background-size: cover;
+    shape-margin: 0.75rem;
+}
+
+button {
+    background: transparent;
+    border: 2px solid transparent;
+
+    font-family: inherit;
+    color: inherit;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 1.375rem;
+    line-height: 1.25;
+}
+
+li {
+    list-style-type: none;
+}
+
+.background-video {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-content {
+    /* & > * + * {
+        margin-block-start: 2.5rem;
+    } */
+    display: grid;
+    row-gap: 2.5rem;
+}
+
+/* .button-blue {
+    border: 2px solid var(--blue-light-blue);
+    background: rgba(27, 253, 235, 0.35);
+    text-shadow:
+        0 0 0px var(--blue-blue),
+        0 0 1px var(--blue-blue),
+        0 0 3px var(--blue-blue),
+        0 0 5px var(--blue-blue),
+        0 0 9px var(--blue-blue);
+} */
+
+.w-full {
+    width: 100%;
+}
+
+.bg-green {
+    background: rgba(14, 118, 49, 0.35);
+}
+
+.bg-blue {
+    background: rgba(27, 253, 235, 0.35);
+}
+
+.bg-image {
+    position: relative;
+    isolation: isolate;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("@/assets/img/bg.png") center/cover no-repeat;
+
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2)
+        );
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2)
+        );
+        z-index: -1;
+        border-radius: inherit;
+    }
+}
+
+.truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.border-green {
+    border: 2px solid var(--green-light-green);
+}
+
+.border-blue {
+    border: 2px solid var(--blue-light-blue);
+}
+
+.rounded-xl {
+    border-radius: 0.75rem;
+}
+
+.rounded-full {
+    border-radius: 1000px;
+}
+
+.text-4 {
+    font-size: 1rem;
+}
+
+/* .text-5-5 {
+    font-size: 1.375rem;
+} */
+
+.text-8 {
+    font-size: 2rem;
+}
+
+.text-start {
+    text-align: start;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-green {
+    color: var(--green-light-green);
+}
+
+.text-blue {
+    color: var(--blue-blue);
+}
+
+.text-shadow-pink {
+    text-shadow:
+        0 0 0px var(--green-green),
+        0 0 1px var(--green-green),
+        0 0 3px var(--green-green),
+        0 0 5px var(--green-green),
+        0 0 9px var(--green-green);
+}
+
+.text-shadow-green {
+    text-shadow:
+        0 0 0px var(--green-green),
+        0 0 1px var(--green-green),
+        0 0 3px var(--green-green),
+        0 0 5px var(--green-green),
+        0 0 9px var(--green-green);
+}
+
+.text-shadow-blue {
+    text-shadow:
+        0 0 0px var(--blue-blue),
+        0 0 1px var(--blue-blue),
+        0 0 3px var(--blue-blue),
+        0 0 5px var(--blue-blue),
+        0 0 9px var(--blue-blue);
+}
+
+.font-primary {
+    font-family: var(--font-primary);
+}
+
+.font-secondary {
+    font-family: var(--font-secondary);
+}
+
+.font-tertiary {
+    font-family: var(--font-tertiary);
+}
+
+.shadow-green {
+    box-shadow:
+        0 0 0px 0 var(--green-green),
+        0 0 1px 0 var(--green-green),
+        0 0 3px 0 var(--green-green),
+        0 0 5px 0 var(--green-green),
+        0 0 9px 0 var(--green-green);
+}
+
+.shadow-blue {
+    box-shadow:
+        0 0 0px 0 var(--blue-blue),
+        0 0 1px 0 var(--blue-blue),
+        0 0 3px 0 var(--blue-blue),
+        0 0 5px 0 var(--blue-blue),
+        0 0 9px 0 var(--blue-blue);
+}

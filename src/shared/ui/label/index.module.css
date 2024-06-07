@@ -1,0 +1,6 @@
+.label {
+    font-size: 0.875rem;
+    line-height: 1.15;
+    color: var(--text-green);
+    text-shadow: var(--text-shadow-green);
+}
