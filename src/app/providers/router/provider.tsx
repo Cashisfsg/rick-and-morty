@@ -1,8 +1,12 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+    createBrowserRouter,
+    Navigate,
+    RouterProvider,
+} from "react-router-dom";
 
 import { Layout } from "@/pages/layout";
 
-import { WalletPage } from "@/pages/wallet";
+import { AccountPage } from "@/pages/account";
 import { TransactionPage } from "@/pages/transaction";
 import { QuestPage } from "@/pages/quest";
 import { ReferralPage } from "@/pages/referral";
@@ -20,7 +24,11 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <WalletPage />,
+                element: <Navigate to="/app/account" />,
+            },
+            {
+                path: "account",
+                element: <AccountPage />,
             },
             {
                 path: "game",
@@ -37,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: "referral",
                 element: <ReferralPage />,
+            },
+            {
+                path: "*",
+                element: <Navigate to="/app/account" />,
             },
         ],
     },

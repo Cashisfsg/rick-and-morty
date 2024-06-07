@@ -1,7 +1,7 @@
 import { ChannelsList } from "@/entities/channel";
 import { ConnectWalletPopover } from "@/widgets/connect-wallet-popover";
 
-export const WalletPage = () => {
+export const AccountPage = () => {
     return (
         <section className="main-content font-secondary">
             <hgroup>

@@ -51,7 +51,7 @@ export const Content = <E extends React.ElementType = "div">({
         <TagName
             id={popoverId}
             popover="auto"
-            className={`${styles.popover} ${className} bg-image bg-green`}
+            className={`${styles.popover} ${className || ""} bg-image bg-green`}
             {...props}
         />
     );
@@ -59,11 +59,12 @@ export const Content = <E extends React.ElementType = "div">({
 
 interface PopoverCloseProps extends React.ComponentPropsWithoutRef<"button"> {}
 
-export const Close: React.FC<PopoverCloseProps> = ({ ...props }) => {
+export const Close: React.FC<PopoverCloseProps> = ({ className, ...props }) => {
     const { popoverId } = usePopoverContext();
 
     return (
         <button
+            className={`popover-close-button ${className || ""}`}
             popovertarget={popoverId}
             popovertargetaction="hide"
             {...props}

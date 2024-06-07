@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 
 export const LoginPage = () => {
     return (
-        <main className={`${styles["login-page"]} content-wrapper`}>
+        <main className={`${styles["login-page"]}`}>
             <h1 className="text-blue">
                 Hey, genius! This app is best experienced on your phone. Yeah,
                 your phone!

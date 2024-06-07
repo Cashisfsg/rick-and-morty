@@ -11,7 +11,7 @@ export const Layout = () => {
                 <source src={Cats} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <main className="main-container">
+            <main className="main-container content-wrapper">
                 <Outlet />
                 <NavigationMenu />
             </main>

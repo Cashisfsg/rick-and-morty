@@ -2,7 +2,7 @@ export const GamePage = () => {
     return (
         <article
             style={{ marginBottom: "-2rem", alignSelf: "end" }}
-            className="content-wrapper"
+            className=""
         >
             <svg
                 width="329"

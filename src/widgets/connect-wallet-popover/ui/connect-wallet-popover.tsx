@@ -35,7 +35,10 @@ export const ConnectWalletPopover = () => {
             <Popover.Trigger className="button-base button-blue bg-image">
                 Connect Wallet
             </Popover.Trigger>
-            <Popover.Content as="section" className={styles["popover-wallet"]}>
+            <Popover.Content
+                as="section"
+                className={`${styles["popover-wallet"]}`}
+            >
                 <header>
                     <ScanQRButton />
                     <Popover.Close>

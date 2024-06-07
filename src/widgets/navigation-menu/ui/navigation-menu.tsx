@@ -9,22 +9,22 @@ import Navigation from "./index.module.css";
 
 const links = [
     {
-        url: "/",
+        url: "/app",
         icon: Account,
         title: "Account",
     },
     {
-        url: "/",
+        url: "/app/game",
         icon: Games,
         title: "Games",
     },
     {
-        url: "/quest",
+        url: "/app/quest",
         icon: Quests,
         title: "Quests",
     },
     {
-        url: "/referral",
+        url: "/app/referral",
         icon: Referral,
         title: "Referral",
     },
@@ -32,7 +32,7 @@ const links = [
 
 export const NavigationMenu = () => {
     return (
-        <nav className="w-full content-wrapper">
+        <nav className="w-full">
             <ul
                 role="menubar"
                 className={`${Navigation.menu} bg-green border-green shadow-green`}
