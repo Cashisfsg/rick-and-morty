@@ -1,3 +1,5 @@
+import { AccountPopover } from "@/widgets/account-popover";
+
 import { ConnectWalletButton } from "@/entities/wallet";
 import { TicketCounter } from "@/entities/ticket";
 
@@ -21,6 +23,7 @@ export const TransactionPage = () => {
                     >
                         <ConnectWalletButton />
                         <TicketCounter>{2238}</TicketCounter>
+                        <AccountPopover />
                     </p>
                 </header>
             </Popover.Root>
@@ -47,6 +50,7 @@ export const TransactionPage = () => {
                         alignItems: "center",
                         justifyContent: "space-between",
                         columnGap: "1rem",
+                        marginBlockStart: "1.5rem",
                     }}
                 >
                     <Button className="button-pink">Top Up</Button>

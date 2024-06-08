@@ -22,6 +22,7 @@
     --border-green: 2px solid var(--green-light-green);
     --border-blue: 2px solid var(--blue-light-blue);
     --border-pink: 2px solid var(--pink-light-pink);
+    --border-transparent: 2px solid transparent;
 
     --box-shadow-green: 0 0 0px 0 var(--green-green),
         0 0 1px 0 var(--green-green), 0 0 3px 0 var(--green-green),
@@ -156,6 +157,10 @@ h2 {
 
 li {
     list-style-type: none;
+}
+
+fieldset {
+    border: none;
 }
 
 .background-video {

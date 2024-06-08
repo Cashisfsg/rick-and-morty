@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 
 const links = [
     {
-        url: "/app",
+        url: "/app/account",
         icon: Account,
         title: "Account",
     },

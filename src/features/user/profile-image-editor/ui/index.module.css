@@ -1,0 +1,78 @@
+.profile-image-editor {
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    margin-block-start: 2.5rem;
+
+    & > * {
+        grid-column: 1 / -1;
+    }
+
+    & input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    & div {
+        width: 344px;
+
+        margin-block-start: 1.5rem;
+
+        overflow: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 0.5rem;
+
+        & fieldset {
+            display: grid;
+            padding: 0.5rem;
+            grid-template-columns: repeat(6, 40px);
+            grid-template-rows: repeat(2, 40px);
+
+            grid-auto-flow: column;
+
+            grid-column: 1 / -1;
+            grid-row: span 2;
+
+            gap: 1rem;
+        }
+    }
+
+    & fieldset > label {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        scroll-snap-align: start;
+        scroll-padding-left: 2rem;
+        box-sizing: content-box;
+
+        border-radius: var(--rounded-full);
+        border: var(--border-transparent);
+
+        will-change: background;
+        transition: background 0.3s ease-in-out;
+
+        & img {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        &:active {
+            background: rgba(255 255 255 / 0.2);
+        }
+
+        &:has(input[type="radio"]:checked) {
+            border: var(--border-green);
+            box-shadow: var(--box-shadow-green);
+        }
+    }
+
+    & button {
+        margin-block-start: 2.5rem;
+    }
+}

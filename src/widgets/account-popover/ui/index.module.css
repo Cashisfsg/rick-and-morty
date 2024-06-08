@@ -1,0 +1,28 @@
+.account-popover {
+    padding: unset;
+    padding: 2rem 1.5rem 3rem;
+
+    & > hgroup {
+        & > h2 {
+            font-family: var(--font-secondary);
+            text-shadow: var(--text-shadow-green);
+            font-size: 2rem;
+        }
+
+        & > p {
+            margin-block-start: 1rem;
+            font-size: 0.875rem;
+            color: #757575;
+        }
+    }
+}
+
+.popover-close {
+    position: fixed;
+    inset: 0 auto auto 0;
+    margin-block-start: 2rem;
+    margin-inline-start: 1.5rem;
+
+    font-size: 1.5rem;
+    color: var(--text-green);
+}
