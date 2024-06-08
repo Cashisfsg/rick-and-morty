@@ -1,45 +1,28 @@
-import { Ticket } from "@/assets/icons";
-import { formatCurrency } from "@/shared/lib/format-currency";
-import { Button } from "@/shared/ui/button";
+import { ReferralList } from "@/entities/user";
+import { TicketCounter } from "@/entities/ticket";
+
 import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
-import { Loader } from "@/shared/ui/loader/loader";
+import { Button } from "@/shared/ui/button";
 
 import styles from "./index.module.css";
 
 export const ReferralPage = () => {
     return (
-        <article className="w-full">
+        <article className={`${styles["referral-page"]}`}>
             <header>
-                <p className="text-shadow-blue">
-                    {formatCurrency(2238)} <Ticket />
-                </p>
-                <div
-                    style={{ display: "flex", alignItems: "stretch" }}
-                    className=""
-                >
-                    <Button
-                        className="button-pink font-secondary"
-                        style={{ fontSize: "22px", flexBasis: "100%" }}
-                    >
+                <TicketCounter size="large">{2238}</TicketCounter>
+                <h1 className="">
+                    <Button className="button-blue font-secondary">
                         Invite a friend
                     </Button>
                     <ClipboardCopy
                         textToCopy="some text"
                         className="bg-blue border-blue shadow-blue"
-                        style={{
-                            borderRadius: "12px",
-                            // aspectRatio: "1",
-                            flexGrow: "0",
-                        }}
                     />
-                </div>
-                <Loader />
+                </h1>
             </header>
-            {/* <section
-                className={`${styles.referrals} border-green shadow-green`}
-            >
-                <h2 className={styles["referrals-title"]}>Referrals</h2>
-            </section> */}
+
+            <ReferralList />
         </article>
     );
 };

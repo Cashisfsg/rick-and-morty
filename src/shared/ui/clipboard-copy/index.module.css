@@ -1,20 +1,35 @@
+.clipboard-copy {
+    border-radius: 12px;
+    aspect-ratio: 1;
+
+    & > svg {
+        font-size: 2rem;
+        filter: var(--svg-shadow-blue);
+    }
+}
+
 .tooltip:popover-open {
-    /* width: 200px; */
-    /* height: 100px; */
     position: absolute;
+
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+
     padding: 0.25rem;
-    inset-block-start: 0.25rem;
-    /* inset: unset;
-    bottom: 5px;
-    right: 5px; */
+    inset-block-start: 1rem;
+
     margin-inline: auto;
-    background: rgba(23, 79, 42, 0.26);
-    border-radius: 1000px;
-    /* color: white; */
+    background: rgba(23 79 42 / 0.26);
+    border-radius: var(--rounded-full);
+
     font-size: 0.625rem;
     line-height: 1.2;
     animation: fade-out 5s linear forwards;
     border: none;
+
+    & > svg {
+        filter: var(--svg-shadow-green);
+    }
 }
 
 @keyframes fade-out {

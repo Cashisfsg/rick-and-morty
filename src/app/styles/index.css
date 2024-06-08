@@ -16,8 +16,8 @@
 
     --rounded-full: 1000px;
 
-    --bg-green: rgba(14, 118, 49, 0.35);
-    --bg-blue: rgba(27, 253, 235, 0.35);
+    --bg-green: rgba(14 118 49 / 0.35);
+    --bg-blue: rgba(27 253 235 / 0.35);
 
     --border-green: 2px solid var(--green-light-green);
     --border-blue: 2px solid var(--blue-light-blue);
@@ -262,7 +262,7 @@ fieldset {
 }
 
 .text-blue {
-    color: var(--blue-light-blue);
+    color: var(--blue-blue);
 }
 
 .text-pink {

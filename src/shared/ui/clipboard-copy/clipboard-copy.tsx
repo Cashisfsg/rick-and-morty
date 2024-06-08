@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-import { Copy } from "@/assets/icons";
+import { CheckCircle, Copy } from "@/assets/icons";
 import { composeEventHandlers } from "@/shared/lib/compose-event-handlers";
 
 import styles from "./index.module.css";
@@ -11,6 +11,7 @@ interface ClipboardCopyProps extends React.ComponentPropsWithoutRef<"button"> {
 }
 
 export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
+    className,
     onClick,
     textToCopy,
     ...props
@@ -43,6 +44,7 @@ export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
                 popovertarget={popoverId}
                 popovertargetaction="show"
                 onClick={composeEventHandlers(onClick, copyToClipboard)}
+                className={`${styles["clipboard-copy"]} ${className || ""}`}
                 {...props}
             >
                 <Copy />
@@ -53,7 +55,8 @@ export const ClipboardCopy: React.FC<ClipboardCopyProps> = ({
                 onAnimationEnd={onAnimationEndHandler}
                 className={styles.tooltip}
             >
-                Text copied
+                <CheckCircle />
+                <span>Text copied</span>
             </div>
         </>
     );
