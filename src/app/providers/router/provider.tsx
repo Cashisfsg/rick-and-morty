@@ -1,10 +1,11 @@
 import {
     createBrowserRouter,
     Navigate,
+    Outlet,
     RouterProvider,
 } from "react-router-dom";
 
-import { Layout } from "@/pages/layout";
+import { MainLayout } from "@/pages/main-layout";
 
 import { AccountPage } from "@/pages/account";
 import { TransactionPage } from "@/pages/transaction";
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
     },
     {
         path: "app",
-        element: <Layout />,
+        element: <MainLayout />,
         children: [
             {
                 index: true,
@@ -49,6 +50,16 @@ const router = createBrowserRouter([
             {
                 path: "*",
                 element: <Navigate to="/app/account" />,
+            },
+        ],
+    },
+    {
+        path: "app",
+        element: <Outlet />,
+        children: [
+            {
+                path: "user",
+                element: <h1>User page</h1>,
             },
         ],
     },

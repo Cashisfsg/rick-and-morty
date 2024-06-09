@@ -4,7 +4,7 @@ import { NavigationMenu } from "@/widgets/navigation-menu";
 
 import Cats from "@/assets/video/cats.mp4";
 
-export const Layout = () => {
+export const MainLayout = () => {
     return (
         <>
             <video autoPlay muted loop className="background-video">

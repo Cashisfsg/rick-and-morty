@@ -23,7 +23,10 @@ export const QuestPage = () => {
                 <QuestPopover />
             </Popover.Root>
 
-            <CaptchaSlider src="https://kartinki.pics/uploads/posts/2022-03/1647923157_12-kartinkin-net-p-rik-i-morti-kartinki-v-khoroshem-kachestve-13.jpg" />
+            <CaptchaSlider
+                // src="https://kartinki.pics/uploads/posts/2022-03/1647923157_12-kartinkin-net-p-rik-i-morti-kartinki-v-khoroshem-kachestve-13.jpg"
+                src="https://assets1.ignimgs.com/thumbs/userUploaded/2019/3/27/36190303rickandmorty1280-1553711361899.jpg"
+            />
         </article>
     );
 };
