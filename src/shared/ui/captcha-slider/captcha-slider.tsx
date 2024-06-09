@@ -37,8 +37,29 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
         img.onload = () => {
             if (!ctx || !sliderCtx) return;
 
+            const canvasAspect = canvas.width / canvas.height;
+            const imgAspect = img.width / img.height;
+
+            let drawWidth, drawHeight, offsetX, offsetY;
+
+            if (canvasAspect > imgAspect) {
+                // Если канвас шире изображения
+                drawWidth = canvas.width;
+                drawHeight = canvas.width / imgAspect;
+                offsetX = 0;
+                offsetY = -(drawHeight - canvas.height) / 2;
+            } else {
+                // Если канвас выше изображения
+                drawWidth = canvas.height * imgAspect;
+                drawHeight = canvas.height;
+                offsetX = -(drawWidth - canvas.width) / 2;
+                offsetY = 0;
+            }
+
+            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+
             // Отрисовка основного изображения на основном канвасе
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
             const path = new Path2D(clipPath);
 
@@ -66,10 +87,10 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
             sliderCtx.clip(path);
             sliderCtx.drawImage(
                 img,
-                -CORRECT,
-                -TRANSLATE_VERTICAL,
-                canvas.width,
-                canvas.height
+                -CORRECT + offsetX,
+                -TRANSLATE_VERTICAL - offsetY,
+                drawWidth,
+                drawHeight
             );
 
             sliderCtx.restore();
@@ -175,20 +196,39 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
         const img = image.current;
 
         // Отрисовка основного изображения на основном канвасе
-        ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+        const canvasAspect = canvas.width / canvas.height;
+        const imgAspect = img.width / img.height;
+
+        let drawWidth, drawHeight, offsetX, offsetY;
+
+        if (canvasAspect > imgAspect) {
+            // Если канвас шире изображения
+            drawWidth = canvas.width;
+            drawHeight = canvas.width / imgAspect;
+            offsetX = 0;
+            offsetY = -(drawHeight - canvas.height) / 2;
+        } else {
+            // Если канвас выше изображения
+            drawWidth = canvas.height * imgAspect;
+            drawHeight = canvas.height;
+            offsetX = -(drawWidth - canvas.width) / 2;
+            offsetY = 0;
+        }
+
+        ctx?.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
         sliderPieceCanvas?.style.setProperty("display", "none");
         // alert("Captcha solved!");
         onSuccess?.();
     };
 
     return (
-        <figure style={{ position: "relative" }}>
+        <figure style={{ position: "relative", width: "410px" }}>
             <canvas
                 id="canvas"
-                // width="410"
-                // height="300"
+                width="410"
+                height="300"
                 onPointerOutCapture={onPointerLeaveHandler}
-                className={styles.canvas}
+                // className={}
                 ref={canvasRef}
             ></canvas>
             <canvas
