@@ -1,4 +1,10 @@
-import { TicketList, TicketCounter } from "@/entities/ticket";
+import { QuestPopover } from "@/widgets/quest-popover";
+
+import { QuestList } from "@/entities/quest";
+import { TicketCounter } from "@/entities/ticket";
+import { CaptchaSlider } from "@/shared/ui/captcha-slider";
+import { Popover } from "@/shared/ui/popover";
+
 import styles from "./index.module.css";
 
 export const QuestPage = () => {
@@ -12,7 +18,12 @@ export const QuestPage = () => {
                 </hgroup>
             </header>
 
-            <TicketList />
+            <Popover.Root>
+                <QuestList />
+                <QuestPopover />
+            </Popover.Root>
+
+            {/* <CaptchaSlider src="https://kartinki.pics/uploads/posts/2022-03/1647923157_12-kartinkin-net-p-rik-i-morti-kartinki-v-khoroshem-kachestve-13.jpg" /> */}
         </article>
     );
 };

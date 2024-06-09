@@ -12,7 +12,7 @@
 
         & > h1 {
             display: grid;
-            grid-template-columns: 1fr auto;
+            grid-template-columns: 1fr minmax(55px, auto);
             column-gap: 1rem;
             align-items: stretch;
 

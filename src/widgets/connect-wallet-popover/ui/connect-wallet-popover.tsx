@@ -31,44 +31,34 @@ const wallets = [
 
 export const ConnectWalletPopover = () => {
     return (
-        <Popover.Root>
-            <Popover.Trigger className="button-base button-blue bg-image">
-                Connect Wallet
-            </Popover.Trigger>
-            <Popover.Content
-                as="section"
-                className={`${styles["popover-wallet"]}`}
-            >
-                <header>
-                    <ScanQRButton />
-                    <Popover.Close>
-                        <Cross className="text-green" />
-                    </Popover.Close>
-                </header>
+        <Popover.Content as="section" className={`${styles["popover-wallet"]}`}>
+            <header>
+                <ScanQRButton />
+                <Popover.Close>
+                    <Cross className="text-green" />
+                </Popover.Close>
+            </header>
 
-                <hgroup>
-                    <h2>Connect your wallet</h2>
-                    <p>
-                        Open Wallet in Telegram or select your wallet to connect
-                    </p>
-                </hgroup>
+            <hgroup>
+                <h2>Connect your wallet</h2>
+                <p>Open Wallet in Telegram or select your wallet to connect</p>
+            </hgroup>
 
-                <Button className="button-blue">Open Wallet in Telegram</Button>
+            <Button className="button-blue">Open Wallet in Telegram</Button>
 
-                <ul>
-                    {wallets.map((wallet) => (
-                        <li key={wallet.name}>
-                            <img src={wallet.img} alt="" />
-                            <p>{wallet.name}</p>
-                        </li>
-                    ))}
-                </ul>
+            <ul>
+                {wallets.map((wallet) => (
+                    <li key={wallet.name}>
+                        <img src={wallet.img} alt="" />
+                        <p>{wallet.name}</p>
+                    </li>
+                ))}
+            </ul>
 
-                <footer>
-                    <Ton />
-                    <span>TON Connect</span>
-                </footer>
-            </Popover.Content>
-        </Popover.Root>
+            <footer>
+                <Ton />
+                <span>TON Connect</span>
+            </footer>
+        </Popover.Content>
     );
 };
