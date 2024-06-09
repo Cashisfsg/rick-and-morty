@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 
+import { Hologram } from "./hologram";
+
 import styles from "./index.module.css";
 
 interface CaptchaSliderProps {
@@ -12,7 +14,8 @@ const TRANSLATE_VERTICAL = Math.round(Math.random() * 250);
 const TOLERANCE = 5;
 
 export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
-    src = "https://abrakadabra.fun/uploads/posts/2022-01/1642082451_3-abrakadabra-fun-p-oboi-rik-morti-3.jpg",
+    // src = "https://abrakadabra.fun/uploads/posts/2022-01/1642082451_3-abrakadabra-fun-p-oboi-rik-morti-3.jpg",
+    src = "https://kartinki.pics/uploads/posts/2022-03/thumbs/1647923157_12-kartinkin-net-p-rik-i-morti-kartinki-v-khoroshem-kachestve-13.jpg",
     onSuccess,
 }) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -99,7 +102,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
             ctx.save();
 
             ctx.translate(CORRECT, TRANSLATE_VERTICAL); // Сдвиг фрагмента
-            ctx.globalAlpha = 0.5; // Установка прозрачности
+            ctx.globalAlpha = 0.7; // Установка прозрачности
             // ctx.fillStyle = "rgba(0, 0, 0, 0.5)"; // Установка цвета фона
             ctx.clip(path); // Применение клиппинга
             ctx.fill(path); // Заливка полупрозрачным фоном
@@ -223,29 +226,32 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
 
     return (
         <figure style={{ position: "relative", width: "410px" }}>
-            <canvas
-                id="canvas"
-                width="410"
-                height="300"
-                onPointerOutCapture={onPointerLeaveHandler}
-                // className={}
-                ref={canvasRef}
-            ></canvas>
-            <canvas
-                id="sliderPiece"
-                style={{
-                    position: "absolute",
-                    top: TRANSLATE_VERTICAL,
-                    left: Math.round(Math.random() * 353),
-                    cursor: "pointer",
-                }}
-                width="57"
-                height="50"
-                onPointerMove={onPointerMoveHandler}
-                onPointerDown={onPointerDownHandler}
-                onPointerUp={onPointerUpHandler}
-                ref={sliderPieceRef}
-            ></canvas>
+            <Hologram>
+                <canvas
+                    id="canvas"
+                    width="410"
+                    height="300"
+                    onPointerOutCapture={onPointerLeaveHandler}
+                    // className={}
+                    ref={canvasRef}
+                ></canvas>
+                <canvas
+                    id="sliderPiece"
+                    style={{
+                        position: "absolute",
+                        top: TRANSLATE_VERTICAL,
+                        left: Math.round(Math.random() * 353),
+                        cursor: "pointer",
+                    }}
+                    width="57"
+                    height="50"
+                    onPointerMove={onPointerMoveHandler}
+                    onPointerDown={onPointerDownHandler}
+                    onPointerUp={onPointerUpHandler}
+                    ref={sliderPieceRef}
+                ></canvas>
+            </Hologram>
+
             <div className={styles.slider}>
                 <input
                     type="range"

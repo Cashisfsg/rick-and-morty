@@ -56,7 +56,7 @@ export const ConnectWalletPopover = () => {
             </ul>
 
             <footer>
-                <Ton />
+                <Ton className="text-green" />
                 <span>TON Connect</span>
             </footer>
         </Popover.Content>

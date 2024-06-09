@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 
 export const LoginPage = () => {
     return (
-        <main className={`${styles["login-page"]}`}>
+        <main className={`${styles["login-page"]} content-wrapper`}>
             <h1 className="text-blue">
                 Hey, genius! This app is best experienced on your phone. Yeah,
                 your phone!
@@ -17,7 +17,7 @@ export const LoginPage = () => {
                 <figcaption>@tgbotname_bot</figcaption>
             </figure>
             <footer>
-                <Link to="/app" className="bg-image bg-blue">
+                <Link to="/app/verify" className="bg-image bg-blue">
                     <Telegram className="svg-shadow-blue" />
                     Telegram
                 </Link>

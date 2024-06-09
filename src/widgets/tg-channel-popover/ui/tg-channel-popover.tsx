@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Popover } from "@/shared/ui/popover";
 import { Button } from "@/shared/ui/button";
 import { Cross } from "@/assets/icons";
@@ -5,6 +7,8 @@ import { Cross } from "@/assets/icons";
 import styles from "./index.module.css";
 
 export const TgChannelPopover = () => {
+    const navigate = useNavigate();
+
     return (
         <Popover.Content as="section" className={styles["tg-channel-popover"]}>
             <header>
@@ -13,7 +17,10 @@ export const TgChannelPopover = () => {
             </header>
 
             <Button
-                className={`${styles["subscribe-button"]} button-blue text-shadow-blue`}
+                onClick={() => {
+                    navigate("/app/account");
+                }}
+                className={`${styles["subscribe-button"]} button-base button-blue text-shadow-blue`}
             >
                 Subscribe
             </Button>

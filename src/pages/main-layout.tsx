@@ -1,7 +1,5 @@
 import { Outlet } from "react-router-dom";
 
-import { NavigationMenu } from "@/widgets/navigation-menu";
-
 import Cats from "@/assets/video/cats.mp4";
 
 export const MainLayout = () => {
@@ -11,10 +9,8 @@ export const MainLayout = () => {
                 <source src={Cats} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <main className="main-container content-wrapper">
-                <Outlet />
-                <NavigationMenu />
-            </main>
+
+            <Outlet />
         </>
     );
 };

@@ -1,36 +1,75 @@
-import { TgChannelPopover } from "@/widgets/tg-channel-popover";
-import { ConnectWalletPopover } from "@/widgets/connect-wallet-popover";
+import { AccountPopover } from "@/widgets/account-popover";
 
-import { ChannelsList } from "@/entities/channel";
+import { ConnectWalletButton } from "@/entities/wallet";
+import { TicketCounter } from "@/entities/ticket";
 
 import { Popover } from "@/shared/ui/popover";
+import { Button } from "@/shared/ui/button";
 
 import styles from "./index.module.css";
+import { Token } from "@/assets/icons";
 
 export const AccountPage = () => {
     return (
-        <article
-            className={`${styles["account-page"]} main-content font-secondary`}
-        >
-            <hgroup>
-                <h1 className="text-blue text-8">Hey, listen up, buddy!</h1>
-                <p>
-                    To authenticate in this masterpiece, you need to connect
-                    your crypto wallet.And subscribe to a couple of channels
+        <article className={`${styles["account-page"]} main-content w-full`}>
+            <Popover.Root>
+                <header>
+                    <p
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <ConnectWalletButton />
+                        <TicketCounter>{2238}</TicketCounter>
+                        <AccountPopover />
+                    </p>
+                </header>
+            </Popover.Root>
+
+            <h1 className="font-secondary ">
+                <p
+                    className="text-pink text-shadow-pink"
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        columnGap: "0.25rem",
+                    }}
+                >
+                    <span style={{ fontSize: "3.5rem" }}>2 238</span>
+                    <Token
+                        className="svg-shadow-pink"
+                        style={{ fontSize: "2.5rem" }}
+                    />
                 </p>
-            </hgroup>
+                <p
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        columnGap: "1rem",
+                        marginBlockStart: "1.5rem",
+                    }}
+                >
+                    <Button className="button-pink">Top Up</Button>
+                    <Button className="button-pink">Withdraw</Button>
+                </p>
+            </h1>
 
-            <Popover.Root>
-                <Popover.Trigger className="button-base button-blue bg-image">
-                    Connect Wallet
-                </Popover.Trigger>
-                <ConnectWalletPopover />
-            </Popover.Root>
-
-            <Popover.Root>
-                <ChannelsList />
-                <TgChannelPopover />
-            </Popover.Root>
+            <section>
+                <h2 className="text-start">Transaction history</h2>
+                <p
+                    style={{
+                        fontSize: "22px",
+                        color: "var(--green-green)",
+                        marginBlockStart: "2.5rem",
+                    }}
+                >
+                    No completed transactions yet
+                </p>
+            </section>
         </article>
     );
 };

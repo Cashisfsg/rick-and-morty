@@ -1,18 +1,20 @@
 import {
     createBrowserRouter,
     Navigate,
-    Outlet,
     RouterProvider,
 } from "react-router-dom";
 
 import { MainLayout } from "@/pages/main-layout";
+import { LayoutWithNavigation } from "@/pages/layout-with-navigation";
+import { LayoutWithoutNavigation } from "@/pages/layout-without-navigation";
 
+import { WelcomePage } from "@/pages/welcome";
 import { AccountPage } from "@/pages/account";
-import { TransactionPage } from "@/pages/transaction";
 import { QuestPage } from "@/pages/quest";
 import { ReferralPage } from "@/pages/referral";
 import { LoginPage } from "@/pages/login/page";
 import { GamePage } from "@/pages/game";
+import { VerificationPage } from "@/pages/verification/page";
 
 const router = createBrowserRouter([
     {
@@ -20,46 +22,56 @@ const router = createBrowserRouter([
         element: <LoginPage />,
     },
     {
-        path: "app",
+        path: "/",
         element: <MainLayout />,
         children: [
             {
-                index: true,
-                element: <Navigate to="/app/account" />,
+                path: "app",
+                element: <LayoutWithNavigation />,
+                children: [
+                    {
+                        index: true,
+                        element: <Navigate to="/app/account" />,
+                    },
+                    {
+                        path: "account",
+                        element: <AccountPage />,
+                    },
+                    {
+                        path: "game",
+                        element: <GamePage />,
+                    },
+                    {
+                        path: "quest",
+                        element: <QuestPage />,
+                    },
+                    {
+                        path: "referral",
+                        element: <ReferralPage />,
+                    },
+                    {
+                        path: "*",
+                        element: <Navigate to="/app/account" />,
+                    },
+                ],
             },
             {
-                path: "account",
-                element: <AccountPage />,
-            },
-            {
-                path: "game",
-                element: <GamePage />,
-            },
-            {
-                path: "transaction",
-                element: <TransactionPage />,
-            },
-            {
-                path: "quest",
-                element: <QuestPage />,
-            },
-            {
-                path: "referral",
-                element: <ReferralPage />,
-            },
-            {
-                path: "*",
-                element: <Navigate to="/app/account" />,
-            },
-        ],
-    },
-    {
-        path: "app",
-        element: <Outlet />,
-        children: [
-            {
-                path: "user",
-                element: <h1>User page</h1>,
+                path: "app",
+                element: <LayoutWithoutNavigation />,
+                children: [
+                    {
+                        path: "verify",
+                        element: <VerificationPage />,
+                    },
+                    {
+                        path: "welcome",
+                        element: <WelcomePage />,
+                    },
+                    {
+                        path: "*",
+                        element: <Navigate to="/app/welcome" />,
+                    },
+                ],
             },
         ],
     },
