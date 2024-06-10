@@ -102,7 +102,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
             sliderCtx.clip(path);
             sliderCtx.drawImage(
                 img,
-                -CORRECT + offsetX,
+                -CORRECT - TRANSLATE_HORIZONTAL + offsetX,
                 -TRANSLATE_VERTICAL - offsetY,
                 drawWidth,
                 drawHeight
@@ -200,7 +200,8 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     const win: React.PointerEventHandler<HTMLInputElement> = () => {
         const correctX = CORRECT; // Adjust based on actual position
         const pieceX = parseFloat(sliderPieceRef.current?.style.left || "0");
-        if (Math.abs(pieceX - correctX) > TOLERANCE) return;
+        if (Math.abs(pieceX - correctX - TRANSLATE_HORIZONTAL) > TOLERANCE)
+            return;
 
         if (!canvasRef.current || !sliderPieceRef.current) return;
 
