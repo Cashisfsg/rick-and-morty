@@ -9,8 +9,8 @@ import styles from "./index.module.css";
 
 export const WelcomePage = () => {
     return (
-        <article
-            className={`${styles["account-page"]} main-content font-secondary`}
+        <main
+            className={`${styles["welcome-page"]} content-wrapper font-secondary`}
         >
             <hgroup>
                 <h1 className="text-blue text-8">Hey, listen up, buddy!</h1>
@@ -31,6 +31,6 @@ export const WelcomePage = () => {
                 <TgChannelPopover />
                 <ChannelsList />
             </Popover.Root>
-        </article>
+        </main>
     );
 };

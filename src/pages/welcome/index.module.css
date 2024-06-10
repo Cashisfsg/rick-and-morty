@@ -1,4 +1,9 @@
-.account-page {
+.welcome-page {
+    display: grid;
+    grid-area: 1 / 1;
+    row-gap: 2.5rem;
+    z-index: 1;
+
     & > hgroup {
         & > p {
             margin-block-start: 0.5rem;

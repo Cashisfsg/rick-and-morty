@@ -1,12 +1,13 @@
 import {
     createBrowserRouter,
     Navigate,
+    Outlet,
     RouterProvider,
 } from "react-router-dom";
 
 import { MainLayout } from "@/pages/main-layout";
 import { LayoutWithNavigation } from "@/pages/layout-with-navigation";
-import { LayoutWithoutNavigation } from "@/pages/layout-without-navigation";
+// import { LayoutWithoutNavigation } from "@/pages/layout-without-navigation";
 
 import { WelcomePage } from "@/pages/welcome";
 import { AccountPage } from "@/pages/account";
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "app",
-                element: <LayoutWithoutNavigation />,
+                element: <Outlet />,
                 children: [
                     {
                         path: "verify",

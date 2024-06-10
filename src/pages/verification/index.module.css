@@ -1,0 +1,6 @@
+.verification-page {
+    display: grid;
+    grid-area: 1 / 1;
+    row-gap: 2rem;
+    z-index: 1;
+}
