@@ -1,5 +1,5 @@
 import { TgChannelPopover } from "@/widgets/tg-channel-popover";
-import { ConnectWalletPopover } from "@/widgets/connect-wallet-popover";
+// import { ConnectWalletPopover } from "@/widgets/connect-wallet-popover";
 
 import { ChannelsList } from "@/entities/channel";
 
@@ -20,12 +20,12 @@ export const WelcomePage = () => {
                 </p>
             </hgroup>
 
-            <Popover.Root>
+            {/* <Popover.Root>
                 <Popover.Trigger className="button-base button-blue bg-image">
                     Connect Wallet
                 </Popover.Trigger>
                 <ConnectWalletPopover />
-            </Popover.Root>
+            </Popover.Root> */}
 
             <Popover.Root>
                 <TgChannelPopover />

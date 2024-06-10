@@ -38,6 +38,9 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
         const img = image.current;
         img.src = src;
         img.onload = () => {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+
             if (!ctx || !sliderCtx) return;
 
             const canvasAspect = canvas.width / canvas.height;
@@ -165,10 +168,10 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
         event
     ) => {
+        event.stopPropagation();
+
         requestAnimationFrame(() => {
             // let x = event.clientX - params.current.startX;
-
-            console.log(event.target.value);
 
             const x = Math.max(
                 0,
@@ -225,13 +228,14 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     };
 
     return (
-        <figure style={{ position: "relative", width: "410px" }}>
+        <figure style={{ position: "relative" }}>
             <Hologram>
                 <canvas
                     id="canvas"
-                    width="410"
-                    height="300"
+                    // width="410"
+                    // height="300"
                     onPointerOutCapture={onPointerLeaveHandler}
+                    style={{ width: "100%", height: "100%" }}
                     // className={}
                     ref={canvasRef}
                 ></canvas>
