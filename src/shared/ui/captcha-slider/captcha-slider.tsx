@@ -1,4 +1,4 @@
-import { useEffect, useRef, useReducer } from "react";
+import { useEffect, useRef, useReducer, useCallback } from "react";
 
 import { Hologram } from "./hologram";
 
@@ -30,8 +30,6 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const sliderPieceRef = useRef<HTMLCanvasElement>(null);
     const image = useRef<HTMLImageElement>(new Image());
-
-    const params = useRef({ isDragging: false, startX: 20 });
 
     useEffect(() => {
         if (!canvasRef.current || !sliderPieceRef.current) return;
@@ -71,20 +69,10 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                 offsetY = 0;
             }
 
+            // Отрисовка основного изображения на основном канвасе
             ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
 
-            // Отрисовка основного изображения на основном канвасе
-            // ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
             const path = new Path2D(clipPath);
-
-            // Отрисовка вырезанного фрагмента на слайдере
-            // sliderCtx.save();
-            // sliderCtx.clip(path);
-
-            // Отрисовка фрагмента изображения
-            // sliderCtx.drawImage(img, 0, 50, canvas.width, canvas.height);
-            // sliderCtx.restore();
 
             // Добавление тени к вырезанному фрагменту
             sliderCtx.save();
@@ -123,87 +111,16 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
         };
     }, [src, canvasRef, sliderPieceRef, state]);
 
-    const onPointerDownHandler: React.PointerEventHandler<HTMLCanvasElement> = (
-        event
-    ) => {
-        params.current = {
-            isDragging: true,
-            startX: event.clientX - event.currentTarget.offsetLeft,
-        };
-    };
-
-    const onPointerMoveHandler: React.PointerEventHandler<HTMLCanvasElement> = (
-        event
-    ) => {
-        if (!params.current.isDragging) return;
-        requestAnimationFrame(() => {
-            let x = event.clientX - params.current.startX;
-            x = Math.max(
-                0,
-                Math.min(
-                    x,
-                    (canvasRef.current?.width || 0) -
-                        (sliderPieceRef.current?.width || 0)
-                )
-            );
-            sliderPieceRef.current?.style.setProperty("left", x + "px");
-        });
-    };
-
-    const onPointerUpHandler: React.PointerEventHandler<
-        HTMLCanvasElement
-    > = () => {
-        if (!params.current.isDragging) return;
-
-        params.current.isDragging = false;
-        // Check if piece is correctly positioned
-        const correctX = CORRECT; // Adjust based on actual position
-        const pieceX = parseFloat(sliderPieceRef.current?.style.left || "0");
-        if (Math.abs(pieceX - correctX) < TOLERANCE) {
-            alert("Captcha solved!");
-        } else {
-            alert("Try again!");
-        }
-    };
-
-    const onPointerLeaveHandler: React.PointerEventHandler<
-        HTMLCanvasElement
-    > = () => {
-        if (!params.current.isDragging) return;
-
-        params.current.isDragging = false;
-    };
-
-    const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
-        event
-    ) => {
+    const handler = useCallback((event: Event) => {
         event.stopPropagation();
 
-        requestAnimationFrame(() => {
-            // let x = event.clientX - params.current.startX;
-
-            const x = Math.max(
-                0,
-                Math.min(
-                    (((canvasRef.current?.width || 0) -
-                        (sliderPieceRef.current?.width || 0)) /
-                        100) *
-                        Number(event.target.value),
-                    (canvasRef.current?.width || 0) -
-                        (sliderPieceRef.current?.width || 0)
-                )
-            );
-            sliderPieceRef.current?.style.setProperty("left", x + "px");
-        });
-    };
-
-    const win: React.PointerEventHandler<HTMLInputElement> = () => {
         const correctX = CORRECT; // Adjust based on actual position
         const pieceX = parseFloat(sliderPieceRef.current?.style.left || "0");
-        if (Math.abs(pieceX - correctX - TRANSLATE_HORIZONTAL) > TOLERANCE)
-            return;
 
         if (!canvasRef.current || !sliderPieceRef.current) return;
+
+        if (Math.abs(pieceX - correctX - TRANSLATE_HORIZONTAL) > TOLERANCE)
+            return;
 
         const canvas = canvasRef.current;
         const sliderPieceCanvas = sliderPieceRef.current;
@@ -234,7 +151,36 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
         ctx?.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
         sliderPieceCanvas?.style.setProperty("display", "none");
         // alert("Captcha solved!");
+        document.removeEventListener("touchend", handler);
         onSuccess?.();
+    }, []);
+
+    const onChangeHandler: React.ChangeEventHandler<HTMLInputElement> = (
+        event
+    ) => {
+        event.stopPropagation();
+
+        requestAnimationFrame(() => {
+            const x = Math.max(
+                0,
+                Math.min(
+                    (((canvasRef.current?.width || 0) -
+                        (sliderPieceRef.current?.width || 0)) /
+                        100) *
+                        Number(event.target.value),
+                    (canvasRef.current?.width || 0) -
+                        (sliderPieceRef.current?.width || 0)
+                )
+            );
+            sliderPieceRef.current?.style.setProperty("left", x + "px");
+        });
+    };
+
+    const onTouchStartHandler: React.TouchEventHandler<
+        HTMLInputElement
+    > = () => {
+        document.removeEventListener("touchend", handler);
+        document.addEventListener("touchend", handler);
     };
 
     return (
@@ -245,11 +191,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                 </button>
                 <canvas
                     id="canvas"
-                    // width="410"
-                    // height="300"
-                    onPointerOutCapture={onPointerLeaveHandler}
                     style={{ width: "100%", height: "100%" }}
-                    // className={}
                     ref={canvasRef}
                 />
                 <canvas
@@ -262,11 +204,8 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                     }}
                     width="57"
                     height="50"
-                    onPointerMove={onPointerMoveHandler}
-                    onPointerDown={onPointerDownHandler}
-                    onPointerUp={onPointerUpHandler}
                     ref={sliderPieceRef}
-                ></canvas>
+                />
             </Hologram>
 
             <div className={styles.slider}>
@@ -281,7 +220,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                             (sliderPieceRef.current?.width || 1))
                     }
                     onChange={onChangeHandler}
-                    onPointerUp={win}
+                    onTouchStart={onTouchStartHandler}
                     className={`${styles["input-range"]} bg-blue border-blue shadow-blue rounded-full`}
                 />
             </div>
