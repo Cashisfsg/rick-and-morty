@@ -1,4 +1,10 @@
-export const Hologram = ({ children }) => {
+interface HologramProps extends React.ComponentProps<"svg"> {}
+
+export const Hologram: React.FC<HologramProps> = ({
+    className,
+    children,
+    ...props
+}) => {
     return (
         <svg
             width="362"
@@ -6,13 +12,15 @@ export const Hologram = ({ children }) => {
             viewBox="0 0 362 282"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="border-green shadow-green w-full"
+            className={`border-green shadow-green w-full ${className || ""}`}
+            style={{ position: "relative", isolation: "isolate" }}
+            {...props}
         >
             <foreignObject
                 x="0"
                 y="0"
-                width="362"
-                height="282"
+                width="100%"
+                height="100%"
                 xmlns="http://www.w3.org/1999/xhtml"
             >
                 {children}

@@ -1,3 +1,4 @@
+import { useTonWallet } from "@tonconnect/ui-react";
 import { AccountPopover } from "@/widgets/account-popover";
 
 import { ConnectWalletButton } from "@/entities/wallet";
@@ -10,25 +11,36 @@ import styles from "./index.module.css";
 import { Token } from "@/assets/icons";
 
 export const AccountPage = () => {
+    const wallet = useTonWallet();
+
     return (
         <article className={`${styles["account-page"]} main-content w-full`}>
             <Popover.Root>
-                <header>
-                    <p
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                        }}
-                    >
+                <header
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    {wallet ? (
+                        <>
+                            <p>Wallet name: {wallet?.name}</p>
+                            <p>
+                                Wallet account address:{" "}
+                                {wallet?.account?.address}
+                            </p>
+                        </>
+                    ) : (
                         <ConnectWalletButton />
-                        <TicketCounter>{2238}</TicketCounter>
-                        <AccountPopover />
-                    </p>
+                    )}
+                    {/* <TonConnectButton /> */}
+                    <TicketCounter>{2238}</TicketCounter>
+                    <AccountPopover />
                 </header>
             </Popover.Root>
 
-            <h1 className="font-secondary ">
+            <h1 className="font-secondary">
                 <p
                     className="text-pink text-shadow-pink"
                     style={{
@@ -53,8 +65,12 @@ export const AccountPage = () => {
                         marginBlockStart: "1.5rem",
                     }}
                 >
-                    <Button className="button-pink">Top Up</Button>
-                    <Button className="button-pink">Withdraw</Button>
+                    <Button className="button-pink" disabled={!wallet}>
+                        Top Up
+                    </Button>
+                    <Button className="button-pink" disabled={!wallet}>
+                        Withdraw
+                    </Button>
                 </p>
             </h1>
 

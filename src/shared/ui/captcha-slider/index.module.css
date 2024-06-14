@@ -20,6 +20,7 @@
     font-size: 1.5rem;
     transform-origin: center center;
     transition: transform 0.3s ease-in-out;
+    z-index: 1;
 
     &:active {
         transform: scale(1.1) rotate(180deg);

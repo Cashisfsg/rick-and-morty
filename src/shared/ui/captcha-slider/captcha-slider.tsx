@@ -184,14 +184,21 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     };
 
     return (
-        <figure className={styles["captcha-wrapper"]}>
+        <figure>
             <Hologram>
                 <button className={styles["refresh-button"]} onClick={rerender}>
                     <Refresh className="text-green" />
                 </button>
                 <canvas
                     id="canvas"
-                    style={{ width: "100%", height: "100%" }}
+                    // style={{ width: "100%", height: "100%" }}
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        zIndex: -1,
+                    }}
                     ref={canvasRef}
                 />
                 <canvas
@@ -201,6 +208,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                         top: TRANSLATE_VERTICAL,
                         left: Math.round(Math.random() * 353),
                         cursor: "pointer",
+                        zIndex: 1,
                     }}
                     width="57"
                     height="50"
