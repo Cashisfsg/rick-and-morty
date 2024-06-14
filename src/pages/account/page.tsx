@@ -22,7 +22,7 @@ export const AccountPage = () => {
     return (
         <article className={`main-content w-full ${styles["account-page"]}`}>
             <header>
-                {!wallet ? (
+                {wallet ? (
                     <Popover.Root>
                         <AccountPopoverProvider>
                             <AccountPopoverTrigger />
