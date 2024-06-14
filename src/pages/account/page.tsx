@@ -1,5 +1,4 @@
-import { useTonWallet } from "@tonconnect/ui-react";
-import { useTonAddress } from "@tonconnect/ui-react";
+import { useTonWallet, useTonAddress } from "@tonconnect/ui-react";
 
 import { AccountPopover } from "@/widgets/account-popover";
 
@@ -9,14 +8,15 @@ import { TicketCounter } from "@/entities/ticket";
 import { Popover } from "@/shared/ui/popover";
 import { Button } from "@/shared/ui/button";
 
-import styles from "./index.module.css";
 import { Token } from "@/assets/icons";
+
+import Avatar from "@/assets/img/avatars/avatar-1.png";
+import styles from "./index.module.css";
 
 export const AccountPage = () => {
     const wallet = useTonWallet();
 
-    const userFriendlyAddress = useTonAddress();
-    const rawAddress = useTonAddress(false);
+    const address = useTonAddress();
 
     return (
         <article className={`${styles["account-page"]} main-content w-full`}>
@@ -29,27 +29,31 @@ export const AccountPage = () => {
                     }}
                 >
                     {wallet ? (
-                        <div>
-                            <p>User-friendly address: {userFriendlyAddress}</p>
-                            <p>Raw address: {rawAddress}</p>
-                            <hr />
-                            <p>Wallet provider: {wallet.provider}</p>
-                            <hr />
-                            <p>Wallet name: {wallet?.name}</p>
-                            <p>
-                                Wallet account address:{" "}
-                                {wallet?.account?.address}
-                            </p>
-                            <p>Wallet account chain: {wallet.account.chain}</p>
-                            <p>
-                                Wallet account public key:{" "}
-                                {wallet.account.publicKey}
-                            </p>
-                            <p>
-                                Wallet account state init:{" "}
-                                {wallet.account.walletStateInit}
-                            </p>
-                        </div>
+                        <p
+                            className="rounded-full bg-green border-green shadow-green"
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                columnGap: "0.5rem",
+                                padding: "0.5rem",
+                                fontSize: "0.875rem",
+                                // lineClamp: 1.2,
+                            }}
+                        >
+                            <img
+                                src={Avatar}
+                                alt="User avatar"
+                                height={24}
+                                width={24}
+                                style={{ borderRadius: "50%" }}
+                            />
+                            <span style={{ marginInlineStart: "0.5rem" }}>
+                                {address.substring(0, 4)}...
+                                {address.substring(address.length - 4)}
+                            </span>{" "}
+                            • <span style={{ color: "#8EAE99" }}>Wallet</span>
+                        </p>
                     ) : (
                         <ConnectWalletButton />
                     )}
