@@ -24,6 +24,8 @@ import { LoginPage } from "@/pages/login/page";
 import { GamePage } from "@/pages/game";
 import { VerificationPage } from "@/pages/verification/page";
 
+import { Loader } from "@/shared/ui/loader";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -35,7 +37,11 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "app",
-                element: <LayoutWithNavigation />,
+                element: (
+                    <Suspense fallback={<Loader />}>
+                        <LayoutWithNavigation />
+                    </Suspense>
+                ),
                 children: [
                     {
                         index: true,
@@ -43,11 +49,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "account",
-                        element: (
-                            <Suspense>
-                                <AccountPage />,
-                            </Suspense>
-                        ),
+                        element: <AccountPage />,
                     },
                     {
                         path: "game",
@@ -86,6 +88,10 @@ const router = createBrowserRouter([
                 ],
             },
         ],
+    },
+    {
+        path: "*",
+        element: <Navigate to="/" />,
     },
 ]);
 

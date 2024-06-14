@@ -1,3 +1,20 @@
+.loading-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+    width: 100%;
+    row-gap: 5.5rem;
+
+    padding-block: 3rem;
+    row-gap: 2rem;
+    place-content: center;
+    background-color: black;
+
+    text-align: center;
+    z-index: 1;
+    grid-area: 1 / 1;
+}
+
 .loading-bar-text {
     font-family: var(--font-secondary);
     font-size: 2.75rem;
@@ -372,7 +389,7 @@
 
     height: 2rem;
     column-gap: 0.5rem;
-    margin-block-start: 5.5rem;
+    /* margin-block-start: 5.5rem; */
 }
 
 .loading-bar > div {
@@ -382,7 +399,7 @@
     border-radius: 1000px;
     background: var(--background-initial);
     height: 0.5rem;
-    width: 12.5%;
+    width: min(12.5%, 3.5rem);
     flex-basis: 1;
 
     /* width: 275px;
