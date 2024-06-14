@@ -28,7 +28,7 @@ export const AccountPage = () => {
                     justifyContent: "space-between",
                 }}
             >
-                {!wallet ? (
+                {wallet ? (
                     <Popover.Root>
                         <AccountPopoverTrigger />
                         <Popover.Portal>
