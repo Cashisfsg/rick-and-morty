@@ -1,5 +1,6 @@
 import { useId } from "react";
 
+import { Portal as PopoverPortal } from "@/shared/ui/portal";
 import { PopoverContext, usePopoverContext } from "./use-popover-context";
 
 import styles from "./index.module.css";
@@ -16,6 +17,12 @@ export const Root: React.FC<PopoverRootProps> = ({ children }) => {
     );
 };
 
+Root.displayName = "Popover.Root";
+
+export const Portal = PopoverPortal;
+
+Portal.displayName = "Popover.Portal";
+
 interface PopoverTriggerProps
     extends React.ComponentPropsWithoutRef<"button"> {}
 
@@ -31,6 +38,8 @@ export const Trigger: React.FC<PopoverTriggerProps> = ({ ...props }) => {
         />
     );
 };
+
+Trigger.displayName = "Popover.Trigger";
 
 type TagType<E extends React.ElementType = React.ElementType> = Partial<
     Record<"as", E>
@@ -71,3 +80,5 @@ export const Close: React.FC<PopoverCloseProps> = ({ className, ...props }) => {
         />
     );
 };
+
+Close.displayName = "Popover.Close";

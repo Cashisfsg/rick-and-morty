@@ -1,4 +1,6 @@
 .account-popover {
+    text-align: center;
+
     & > hgroup {
         & > h2 {
             font-family: var(--font-secondary);
@@ -12,6 +14,28 @@
             color: #757575;
         }
     }
+}
+
+.popover-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+
+    width: unset;
+    padding: 0.5rem;
+
+    font-size: 0.875rem;
+
+    & > img {
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: var(--rounded-full);
+    }
+}
+
+.wallet {
+    color: #8eae99;
 }
 
 .popover-close {

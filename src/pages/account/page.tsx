@@ -1,6 +1,9 @@
-import { useTonWallet, useTonAddress } from "@tonconnect/ui-react";
+import { useTonWallet } from "@tonconnect/ui-react";
 
-import { AccountPopover } from "@/widgets/account-popover";
+import {
+    AccountPopoverTrigger,
+    AccountPopover,
+} from "@/widgets/account-popover";
 
 import { ConnectWalletButton } from "@/entities/wallet";
 import { TicketCounter } from "@/entities/ticket";
@@ -10,58 +13,59 @@ import { Button } from "@/shared/ui/button";
 
 import { Token } from "@/assets/icons";
 
-import Avatar from "@/assets/img/avatars/avatar-1.png";
+// import Avatar from "@/assets/img/avatars/avatar-1.png";
 import styles from "./index.module.css";
 
 export const AccountPage = () => {
     const wallet = useTonWallet();
 
-    const address = useTonAddress();
-
     return (
         <article className={`${styles["account-page"]} main-content w-full`}>
-            <Popover.Root>
-                <header
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                    }}
-                >
-                    {wallet ? (
-                        <p
-                            className="rounded-full bg-green border-green shadow-green"
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                columnGap: "0.5rem",
-                                padding: "0.5rem",
-                                fontSize: "0.875rem",
-                                // lineClamp: 1.2,
-                            }}
-                        >
-                            <img
-                                src={Avatar}
-                                alt="User avatar"
-                                height={24}
-                                width={24}
-                                style={{ borderRadius: "50%" }}
-                            />
-                            <span style={{ marginInlineStart: "0.5rem" }}>
-                                {address.substring(0, 4)}...
-                                {address.substring(address.length - 4)}
-                            </span>{" "}
-                            • <span style={{ color: "#8EAE99" }}>Wallet</span>
-                        </p>
-                    ) : (
-                        <ConnectWalletButton />
-                    )}
-                    {/* <TonConnectButton /> */}
-                    <TicketCounter>{2238}</TicketCounter>
-                    <AccountPopover />
-                </header>
-            </Popover.Root>
+            <header
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                }}
+            >
+                {!wallet ? (
+                    <Popover.Root>
+                        <AccountPopoverTrigger />
+                        <Popover.Portal>
+                            <AccountPopover />
+                        </Popover.Portal>
+                    </Popover.Root>
+                ) : (
+                    // <button
+                    //     className="button-base button-green"
+                    //     style={{
+                    //         display: "flex",
+                    //         alignItems: "center",
+                    //         justifyContent: "center",
+                    //         columnGap: "0.5rem",
+                    //         padding: "0.5rem",
+                    //         fontSize: "0.875rem",
+                    //         // lineClamp: 1.2,
+                    //     }}
+                    // >
+                    //     <img
+                    //         src={Avatar}
+                    //         alt="User avatar"
+                    //         height={24}
+                    //         width={24}
+                    //         style={{ borderRadius: "50%" }}
+                    //     />
+                    //     <span style={{ marginInlineStart: "0.5rem" }}>
+                    //         {address.substring(0, 4)}...
+                    //         {address.substring(address.length - 4)}
+                    //     </span>{" "}
+                    //     • <span style={{ color: "#8EAE99" }}>Wallet</span>
+                    // </button>
+                    <ConnectWalletButton />
+                )}
+                {/* <TonConnectButton /> */}
+                <TicketCounter>{2238}</TicketCounter>
+            </header>
 
             <h1 className="font-secondary">
                 <p
