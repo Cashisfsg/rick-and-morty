@@ -22,6 +22,7 @@
     justify-content: center;
     column-gap: 0.5rem;
 
+    min-width: 200px;
     width: unset;
     padding: 0.5rem;
 

@@ -7,8 +7,8 @@
     font-size: 1.375rem;
     line-height: 1.25;
 
-    will-change: background;
-    transition: background 0.3s ease-in-out;
+    will-change: background, border, text-shadow, box-shadow;
+    transition: all 0.3s ease-in-out;
 
     &:disabled {
         color: #898989;

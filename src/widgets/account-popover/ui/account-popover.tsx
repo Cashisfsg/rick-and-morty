@@ -1,8 +1,9 @@
+import { UserProfileImageEditorForm } from "@/features/user/profile-image-editor";
+
 import { ChevronLeft } from "@/assets/icons";
 import { Popover } from "@/shared/ui/popover";
 
 import styles from "./index.module.css";
-import { UserProfileImageEditorForm } from "@/features/user/profile-image-editor";
 
 export const AccountPopover = () => {
     return (

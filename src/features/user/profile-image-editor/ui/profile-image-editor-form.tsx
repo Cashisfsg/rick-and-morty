@@ -1,6 +1,9 @@
 import { useRef } from "react";
 
 import { Avatar } from "@/entities/user/ui/avatar/avatar";
+import { Button } from "@/shared/ui/button";
+
+import { useAccountPopoverContext } from "@/widgets/account-popover/ui/use-account-popover-context";
 
 import Avatar1 from "@/assets/img/avatars/avatar-1.png";
 import Avatar2 from "@/assets/img/avatars/avatar-2.png";
@@ -39,7 +42,6 @@ import Avatar34 from "@/assets/img/avatars/avatar-34.png";
 import Avatar35 from "@/assets/img/avatars/avatar-35.png";
 
 import styles from "./index.module.css";
-import { Button } from "@/shared/ui/button";
 
 const avatars = [
     Avatar1,
@@ -90,7 +92,9 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
     className,
     ...props
 }) => {
-    const avatarRef = useRef<HTMLImageElement>(null);
+    const { avatarImage, setAvatarImage } = useAccountPopoverContext();
+
+    // const avatarRef = useRef<HTMLImageElement>(null);
     const submitButtonRef = useRef<HTMLButtonElement>(null);
 
     const onAvatarChange: React.FormEventHandler<HTMLFormElement> = (event) => {
@@ -110,7 +114,10 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
 
         const { avatar } = event.currentTarget;
 
-        avatarRef.current?.setAttribute("src", avatar.value);
+        setAvatarImage(avatar.value);
+
+        submitButtonRef.current?.setAttribute("disabled", "");
+        event.currentTarget.reset();
     };
 
     return (
@@ -120,7 +127,11 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
             className={`${styles["profile-image-editor"]} ${className || ""}`}
             {...props}
         >
-            <Avatar src={Avatar1} size="large" forwardRef={avatarRef} />
+            <Avatar
+                src={avatarImage}
+                size="large"
+                // forwardRef={avatarRef}
+            />
 
             <div>
                 <fieldset>
