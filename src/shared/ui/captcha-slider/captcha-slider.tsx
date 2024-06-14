@@ -184,7 +184,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     };
 
     return (
-        <figure>
+        <figure className={styles["captcha-wrapper"]}>
             <Hologram>
                 <button className={styles["refresh-button"]} onClick={rerender}>
                     <Refresh className="text-green" />

@@ -1,3 +1,7 @@
+.captcha-wrapper {
+    position: relative;
+}
+
 .slider {
     height: 52px;
     place-content: center;
