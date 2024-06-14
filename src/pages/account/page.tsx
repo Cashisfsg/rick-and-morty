@@ -1,4 +1,6 @@
 import { useTonWallet } from "@tonconnect/ui-react";
+import { useTonAddress } from "@tonconnect/ui-react";
+
 import { AccountPopover } from "@/widgets/account-popover";
 
 import { ConnectWalletButton } from "@/entities/wallet";
@@ -13,6 +15,9 @@ import { Token } from "@/assets/icons";
 export const AccountPage = () => {
     const wallet = useTonWallet();
 
+    const userFriendlyAddress = useTonAddress();
+    const rawAddress = useTonAddress(false);
+
     return (
         <article className={`${styles["account-page"]} main-content w-full`}>
             <Popover.Root>
@@ -24,13 +29,27 @@ export const AccountPage = () => {
                     }}
                 >
                     {wallet ? (
-                        <>
+                        <div>
+                            <p>User-friendly address: {userFriendlyAddress}</p>
+                            <p>Raw address: {rawAddress}</p>
+                            <hr />
+                            <p>Wallet provider: {wallet.provider}</p>
+                            <hr />
                             <p>Wallet name: {wallet?.name}</p>
                             <p>
                                 Wallet account address:{" "}
                                 {wallet?.account?.address}
                             </p>
-                        </>
+                            <p>Wallet account chain: {wallet.account.chain}</p>
+                            <p>
+                                Wallet account public key:{" "}
+                                {wallet.account.publicKey}
+                            </p>
+                            <p>
+                                Wallet account state init:{" "}
+                                {wallet.account.walletStateInit}
+                            </p>
+                        </div>
                     ) : (
                         <ConnectWalletButton />
                     )}

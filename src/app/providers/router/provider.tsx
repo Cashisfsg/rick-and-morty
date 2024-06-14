@@ -1,3 +1,5 @@
+import { lazy, Suspense } from "react";
+
 import {
     createBrowserRouter,
     Navigate,
@@ -10,7 +12,12 @@ import { LayoutWithNavigation } from "@/pages/layout-with-navigation";
 // import { LayoutWithoutNavigation } from "@/pages/layout-without-navigation";
 
 import { WelcomePage } from "@/pages/welcome";
-import { AccountPage } from "@/pages/account";
+const AccountPage = lazy(async () =>
+    import("@/pages/account").then((module) => ({
+        default: module.AccountPage,
+    }))
+);
+
 import { QuestPage } from "@/pages/quest";
 import { ReferralPage } from "@/pages/referral";
 import { LoginPage } from "@/pages/login/page";
@@ -36,7 +43,11 @@ const router = createBrowserRouter([
                     },
                     {
                         path: "account",
-                        element: <AccountPage />,
+                        element: (
+                            <Suspense>
+                                <AccountPage />,
+                            </Suspense>
+                        ),
                     },
                     {
                         path: "game",
