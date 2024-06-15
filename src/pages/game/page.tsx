@@ -1967,7 +1967,7 @@ export const GamePage = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-full"
             >
-                <g clip-path="url(#clip0_4176_1565)">
+                <g clipPath="url(#clip0_4176_1565)">
                     <g filter="url(#filter0_f_4176_1565)">
                         <path
                             d="M115.5 214L18.5 0.5H343L166 214H115.5Z"
@@ -1981,9 +1981,9 @@ export const GamePage = () => {
                         <path
                             d="M21 2L44.8422 50.1844M46.0823 52.7486L82.9318 132.241M83.8176 133.95L86.2979 139.506M87.0065 141.216L120 214"
                             stroke="url(#paint1_linear_4176_1565)"
-                            stroke-opacity="0.68"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.68"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </g>
                     <g
@@ -1993,9 +1993,9 @@ export const GamePage = () => {
                         <path
                             d="M260 6L258.976 7.0922M255.904 13.0993L245.152 32.2128M243.616 36.0355L237.472 46.9574M235.424 50.234L214.944 87.3688M208.8 98.2908L207.776 99.383M204.704 104.844L194.464 123.411M192.416 128.326L174.496 160M166.816 173.106L163.744 179.113M162.208 182.936L147.36 208.603M140.192 222.255L136.096 228.809M134.048 234.27L132 237"
                             stroke="url(#paint2_linear_4176_1565)"
-                            stroke-opacity="0.68"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.68"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </g>
                     <g
@@ -2005,9 +2005,9 @@ export const GamePage = () => {
                         <path
                             d="M130 250L225.851 135.366M227.791 132.077L330.627 9.92642M332.955 7.10755L338 1"
                             stroke="url(#paint3_linear_4176_1565)"
-                            stroke-opacity="0.68"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.68"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </g>
                     <g
@@ -2017,9 +2017,9 @@ export const GamePage = () => {
                         <path
                             d="M294 1L285.566 13.6818M284.032 16.5L281.732 19.3182M280.199 22.6061C264.179 46.2683 255.197 59.5347 239.178 83.197M227.293 101.515L223.46 106.682M221.159 110.439L211.958 123.591M203.141 136.742L180.522 169.621M173.238 181.833L172.471 182.773M169.788 185.591L164.804 194.045M161.737 198.273L149.852 215.182M148.319 218.47L146.018 222.227M144.485 225.045L142.568 227.864M139.501 232.561L128 249"
                             stroke="url(#paint4_linear_4176_1565)"
-                            stroke-opacity="0.68"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.68"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </g>
                     <g
@@ -2029,9 +2029,9 @@ export const GamePage = () => {
                         <path
                             d="M214 1L211.22 2.89047M209.831 6.6714L198.712 32.1927M188.983 68.1116L186.203 76.146M186.203 80.3996L184.814 81.8174M183.424 85.5984L182.034 90.7972M180.644 94.5781L169.525 125.771M166.746 139.477L165.356 140.422M162.576 151.765L161.186 155.546M158.407 163.58L148.678 192.882M145.898 198.081L144.508 204.698M143.119 208.006L136.169 227.383M134.78 230.219L132 234"
                             stroke="url(#paint5_linear_4176_1565)"
-                            stroke-opacity="0.68"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.68"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </g>
                     <g
@@ -2041,9 +2041,9 @@ export const GamePage = () => {
                         <path
                             d="M166 1L159.975 42.6667M158.253 54.2946V57.686M156.101 74.1589L151.367 107.105M149.215 120.186L148.354 127.453M147.924 133.267L144.911 150.225M144.911 153.132L144.051 155.554M143.62 159.915L136.304 215.632M134.152 232.589L133.291 237.919M132.43 242.279L132 251"
                             stroke="url(#paint6_linear_4176_1565)"
-                            stroke-opacity="0.68"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.68"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </g>
                     <g
@@ -2053,9 +2053,9 @@ export const GamePage = () => {
                         <path
                             d="M109 1L109.109 2.42586M109.546 7.17871L109.655 8.60456M109.983 11.4563L110.311 14.308M110.857 20.4867L113.588 43.7757M113.916 48.5285L114.462 53.2814M114.681 57.0837L116.319 70.3916M116.429 73.7186L116.756 76.0951M118.286 90.8289L123.092 136.456M123.42 139.308L123.529 140.259M124.403 149.764L125.059 154.992M127.571 180.183L128.008 183.51M128.336 186.837L131.613 217.73M132.597 227.711L132.815 229.137M133.252 233.89L133.471 235.316M134.017 239.593L135 251"
                             stroke="url(#paint7_linear_4176_1565)"
-                            stroke-opacity="0.68"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.68"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </g>
                     <g
@@ -2065,9 +2065,9 @@ export const GamePage = () => {
                         <path
                             d="M66 0L81.3905 55.0167M85.2382 69.136L87.162 75.4654M88.3863 78.8735L91.5343 90.5585M94.1577 101.27L102.727 130.482M105.701 140.706L106.05 141.68M106.75 145.088L108.849 152.391M109.898 156.286L113.746 170.406M114.795 173.814L115.495 175.761M116.719 177.709L117.768 181.604M118.643 185.012L126 213"
                             stroke="url(#paint8_linear_4176_1565)"
-                            stroke-opacity="0.68"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeOpacity="0.68"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         />
                     </g>
                 </g>
@@ -2917,11 +2917,11 @@ export const GamePage = () => {
                         y2="198.5"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="#0E7631" stop-opacity="0" />
+                        <stop stopColor="#0E7631" stopOpacity="0" />
                         <stop
                             offset="1"
-                            stop-color="#0E7631"
-                            stop-opacity="0.56"
+                            stopColor="#0E7631"
+                            stopOpacity="0.56"
                         />
                     </linearGradient>
                     <linearGradient
@@ -2932,8 +2932,8 @@ export const GamePage = () => {
                         y2="56.8961"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="white" stop-opacity="0" />
-                        <stop offset="1" stop-color="#0E7631" />
+                        <stop stopColor="white" stopOpacity="0" />
+                        <stop offset="1" stopColor="#0E7631" />
                     </linearGradient>
                     <linearGradient
                         id="paint2_linear_4176_1565"
@@ -2943,8 +2943,8 @@ export const GamePage = () => {
                         y2="192.6"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="white" stop-opacity="0" />
-                        <stop offset="1" stop-color="#0E7631" />
+                        <stop stopColor="white" stopOpacity="0" />
+                        <stop offset="1" stopColor="#0E7631" />
                     </linearGradient>
                     <linearGradient
                         id="paint3_linear_4176_1565"
@@ -2954,8 +2954,8 @@ export const GamePage = () => {
                         y2="250.06"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="white" stop-opacity="0" />
-                        <stop offset="1" stop-color="#0E7631" />
+                        <stop stopColor="white" stopOpacity="0" />
+                        <stop offset="1" stopColor="#0E7631" />
                     </linearGradient>
                     <linearGradient
                         id="paint4_linear_4176_1565"
@@ -2965,8 +2965,8 @@ export const GamePage = () => {
                         y2="230.101"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="white" stop-opacity="0" />
-                        <stop offset="1" stop-color="#0E7631" />
+                        <stop stopColor="white" stopOpacity="0" />
+                        <stop offset="1" stopColor="#0E7631" />
                     </linearGradient>
                     <linearGradient
                         id="paint5_linear_4176_1565"
@@ -2976,8 +2976,8 @@ export const GamePage = () => {
                         y2="102.579"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="white" stop-opacity="0" />
-                        <stop offset="1" stop-color="#0E7631" />
+                        <stop stopColor="white" stopOpacity="0" />
+                        <stop offset="1" stopColor="#0E7631" />
                     </linearGradient>
                     <linearGradient
                         id="paint6_linear_4176_1565"
@@ -2987,8 +2987,8 @@ export const GamePage = () => {
                         y2="2.26093"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="white" stop-opacity="0" />
-                        <stop offset="1" stop-color="#0E7631" />
+                        <stop stopColor="white" stopOpacity="0" />
+                        <stop offset="1" stopColor="#0E7631" />
                     </linearGradient>
                     <linearGradient
                         id="paint7_linear_4176_1565"
@@ -2998,8 +2998,8 @@ export const GamePage = () => {
                         y2="-0.708164"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="white" stop-opacity="0" />
-                        <stop offset="1" stop-color="#0E7631" />
+                        <stop stopColor="white" stopOpacity="0" />
+                        <stop offset="1" stopColor="#0E7631" />
                     </linearGradient>
                     <linearGradient
                         id="paint8_linear_4176_1565"
@@ -3009,8 +3009,8 @@ export const GamePage = () => {
                         y2="19.7622"
                         gradientUnits="userSpaceOnUse"
                     >
-                        <stop stop-color="white" stop-opacity="0" />
-                        <stop offset="1" stop-color="#0E7631" />
+                        <stop stopColor="white" stopOpacity="0" />
+                        <stop offset="1" stopColor="#0E7631" />
                     </linearGradient>
                     <clipPath id="clip0_4176_1565">
                         <rect width="360" height="213" fill="white" />

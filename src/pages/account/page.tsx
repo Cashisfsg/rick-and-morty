@@ -1,4 +1,4 @@
-import { useTonWallet } from "@tonconnect/ui-react";
+import { useTonConnectUI, useTonWallet } from "@tonconnect/ui-react";
 
 import {
     AccountPopoverProvider,
@@ -18,6 +18,10 @@ import styles from "./index.module.css";
 
 export const AccountPage = () => {
     const wallet = useTonWallet();
+
+    const [tonConnectUI] = useTonConnectUI();
+
+    // tonConnectUI.openSingleWalletModal();
 
     return (
         <article className={`main-content w-full ${styles["account-page"]}`}>

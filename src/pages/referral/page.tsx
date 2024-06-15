@@ -2,9 +2,9 @@ import { ReferralList } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 
 import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
-import { Button } from "@/shared/ui/button";
 
 import styles from "./index.module.css";
+import { InviteUserButton } from "@/features/user/invite-user";
 
 export const ReferralPage = () => {
     return (
@@ -12,9 +12,12 @@ export const ReferralPage = () => {
             <header>
                 <TicketCounter size="large">{2238}</TicketCounter>
                 <h1 className="">
-                    <Button className="button-blue font-secondary">
-                        Invite a friend
-                    </Button>
+                    <InviteUserButton
+                        shareData={{
+                            url: "https://google.com",
+                            message: "Google",
+                        }}
+                    />
                     <ClipboardCopy
                         textToCopy="some text"
                         className="bg-blue border-blue shadow-blue"
