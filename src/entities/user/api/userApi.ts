@@ -12,9 +12,12 @@ export const userApi = rootApi
                 providesTags: ["User"],
             }),
             joinReferral: builder.mutation<unknown, { referral_id: string }>({
-                query: () => ({
+                query: ({ referral_id }) => ({
                     url: "/user/joined",
                     method: "POST",
+                    body: {
+                        referral_id: referral_id,
+                    },
                 }),
             }),
         }),

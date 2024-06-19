@@ -9,7 +9,7 @@ interface ConnectWalletButtonProps
     extends React.ComponentPropsWithoutRef<"button"> {}
 
 export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
-    className,
+    className = "",
     ...props
 }) => {
     const [tonConnectUi] = useTonConnectUI();
@@ -18,7 +18,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
         <button
             type="button"
             onClick={() => tonConnectUi.openModal()}
-            className={`${styles["connect-wallet-button"]} button-green bg-image ${className || ""}`}
+            className={`${styles["connect-wallet-button"]} button-green bg-image ${className}`}
             {...props}
         >
             <Account className={`${styles["wallet-icon"]}`} />
