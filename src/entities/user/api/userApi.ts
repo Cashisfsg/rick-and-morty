@@ -1,5 +1,5 @@
 import { rootApi } from "@/app/providers/redux/api/rootApi";
-import type { User } from "./types";
+import type { User, JoinReferralRequest, JoinReferralResponse } from "./types";
 
 export const userApi = rootApi
     .enhanceEndpoints({
@@ -11,12 +11,15 @@ export const userApi = rootApi
                 query: () => "/user/me",
                 providesTags: ["User"],
             }),
-            joinReferral: builder.mutation<unknown, { referral_id: string }>({
-                query: ({ referral_id }) => ({
+            joinReferral: builder.mutation<
+                JoinReferralResponse,
+                JoinReferralRequest
+            >({
+                query: ({ id }) => ({
                     url: "/user/joined",
                     method: "POST",
                     body: {
-                        referral_id: referral_id,
+                        referral_id: id,
                     },
                 }),
             }),

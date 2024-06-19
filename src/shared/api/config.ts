@@ -4,9 +4,9 @@ import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { TelegramClient } from "./types";
 
 const tg = (window as Window & typeof globalThis & { Telegram: TelegramClient })
-    .Telegram.WebApp;
+    ?.Telegram?.WebApp;
 
-const initData = tg.initData;
+const initData = tg?.initData;
 
 export const baseQuery = fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_BASE_URL,

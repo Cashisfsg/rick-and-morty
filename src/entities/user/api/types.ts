@@ -12,3 +12,16 @@ export interface User {
 }
 
 export interface Wallet {}
+
+export interface JoinReferralRequest {
+    id: number;
+}
+
+export interface JoinReferralResponse {
+    id: number;
+    amount: number;
+    user_id: number;
+    type: string;
+    created_at: string;
+    updated_at: string;
+}
