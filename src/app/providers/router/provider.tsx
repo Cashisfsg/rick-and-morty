@@ -11,16 +11,32 @@ import { MainLayout } from "@/pages/main-layout";
 import { LayoutWithNavigation } from "@/pages/layout-with-navigation";
 // import { LayoutWithoutNavigation } from "@/pages/layout-without-navigation";
 
-import { WelcomePage } from "@/pages/welcome";
+import { LoginPage } from "@/pages/login";
+
+const WelcomePage = lazy(async () =>
+    import("@/pages/welcome").then((module) => ({
+        default: module.WelcomePage,
+    }))
+);
+
 const AccountPage = lazy(async () =>
     import("@/pages/account").then((module) => ({
         default: module.AccountPage,
     }))
 );
 
-import { QuestPage } from "@/pages/quest";
-import { ReferralPage } from "@/pages/referral";
-import { LoginPage } from "@/pages/login/page";
+const QuestPage = lazy(async () =>
+    import("@/pages/quest").then((module) => ({
+        default: module.QuestPage,
+    }))
+);
+
+const ReferralPage = lazy(async () =>
+    import("@/pages/referral").then((module) => ({
+        default: module.ReferralPage,
+    }))
+);
+
 import { GamePage } from "@/pages/game";
 import { VerificationPage } from "@/pages/verification/page";
 

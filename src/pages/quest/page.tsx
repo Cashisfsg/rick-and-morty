@@ -19,7 +19,9 @@ export const QuestPage = () => {
 
             <Popover.Root>
                 <QuestList />
-                <QuestPopover />
+                <Popover.Portal>
+                    <QuestPopover />
+                </Popover.Portal>
             </Popover.Root>
         </article>
     );
