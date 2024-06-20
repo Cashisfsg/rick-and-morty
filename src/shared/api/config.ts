@@ -8,6 +8,8 @@ const tg = (window as Window & typeof globalThis & { Telegram: TelegramClient })
 
 const initData = tg?.initData;
 
+alert("Init data: " + initData);
+
 export const baseQuery = fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_BASE_URL,
     prepareHeaders: (headers) => {
