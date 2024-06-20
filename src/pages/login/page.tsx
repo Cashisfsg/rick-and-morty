@@ -53,7 +53,7 @@ export const LoginPage = () => {
                 <button
                     onClick={async () => {
                         const result = await trigger();
-                        alert("Result: " + result);
+                        alert("Result: " + JSON.stringify(result));
                     }}
                 >
                     Create user
