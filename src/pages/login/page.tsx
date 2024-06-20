@@ -1,3 +1,4 @@
+// import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { Telegram, X } from "@/assets/icons";
@@ -5,11 +6,17 @@ import QR from "@/assets/img/qr-code.png";
 import { useFetchUserInfoQuery } from "@/entities/user";
 
 import styles from "./index.module.css";
+// import { TelegramClient } from "@/shared/api/types";
 
 export const LoginPage = () => {
-    const { data } = useFetchUserInfoQuery();
+    // const tg = (
+    //     window as Window & typeof globalThis & { Telegram: TelegramClient }
+    // )?.Telegram?.WebApp;
 
-    console.log(data);
+    // const initData = tg?.initData;
+    const { data, error } = useFetchUserInfoQuery();
+
+    alert({ data, error });
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
