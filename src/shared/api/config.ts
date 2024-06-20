@@ -14,6 +14,7 @@ export const baseQuery = fetchBaseQuery({
         const initData = (getState() as RootStore).user.initData;
         if (initData) {
             headers.set("init-data", initData);
+            alert("Headers set correctly");
         }
         return headers;
     },

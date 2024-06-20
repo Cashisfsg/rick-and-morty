@@ -17,7 +17,7 @@ export const LoginPage = () => {
     const initData = tg?.initData;
 
     const dispatch = useAppDispatch();
-    const { data } = useFetchUserInfoQuery();
+    const { data, error } = useFetchUserInfoQuery();
 
     alert("Init data: " + initData);
 
@@ -25,7 +25,7 @@ export const LoginPage = () => {
         dispatch(setUserInitData(initData));
     }, [initData]);
 
-    alert("Response data: " + JSON.stringify(data));
+    alert("Response data: " + JSON.stringify({ data, error }));
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
