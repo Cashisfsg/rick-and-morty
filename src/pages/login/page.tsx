@@ -16,7 +16,7 @@ export const LoginPage = () => {
     // const initData = tg?.initData;
     const { data, error } = useFetchUserInfoQuery();
 
-    alert({ data, error });
+    alert(JSON.stringify({ data, error }));
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
