@@ -17,11 +17,12 @@ export const LoginPage = () => {
     const initData = tg?.initData;
 
     const dispatch = useAppDispatch();
-    useFetchUserInfoQuery();
 
     useEffect(() => {
         dispatch(setUserInitData(initData));
     }, [initData]);
+
+    useFetchUserInfoQuery();
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
