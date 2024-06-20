@@ -1,22 +1,34 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { Telegram, X } from "@/assets/icons";
 import QR from "@/assets/img/qr-code.png";
-import { useFetchUserInfoQuery } from "@/entities/user";
+import { useLazyFetchUserInfoQuery, setUserInitData } from "@/entities/user";
+import { useAppDispatch } from "@/app/providers/redux/hooks";
 
 import styles from "./index.module.css";
-// import { TelegramClient } from "@/shared/api/types";
+import { TelegramClient } from "@/shared/api/types";
 
 export const LoginPage = () => {
-    // const tg = (
-    //     window as Window & typeof globalThis & { Telegram: TelegramClient }
-    // )?.Telegram?.WebApp;
+    const tg = (
+        window as Window & typeof globalThis & { Telegram: TelegramClient }
+    )?.Telegram?.WebApp;
 
-    // const initData = tg?.initData;
-    const { data, error } = useFetchUserInfoQuery();
+    const initData = tg?.initData;
 
-    alert(JSON.stringify({ data, error }));
+    const dispatch = useAppDispatch();
+    const [trigger] = useLazyFetchUserInfoQuery();
+
+    alert("Init data: " + initData);
+
+    useEffect(() => {
+        (async () => {
+            dispatch(setUserInitData(initData));
+            const data = await trigger().unwrap();
+
+            alert("Response data: " + JSON.stringify(data));
+        })();
+    }, [initData]);
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
