@@ -19,7 +19,7 @@ export const LoginPage = () => {
             </h1>
             <figure>
                 <img src={QR} alt="QR code" height="210" width="210" />
-                <figcaption>@tgbotname_bot</figcaption>
+                <figcaption>@{import.meta.env.VITE_BOT_NAME}</figcaption>
             </figure>
             <footer>
                 <Link to="/app/verify" className="bg-image bg-blue">
