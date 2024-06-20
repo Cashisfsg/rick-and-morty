@@ -1,6 +1,6 @@
 import { QuestPopover } from "@/widgets/quest-popover";
 
-import { QuestList } from "@/entities/quest";
+import { FetchQuest, QuestList } from "@/entities/quest";
 import { TicketCounter } from "@/entities/ticket";
 import { Popover } from "@/shared/ui/popover";
 
@@ -18,7 +18,9 @@ export const QuestPage = () => {
             </header>
 
             <Popover.Root>
-                <QuestList />
+                <FetchQuest
+                    renderSuccess={(quests) => <QuestList quests={quests} />}
+                />
                 <Popover.Portal>
                     <QuestPopover />
                 </Popover.Portal>

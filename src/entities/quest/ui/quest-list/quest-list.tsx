@@ -1,23 +1,26 @@
 import { QuestListItem } from "./quest-list-item";
+import { type QuestListResponse } from "../../api";
 
 import styles from "./index.module.css";
 
-export const QuestList = () => {
+interface QuestListProps {
+    quests: QuestListResponse;
+}
+
+export const QuestList: React.FC<QuestListProps> = ({ quests }) => {
     return (
         <section>
             <ul className={styles["quest-list"]}>
-                {Array(10)
-                    .fill(0)
-                    .map((_, index) => (
-                        <QuestListItem
-                            key={index}
-                            quest={{
-                                amount: 1.1,
-                                text: "Join our telegram channel",
-                                completed: true,
-                            }}
-                        />
-                    ))}
+                {quests.map((quest) => (
+                    <QuestListItem
+                        key={quest.id}
+                        quest={{
+                            amount: 1.1,
+                            text: "Join our telegram channel",
+                            completed: true,
+                        }}
+                    />
+                ))}
             </ul>
         </section>
     );

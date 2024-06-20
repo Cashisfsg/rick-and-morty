@@ -14,7 +14,7 @@ export const questApi = rootApi
         endpoints: (builder) => ({
             fetchQuestList: builder.query<QuestListResponse, QuestListRequest>({
                 query: ({ page = 0, limit = 10 }) => ({
-                    url: "/task",
+                    url: "/task/",
                     params: { page, limit },
                 }),
                 providesTags: (result) =>

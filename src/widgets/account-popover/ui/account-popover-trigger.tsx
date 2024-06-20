@@ -8,7 +8,7 @@ import styles from "./index.module.css";
 interface AccountPopoverTriggerProps extends React.ComponentProps<"button"> {}
 
 export const AccountPopoverTrigger: React.FC<AccountPopoverTriggerProps> = ({
-    className,
+    className = "",
     ...props
 }) => {
     const address = useTonAddress();
@@ -16,7 +16,7 @@ export const AccountPopoverTrigger: React.FC<AccountPopoverTriggerProps> = ({
 
     return (
         <Popover.Trigger
-            className={`button-base button-green bg-image ${styles["popover-trigger"]} ${className || ""}`}
+            className={`button-base button-green bg-image ${styles["popover-trigger"]} ${className}`}
             {...props}
         >
             <img src={avatarImage} alt="User avatar" />
