@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Telegram, X } from "@/assets/icons";
 import QR from "@/assets/img/qr-code.png";
-import { useLazyFetchUserInfoQuery, setUserInitData } from "@/entities/user";
+import { useFetchUserInfoQuery, setUserInitData } from "@/entities/user";
 import { useAppDispatch } from "@/app/providers/redux/hooks";
 
 import styles from "./index.module.css";
@@ -17,18 +17,15 @@ export const LoginPage = () => {
     const initData = tg?.initData;
 
     const dispatch = useAppDispatch();
-    const [trigger] = useLazyFetchUserInfoQuery();
+    const { data } = useFetchUserInfoQuery();
 
     alert("Init data: " + initData);
 
     useEffect(() => {
-        (async () => {
-            dispatch(setUserInitData(initData));
-            const data = await trigger().unwrap();
-
-            alert("Response data: " + JSON.stringify(data));
-        })();
+        dispatch(setUserInitData(initData));
     }, [initData]);
+
+    alert("Response data: " + JSON.stringify(data));
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
