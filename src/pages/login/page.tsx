@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 
 import { Telegram, X } from "@/assets/icons";
 import QR from "@/assets/img/qr-code.png";
-import { useFetchUserInfoQuery, setUserInitData } from "@/entities/user";
+import {
+    // useFetchUserInfoQuery,
+    useLazyFetchUserInfoQuery,
+    setUserInitData,
+} from "@/entities/user";
 import { useAppDispatch } from "@/app/providers/redux/hooks";
 
 import styles from "./index.module.css";
@@ -17,7 +21,8 @@ export const LoginPage = () => {
     const initData = tg?.initData;
 
     const dispatch = useAppDispatch();
-    const { data, error } = useFetchUserInfoQuery();
+    // const { data, error } = useFetchUserInfoQuery();
+    const [trigger] = useLazyFetchUserInfoQuery();
 
     alert("Init data: " + initData);
 
@@ -25,7 +30,7 @@ export const LoginPage = () => {
         dispatch(setUserInitData(initData));
     }, [initData]);
 
-    alert("Response data: " + JSON.stringify({ data, error }));
+    // alert("Response data: " + JSON.stringify({ data, error }));
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
@@ -45,6 +50,14 @@ export const LoginPage = () => {
                 <Link to="/" className="bg-image bg-blue">
                     <X className="svg-shadow-blue" />X
                 </Link>
+                <button
+                    onClick={async () => {
+                        const result = await trigger();
+                        alert("Result: " + result);
+                    }}
+                >
+                    Create user
+                </button>
             </footer>
         </main>
     );
