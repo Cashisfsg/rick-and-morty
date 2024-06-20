@@ -13,7 +13,7 @@ export const baseQuery = fetchBaseQuery({
     prepareHeaders: (headers, { getState }) => {
         const initData = (getState() as RootStore).user.initData;
         if (initData) {
-            headers.set("init-data", initData);
+            headers.set("InitData", initData);
         }
         return headers;
     },
