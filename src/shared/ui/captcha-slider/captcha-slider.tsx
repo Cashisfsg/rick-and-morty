@@ -176,6 +176,12 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
         });
     };
 
+    const onPointerUpHandler: React.PointerEventHandler<HTMLInputElement> = (
+        event
+    ) => {
+        handler(event);
+    };
+
     const onTouchStartHandler: React.TouchEventHandler<
         HTMLInputElement
     > = () => {
@@ -229,6 +235,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                     }
                     onChange={onChangeHandler}
                     onTouchStart={onTouchStartHandler}
+                    onPointerUp={onPointerUpHandler}
                     className={`${styles["input-range"]} bg-blue border-blue shadow-blue rounded-full`}
                 />
             </div>

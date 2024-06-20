@@ -12,7 +12,7 @@ export const QuestPopover = () => {
                     <Telegram className="svg-shadow-green" />
                 </span>
                 <hgroup>
-                    <h2 className="text-green text-shadow-green font-secondary">
+                    <h2 className="text-green text-center text-shadow-green font-secondary">
                         Join our telegram channel
                     </h2>
                     <p>

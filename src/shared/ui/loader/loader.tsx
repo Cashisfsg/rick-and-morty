@@ -2,10 +2,7 @@ import styles from "./index.module.css";
 
 export const Loader = () => {
     return (
-        <main
-            className={`content-wrapper ${styles["loading-page"]}`}
-            style={{ background: "black" }}
-        >
+        <>
             <div className={styles["loading-bar-text"]}>
                 <span>/</span>
                 <span>/</span>
@@ -29,6 +26,6 @@ export const Loader = () => {
                 <div />
                 <div />
             </div>
-        </main>
+        </>
     );
 };

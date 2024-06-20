@@ -40,7 +40,7 @@ const ReferralPage = lazy(async () =>
 import { GamePage } from "@/pages/game";
 import { VerificationPage } from "@/pages/verification/page";
 
-import { Loader } from "@/shared/ui/loader";
+import { LoadingPage } from "@/pages/loading";
 
 const router = createBrowserRouter([
     {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             {
                 path: "app",
                 element: (
-                    <Suspense fallback={<Loader />}>
+                    <Suspense fallback={<LoadingPage />}>
                         <LayoutWithNavigation />
                     </Suspense>
                 ),
