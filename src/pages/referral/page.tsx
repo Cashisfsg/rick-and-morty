@@ -14,7 +14,7 @@ export const ReferralPage = () => {
                 <h1 className="">
                     <InviteUserButton
                         shareData={{
-                            url: "https://google.com",
+                            url: `https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=123`,
                             message: "Google",
                         }}
                     />
