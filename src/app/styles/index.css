@@ -277,6 +277,10 @@ fieldset {
     color: var(--green-light-green);
 }
 
+.text-green-secondary {
+    color: var(--green-green);
+}
+
 .text-blue {
     color: var(--blue-blue);
 }

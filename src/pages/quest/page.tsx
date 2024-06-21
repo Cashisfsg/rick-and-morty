@@ -25,7 +25,7 @@ export const QuestPage = () => {
                             {quests.length !== 0 ? (
                                 <QuestList quests={quests} />
                             ) : (
-                                <p className="text-green text-5.5">
+                                <p className="text-green-secondary text-5.5">
                                     No available quests
                                 </p>
                             )}
