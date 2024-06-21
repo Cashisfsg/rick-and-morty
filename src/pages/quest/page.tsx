@@ -19,7 +19,18 @@ export const QuestPage = () => {
 
             <Popover.Root>
                 <FetchQuest
-                    renderSuccess={(quests) => <QuestList quests={quests} />}
+                    params={{ page: 0, limit: 10 }}
+                    renderSuccess={(quests) => (
+                        <>
+                            {quests.length !== 0 ? (
+                                <QuestList quests={quests} />
+                            ) : (
+                                <p className="text-green text-5.5">
+                                    No completed transactions yet
+                                </p>
+                            )}
+                        </>
+                    )}
                 />
                 <Popover.Portal>
                     <QuestPopover />
