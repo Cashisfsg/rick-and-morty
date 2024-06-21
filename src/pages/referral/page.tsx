@@ -23,13 +23,12 @@ export const ReferralPage = () => {
                     <InviteUserButton
                         shareData={{
                             url: `https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=${userId}`,
-                            message: `Играй со мной 
-                            💸 100к монет в качестве первого подарка
-                            🔥 200к монет, если у тебя есть Telegram Premium`,
+                            message:
+                                "Играй со мной \n💸 100к монет в качестве первого подарка \n🔥 200к монет, если у тебя есть Telegram Premium",
                         }}
                     />
                     <ClipboardCopy
-                        textToCopy={`https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=${userId}`}
+                        textToCopy={`https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=${userId}\nИграй со мной \n💸 100к монет в качестве первого подарка \n🔥 200к монет, если у тебя есть Telegram Premium`}
                         className="bg-blue border-blue shadow-blue"
                     />
                 </h1>
