@@ -81,6 +81,7 @@ interface WebApp {
     BackButton: BackButton;
     MainButton: MainButton;
     openLink: (url: string) => void;
+    openTelegramLink: (url: string) => void;
     showScanQrPopup: (text?: string) => void;
 }
 

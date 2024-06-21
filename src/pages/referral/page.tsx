@@ -19,7 +19,7 @@ export const ReferralPage = () => {
                         }}
                     />
                     <ClipboardCopy
-                        textToCopy="some text"
+                        textToCopy={`https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=123`}
                         className="bg-blue border-blue shadow-blue"
                     />
                 </h1>

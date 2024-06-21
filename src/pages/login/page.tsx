@@ -23,6 +23,7 @@ export const LoginPage = () => {
         (async () => {
             dispatch(setUserInitData(initData));
             await trigger();
+            console.log("Start param: " + tg?.initDataUnsafe?.start_param);
         })();
     }, [initData]);
 

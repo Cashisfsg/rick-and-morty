@@ -31,7 +31,7 @@ export const InviteUserButton: React.FC<InviteUserButtonProps> = ({
     const searchParams = new URLSearchParams(params);
 
     const onClickHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
-        tg.openLink(`https://t.me/share/url?${searchParams}`);
+        tg.openTelegramLink(`https://t.me/share/url?${searchParams}`);
     };
 
     return (
