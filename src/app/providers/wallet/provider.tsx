@@ -7,7 +7,7 @@ export const Provider: React.FC<ProviderProps> = ({ children }) => {
         <TonConnectUIProvider
             manifestUrl={`${import.meta.env.VITE_BASE_URL}/tonconnect-manifest.json`}
             actionsConfiguration={{
-                twaReturnUrl: `https://t.me/${import.meta.env.VITE_BOT_NAME}`,
+                twaReturnUrl: `https://t.me/${import.meta.env.VITE_BOT_NAME}/app`,
             }}
             uiPreferences={{ theme: THEME.DARK }}
         >
