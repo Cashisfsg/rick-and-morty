@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 
 import { Telegram, X } from "@/assets/icons";
 import QR from "@/assets/img/qr-code.png";
-import { useLazyFetchUserInfoQuery, setUserInitData } from "@/entities/user";
+import {
+    useLazyFetchUserInfoQuery,
+    useJoinReferralMutation,
+    setUserInitData,
+} from "@/entities/user";
 import { useAppDispatch } from "@/app/providers/redux/hooks";
 
 import styles from "./index.module.css";
@@ -15,17 +19,28 @@ export const LoginPage = () => {
     )?.Telegram?.WebApp;
 
     const initData = tg?.initData;
+    const referralId = tg?.initDataUnsafe?.start_param;
 
     const dispatch = useAppDispatch();
     const [trigger] = useLazyFetchUserInfoQuery();
+    const [joinReferral] = useJoinReferralMutation();
 
     useEffect(() => {
         (async () => {
-            dispatch(setUserInitData(initData));
-            await trigger();
-            console.log("Start param: " + tg?.initDataUnsafe?.start_param);
+            try {
+                dispatch(setUserInitData(initData));
+                await trigger().unwrap();
+
+                console.log("Referral id: " + referralId);
+
+                if (referralId === undefined) return;
+
+                await joinReferral({ id: parseInt(referralId) }).unwrap();
+            } catch (error) {
+                console.error(error);
+            }
         })();
-    }, [initData]);
+    }, [initData, referralId]);
 
     // useFetchUserInfoQuery();
 

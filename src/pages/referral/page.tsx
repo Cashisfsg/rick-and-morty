@@ -3,10 +3,18 @@ import { TicketCounter } from "@/entities/ticket";
 
 import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
 
-import styles from "./index.module.css";
 import { InviteUserButton } from "@/features/user/invite-user";
+import { TelegramClient } from "@/shared/api/types";
+
+import styles from "./index.module.css";
 
 export const ReferralPage = () => {
+    const tg = (
+        window as Window & typeof globalThis & { Telegram: TelegramClient }
+    )?.Telegram?.WebApp;
+
+    const userId = tg?.initDataUnsafe?.user?.id;
+
     return (
         <article className={`${styles["referral-page"]}`}>
             <header>
@@ -14,12 +22,12 @@ export const ReferralPage = () => {
                 <h1 className="">
                     <InviteUserButton
                         shareData={{
-                            url: `https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=123`,
+                            url: `https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=${userId}`,
                             message: "Google",
                         }}
                     />
                     <ClipboardCopy
-                        textToCopy={`https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=123`}
+                        textToCopy={`https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=${userId}`}
                         className="bg-blue border-blue shadow-blue"
                     />
                 </h1>
