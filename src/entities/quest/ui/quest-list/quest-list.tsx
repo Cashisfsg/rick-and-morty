@@ -12,14 +12,7 @@ export const QuestList: React.FC<QuestListProps> = ({ quests }) => {
         <section>
             <ul className={styles["quest-list"]}>
                 {quests.map((quest) => (
-                    <QuestListItem
-                        key={quest.id}
-                        quest={{
-                            amount: 1.1,
-                            text: "Join our telegram channel",
-                            completed: true,
-                        }}
-                    />
+                    <QuestListItem key={quest.id} quest={quest} />
                 ))}
             </ul>
         </section>

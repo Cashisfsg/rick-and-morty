@@ -30,17 +30,18 @@ export const InviteUserButton: React.FC<InviteUserButtonProps> = ({
     };
     const searchParams = new URLSearchParams(params);
 
-    const onClickHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
-        tg.openLink(`https://t.me/share/url?${searchParams}`);
-    };
+    // const onClickHandler: React.MouseEventHandler<HTMLButtonElement> = () => {
+    //     tg.openLink(`https://t.me/share/url?${searchParams}`);
+    // };
 
     return (
-        <Button
-            onClick={composeEventHandlers(onClick, onClickHandler)}
-            className={`button-blue font-secondary ${className}`}
+        <a
+            href={`https://t.me/share/url?${searchParams}`}
+            // onClick={composeEventHandlers(onClick, onClickHandler)}
+            className={`button-base button-blue font-secondary ${className}`}
             {...props}
         >
             {children}
-        </Button>
+        </a>
     );
 };

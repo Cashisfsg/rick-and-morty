@@ -3,7 +3,7 @@ export interface QuestListRequest {
     limit: number;
 }
 
-interface Quest {
+export interface Quest {
     id: number;
     name: string;
     description: string;

@@ -19,6 +19,8 @@ import styles from "./index.module.css";
 export const AccountPage = () => {
     const wallet = useTonWallet();
 
+    console.log(wallet);
+
     const [tonConnectUI] = useTonConnectUI();
 
     // tonConnectUI.openSingleWalletModal();

@@ -1,4 +1,4 @@
-.quest-popover {
+.quest-popover:open {
     display: grid;
     place-items: center;
 
