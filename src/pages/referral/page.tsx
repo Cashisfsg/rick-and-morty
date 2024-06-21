@@ -23,7 +23,9 @@ export const ReferralPage = () => {
                     <InviteUserButton
                         shareData={{
                             url: `https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=${userId}`,
-                            message: "Google",
+                            message: `Играй со мной 
+                            💸 100к монет в качестве первого подарка
+                            🔥 200к монет, если у тебя есть Telegram Premium`,
                         }}
                     />
                     <ClipboardCopy
