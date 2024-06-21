@@ -156,6 +156,11 @@ button {
     cursor: pointer;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 h2 {
     font-size: 1.375rem;
     line-height: 1.25;
