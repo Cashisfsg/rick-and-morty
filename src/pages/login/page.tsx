@@ -62,6 +62,19 @@ export const LoginPage = () => {
                 <Link to="/" className="bg-image bg-blue">
                     <X className="svg-shadow-blue" />X
                 </Link>
+                <button
+                    onClick={async () => {
+                        try {
+                            await joinReferral({
+                                id: parseInt(referralId),
+                            }).unwrap();
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    }}
+                >
+                    Join referral
+                </button>
             </footer>
         </main>
     );
