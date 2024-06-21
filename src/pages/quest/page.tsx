@@ -26,7 +26,7 @@ export const QuestPage = () => {
                                 <QuestList quests={quests} />
                             ) : (
                                 <p className="text-green text-5.5">
-                                    No completed transactions yet
+                                    No available quests
                                 </p>
                             )}
                         </>
