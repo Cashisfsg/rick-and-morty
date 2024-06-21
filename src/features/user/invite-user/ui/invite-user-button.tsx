@@ -22,10 +22,10 @@ export const InviteUserButton: React.FC<InviteUserButtonProps> = ({
     const tg = (
         window as Window & typeof globalThis & { Telegram: TelegramClient }
     ).Telegram.WebApp;
-    const message = encodeURIComponent(shareData.message);
+    // const message = encodeURIComponent(shareData.message);
     const params = {
         url: shareData.url,
-        text: message,
+        text: shareData.message,
         to: shareData?.to || "",
     };
     const searchParams = new URLSearchParams(params);
