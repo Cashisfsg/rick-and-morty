@@ -22,7 +22,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
             if (!wallet) return;
 
             try {
-                console.log(wallet);
+                console.log("Wallet in connect wallet button: ", wallet);
 
                 await connectWallet({
                     ton_address: wallet.account.address,
