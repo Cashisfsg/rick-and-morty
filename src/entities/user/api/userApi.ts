@@ -16,11 +16,11 @@ export const userApi = rootApi
                 JoinReferralRequest
             >({
                 query: ({ id }) => ({
-                    url: "/user/joined",
+                    url: `/user/joined?referral_id=${id}`,
                     method: "POST",
-                    body: {
-                        referral_id: id,
-                    },
+                    // body: {
+                    //     referral_id: id,
+                    // },
                 }),
             }),
         }),

@@ -28,13 +28,6 @@ export const LoginPage = () => {
     useEffect(() => {
         (async () => {
             try {
-                const urlParams = new URLSearchParams(
-                    tg.initDataUnsafe.start_param
-                );
-
-                console.log(urlParams.get("key1"));
-                console.log(urlParams.get("key2"));
-
                 dispatch(setUserInitData(initData));
                 console.log("Start params: " + referralId);
                 await trigger().unwrap();
