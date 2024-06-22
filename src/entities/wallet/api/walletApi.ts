@@ -11,11 +11,11 @@ export const walletApi = rootApi.enhanceEndpoints({}).injectEndpoints({
             ConnectWalletRequest
         >({
             query: ({ ton_address }) => ({
-                url: "/wallet/connect",
+                url: `/wallet/connect?ton_address=${ton_address}`,
                 method: "POST",
-                body: {
-                    ton_address: ton_address,
-                },
+                // body: {
+                //     ton_address: ton_address,
+                // },
             }),
         }),
     }),

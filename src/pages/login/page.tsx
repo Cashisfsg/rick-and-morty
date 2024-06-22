@@ -12,6 +12,8 @@ import { useAppDispatch } from "@/app/providers/redux/hooks";
 
 import styles from "./index.module.css";
 import { TelegramClient } from "@/shared/api/types";
+import { useTonConnectUI } from "@tonconnect/ui-react";
+import { useConnectWalletMutation } from "@/entities/wallet";
 
 export const LoginPage = () => {
     const tg = (
@@ -40,6 +42,28 @@ export const LoginPage = () => {
             }
         })();
     }, [initData, referralId]);
+
+    const [tonConnectUi] = useTonConnectUI();
+    const [connectWallet] = useConnectWalletMutation();
+
+    useEffect(() => {
+        const unsubscribe = tonConnectUi.onStatusChange(async (wallet) => {
+            console.log("Wallet address: ", wallet);
+
+            if (!wallet) return;
+
+            try {
+                await connectWallet({
+                    ton_address: wallet.account.address,
+                }).unwrap();
+            } catch (error) {
+                console.error(error);
+            }
+        });
+        return () => {
+            unsubscribe();
+        };
+    }, [tonConnectUi]);
 
     // useFetchUserInfoQuery();
 
