@@ -34,7 +34,7 @@ export const QuestPopover = () => {
                         Join our telegram channel
                     </h2>
                     <p>
-                        +{formatNumber(quest.amount)}
+                        +{formatNumber(quest?.amount || 0)}
                         <Ticket className="svg-shadow-blue" />
                     </p>
                 </hgroup>
