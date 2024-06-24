@@ -2,8 +2,9 @@ import { useEffect, useRef, useReducer, useCallback } from "react";
 
 import { Hologram } from "./hologram";
 
-import styles from "./index.module.css";
 import { Refresh } from "@/assets/icons";
+
+import styles from "./index.module.css";
 
 interface CaptchaSliderProps {
     src?: string;

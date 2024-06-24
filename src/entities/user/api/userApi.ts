@@ -57,6 +57,8 @@ export const userApi = rootApi
                     url: `/user/joined?referral_id=${id}`,
                     method: "POST",
                 }),
+                invalidatesTags: (result, error, arg) =>
+                    error ? [] : [{ type: "Referral", id: arg.id }],
             }),
             createCaptcha: builder.mutation<
                 CreateCaptchaResponse,
