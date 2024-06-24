@@ -1,19 +1,51 @@
 .account-popover {
     text-align: center;
 
-    & > hgroup {
-        & > h2 {
-            font-family: var(--font-secondary);
-            text-shadow: var(--text-shadow-green);
-            font-size: 2rem;
-        }
+    & h2 {
+        font-family: var(--font-secondary);
+        text-shadow: var(--text-shadow-green);
+        font-size: 2rem;
+    }
 
-        & > p {
-            margin-block-start: 1rem;
-            font-size: 0.875rem;
-            color: #757575;
+    & p,
+    dt {
+        font-size: 0.875rem;
+        color: #757575;
+    }
+
+    & > div {
+        display: grid;
+        row-gap: 0.5rem;
+        place-items: center;
+
+        max-width: 75%;
+        margin-block-start: 2.25rem;
+        margin-inline: auto;
+
+        & > dl {
+            display: grid;
+            grid-template-rows: subgrid;
+            grid-template-columns: subgrid;
+            grid-row: span 2;
+
+            & > dd {
+                word-break: break-all;
+                overflow-wrap: break-word;
+            }
         }
     }
+}
+
+.editable {
+    & p {
+        margin-block-start: 1rem;
+    }
+}
+
+.connect-wallet-button {
+    margin-block-start: 1.5rem;
+    font-size: 1rem;
+    text-decoration: underline;
 }
 
 .popover-trigger {

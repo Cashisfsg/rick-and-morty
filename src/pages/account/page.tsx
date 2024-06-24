@@ -33,12 +33,6 @@ export const AccountPage = () => {
     const { data: user } = useFetchUserInfoQuery();
     const [connectWallet] = useConnectWalletMutation();
 
-    // console.log(wallet);
-
-    // const [tonConnectUI] = useTonConnectUI();
-
-    // tonConnectUI.openSingleWalletModal();
-
     useEffect(() => {
         if (!wallet) return;
 
