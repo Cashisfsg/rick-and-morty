@@ -1,3 +1,5 @@
+import type { Wallet } from "@/entities/wallet/api";
+
 export interface User {
     id: number;
     first_name: string;
@@ -6,15 +8,13 @@ export interface User {
     language_code: string;
     is_premium: boolean;
     ref_id: number;
-    wallet: Wallet;
+    wallet: Wallet | null;
     balance: number;
     photo: string;
     is_verified: boolean;
     created_at: string;
     updated_at: string;
 }
-
-export interface Wallet {}
 
 export type FetchUserInfoResponse = User;
 

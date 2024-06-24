@@ -13,4 +13,7 @@ export interface ConnectWalletSuccessResponse {
     wallet: Wallet;
 }
 
-export interface Wallet {}
+export interface Wallet {
+    user_id: number;
+    address: string;
+}

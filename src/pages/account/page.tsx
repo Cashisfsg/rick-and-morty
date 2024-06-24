@@ -1,6 +1,10 @@
+import { useEffect } from "react";
+
 import {
     // useTonConnectUI,
     useTonWallet,
+    toUserFriendlyAddress,
+    CHAIN,
 } from "@tonconnect/ui-react";
 
 import {
@@ -9,7 +13,10 @@ import {
     AccountPopover,
 } from "@/widgets/account-popover";
 
-import { ConnectWalletButton } from "@/entities/wallet";
+import {
+    ConnectWalletButton,
+    useConnectWalletMutation,
+} from "@/entities/wallet";
 import { useFetchUserInfoQuery } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 
@@ -24,12 +31,34 @@ import styles from "./index.module.css";
 export const AccountPage = () => {
     const wallet = useTonWallet();
     const { data: user } = useFetchUserInfoQuery();
+    const [connectWallet] = useConnectWalletMutation();
 
-    console.log(wallet);
+    // console.log(wallet);
 
     // const [tonConnectUI] = useTonConnectUI();
 
     // tonConnectUI.openSingleWalletModal();
+
+    useEffect(() => {
+        if (!wallet) return;
+
+        const userFriendlyWalletAddress = toUserFriendlyAddress(
+            wallet.account.address,
+            wallet.account.chain === CHAIN.TESTNET
+        );
+
+        if (user?.wallet?.address === userFriendlyWalletAddress) return;
+
+        (async () => {
+            try {
+                await connectWallet({
+                    ton_address: userFriendlyWalletAddress,
+                }).unwrap();
+            } catch (error) {
+                console.error(error);
+            }
+        })();
+    }, [wallet, user?.wallet]);
 
     return (
         <article className={`main-content w-full ${styles["account-page"]}`}>

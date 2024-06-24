@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import {
     useTonConnectUI,
-    CHAIN,
-    toUserFriendlyAddress,
-    useTonAddress,
+    // CHAIN,
+    // toUserFriendlyAddress,
+    // useTonAddress,
 } from "@tonconnect/ui-react";
 
-import { useConnectWalletMutation } from "../../api";
+// import { useConnectWalletMutation } from "../../api";
 
 import { Account } from "@/assets/icons";
 
@@ -20,37 +20,37 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
     ...props
 }) => {
     const [tonConnectUi] = useTonConnectUI();
-    const [connectWallet] = useConnectWalletMutation();
-    const tonAddress = useTonAddress();
+    // const [connectWallet] = useConnectWalletMutation();
+    // const tonAddress = useTonAddress();
 
-    console.log("Ton friendly address: ", tonAddress);
+    // console.log("Ton friendly address: ", tonAddress);
 
-    useEffect(() => {
-        const unsubscribe = tonConnectUi.onStatusChange(async (wallet) => {
-            if (!wallet) return;
+    // useEffect(() => {
+    //     const unsubscribe = tonConnectUi.onStatusChange(async (wallet) => {
+    //         if (!wallet) return;
 
-            try {
-                const userFriendlyAddress = toUserFriendlyAddress(
-                    wallet.account.address,
-                    wallet.account.chain === CHAIN.TESTNET
-                );
+    //         try {
+    //             const userFriendlyAddress = toUserFriendlyAddress(
+    //                 wallet.account.address,
+    //                 wallet.account.chain === CHAIN.TESTNET
+    //             );
 
-                console.log(
-                    "User friendly address in connect wallet button: ",
-                    userFriendlyAddress
-                );
+    //             console.log(
+    //                 "User friendly address in connect wallet button: ",
+    //                 userFriendlyAddress
+    //             );
 
-                await connectWallet({
-                    ton_address: userFriendlyAddress,
-                }).unwrap();
-            } catch (error) {
-                console.error(error);
-            }
-        });
-        return () => {
-            unsubscribe();
-        };
-    }, [tonConnectUi]);
+    //             await connectWallet({
+    //                 ton_address: userFriendlyAddress,
+    //             }).unwrap();
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     });
+    //     return () => {
+    //         unsubscribe();
+    //     };
+    // }, [tonConnectUi]);
 
     const onClickHandler: React.MouseEventHandler<
         HTMLButtonElement
