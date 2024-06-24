@@ -46,7 +46,7 @@ export const ReferralList: React.FC<ReferralListProps> = ({ referrals }) => {
                                 className={styles["referral-list-item"]}
                             >
                                 <Avatar src={AvatarImg} />
-                                <span className="truncate">
+                                <span className="truncate text-start">
                                     {referral?.fullname}
                                 </span>
                                 <p>

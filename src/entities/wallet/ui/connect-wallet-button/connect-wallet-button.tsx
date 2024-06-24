@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { useTonConnectUI } from "@tonconnect/ui-react";
+import {
+    useTonConnectUI,
+    CHAIN,
+    toUserFriendlyAddress,
+    useTonAddress,
+} from "@tonconnect/ui-react";
 
 import { useConnectWalletMutation } from "../../api";
 
@@ -16,13 +21,22 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
 }) => {
     const [tonConnectUi] = useTonConnectUI();
     const [connectWallet] = useConnectWalletMutation();
+    const tonAddress = useTonAddress();
+
+    console.log("Ton friendly address: ", tonAddress);
 
     useEffect(() => {
         const unsubscribe = tonConnectUi.onStatusChange(async (wallet) => {
             if (!wallet) return;
 
             try {
-                console.log("Wallet in connect wallet button: ", wallet);
+                console.log(
+                    "User friendly address in connect wallet button: ",
+                    toUserFriendlyAddress(
+                        wallet.account.address,
+                        wallet.account.chain === CHAIN.TESTNET
+                    )
+                );
 
                 await connectWallet({
                     ton_address: wallet.account.address,

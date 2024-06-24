@@ -34,8 +34,6 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     const sliderPieceRef = useRef<HTMLCanvasElement>(null);
     const image = useRef<HTMLImageElement>(new Image());
 
-    console.log("Correct: ", correct);
-
     useEffect(() => {
         if (!canvasRef.current || !sliderPieceRef.current) return;
 
@@ -117,8 +115,6 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     }, [src, canvasRef, sliderPieceRef, state, correct]);
 
     const handler = useCallback((event: Event) => {
-        console.log("Handler. Correct: ", correct);
-
         event.stopPropagation();
 
         const correctX = correct; // Adjust based on actual position
