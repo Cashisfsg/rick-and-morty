@@ -8,21 +8,19 @@ import styles from "./index.module.css";
 
 interface CaptchaSliderProps {
     src?: string;
-    translateVertical: number;
-    translateHorizontal: number;
+    correct: number | undefined;
     onSuccess?: () => unknown;
 }
 
-const CORRECT = 20;
-// const translateVertical = Math.round(Math.random() * 250);
-// const translateHorizontal = Math.round(Math.random() * 250);
+// const CORRECT = 20;
+const TRANSLATE_VERTICAL = Math.round(Math.random() * 250);
+const TRANSLATE_HORIZONTAL = Math.round(Math.random() * 250);
 const TOLERANCE = 5;
 
 export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     // src = "https://abrakadabra.fun/uploads/posts/2022-01/1642082451_3-abrakadabra-fun-p-oboi-rik-morti-3.jpg",
     src = "https://kartinki.pics/uploads/posts/2022-03/thumbs/1647923157_12-kartinkin-net-p-rik-i-morti-kartinki-v-khoroshem-kachestve-13.jpg",
-    translateVertical,
-    translateHorizontal,
+    correct,
     onSuccess,
 }) => {
     const [state, rerender] = useReducer((state) => !state, false);
@@ -37,7 +35,12 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     const image = useRef<HTMLImageElement>(new Image());
 
     useEffect(() => {
-        if (!canvasRef.current || !sliderPieceRef.current) return;
+        if (
+            !canvasRef.current ||
+            !sliderPieceRef.current ||
+            correct === undefined
+        )
+            return;
 
         const canvas = canvasRef.current;
         const sliderPieceCanvas = sliderPieceRef.current;
@@ -95,8 +98,8 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
             sliderCtx.clip(path);
             sliderCtx.drawImage(
                 img,
-                -CORRECT - translateHorizontal + offsetX,
-                -translateVertical - offsetY,
+                -correct - TRANSLATE_HORIZONTAL + offsetX,
+                -TRANSLATE_VERTICAL - offsetY,
                 drawWidth,
                 drawHeight
             );
@@ -106,7 +109,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
             // Создание полупрозрачного черного фона поверх вырезанного фрагмента
             ctx.save();
 
-            ctx.translate(CORRECT + translateHorizontal, translateVertical); // Сдвиг фрагмента
+            ctx.translate(correct + TRANSLATE_HORIZONTAL, TRANSLATE_VERTICAL); // Сдвиг фрагмента
             ctx.globalAlpha = 0.7; // Установка прозрачности
             // ctx.fillStyle = "rgba(0, 0, 0, 0.5)"; // Установка цвета фона
             ctx.clip(path); // Применение клиппинга
@@ -114,24 +117,18 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
 
             ctx.restore();
         };
-    }, [
-        src,
-        canvasRef,
-        sliderPieceRef,
-        state,
-        translateVertical,
-        translateHorizontal,
-    ]);
+    }, [src, canvasRef, sliderPieceRef, state, correct]);
 
     const handler = useCallback((event: Event) => {
+        if (correct === undefined) return;
         event.stopPropagation();
 
-        const correctX = CORRECT; // Adjust based on actual position
+        const correctX = correct; // Adjust based on actual position
         const pieceX = parseFloat(sliderPieceRef.current?.style.left || "0");
 
         if (!canvasRef.current || !sliderPieceRef.current) return;
 
-        if (Math.abs(pieceX - correctX - translateHorizontal) > TOLERANCE)
+        if (Math.abs(pieceX - correctX - TRANSLATE_HORIZONTAL) > TOLERANCE)
             return;
 
         const canvas = canvasRef.current;
@@ -223,7 +220,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                     id="sliderPiece"
                     style={{
                         position: "absolute",
-                        top: translateVertical,
+                        top: TRANSLATE_VERTICAL,
                         left: Math.round(30 + Math.random() * 245),
                         cursor: "pointer",
                         zIndex: 1,

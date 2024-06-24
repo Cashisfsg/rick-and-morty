@@ -34,11 +34,7 @@ export const VerificationPage = () => {
                 Slide to complete the puzzle
             </h1>
 
-            <CaptchaSlider
-                translateVertical={data?.x ? data.x : 0}
-                translateHorizontal={data?.y ? data.y : 0}
-                onSuccess={onSuccess}
-            />
+            <CaptchaSlider correct={data?.x} onSuccess={onSuccess} />
         </main>
     );
 };
