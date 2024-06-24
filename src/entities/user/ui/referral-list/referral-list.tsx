@@ -2,6 +2,7 @@ import { Avatar } from "../avatar/avatar";
 import AvatarImg from "@/assets/img/avatars/avatar-1.png";
 import { Ticket } from "@/assets/icons";
 import { type Referral } from "../../api";
+import { formatNumber } from "@/shared/lib/helpers/format-number";
 
 import styles from "./index.module.css";
 
@@ -47,7 +48,7 @@ export const ReferralList: React.FC<ReferralListProps> = ({ referrals }) => {
                                 <Avatar src={AvatarImg} />
                                 <span>{referral?.fullname}</span>
                                 <p>
-                                    +${referral?.amount}k
+                                    +${formatNumber(referral?.amount)}
                                     <Ticket />
                                 </p>
                             </li>

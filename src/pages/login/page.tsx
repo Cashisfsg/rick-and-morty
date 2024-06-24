@@ -43,28 +43,6 @@ export const LoginPage = () => {
         })();
     }, [initData, referralId]);
 
-    const [tonConnectUi] = useTonConnectUI();
-    const [connectWallet] = useConnectWalletMutation();
-
-    useEffect(() => {
-        const unsubscribe = tonConnectUi.onStatusChange(async (wallet) => {
-            console.log("Wallet address: ", wallet);
-
-            if (!wallet) return;
-
-            try {
-                await connectWallet({
-                    ton_address: wallet.account.address,
-                }).unwrap();
-            } catch (error) {
-                console.error(error);
-            }
-        });
-        return () => {
-            unsubscribe();
-        };
-    }, [tonConnectUi]);
-
     // useFetchUserInfoQuery();
 
     return (
