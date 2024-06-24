@@ -13,6 +13,22 @@ export interface User {
 
 export interface Wallet {}
 
+export type FetchUserInfoResponse = User;
+
+export interface Referral {
+    id: number;
+    fullname: string;
+    amount: number;
+}
+
+export type FetchUserReferralsResponse = Referral[];
+
+export interface UpdatePremiumStatusRequest {
+    isPremium: boolean;
+}
+
+export type UpdatePremiumStatusResponse = User;
+
 export interface JoinReferralRequest {
     id: number;
 }
@@ -24,4 +40,27 @@ export interface JoinReferralResponse {
     type: string;
     created_at: string;
     updated_at: string;
+}
+
+export interface CreateCaptchaRequest {
+    x: Coordinate;
+    y: Coordinate;
+}
+
+interface Coordinate {
+    start: number;
+    end: number;
+}
+
+interface Point {
+    x: number;
+    y: number;
+}
+
+export type CreateCaptchaResponse = Point;
+
+export type VerifyCaptchaRequest = Point;
+
+export interface VerifyCaptchaResponse {
+    status: boolean;
 }

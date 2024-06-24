@@ -1,10 +1,15 @@
-import styles from "./index.module.css";
-
 import { Avatar } from "../avatar/avatar";
 import AvatarImg from "@/assets/img/avatars/avatar-1.png";
 import { Ticket } from "@/assets/icons";
+import { type Referral } from "../../api";
 
-export const ReferralList = () => {
+import styles from "./index.module.css";
+
+interface ReferralListProps {
+    referrals: Referral[];
+}
+
+export const ReferralList: React.FC<ReferralListProps> = ({ referrals }) => {
     return (
         <section className="border-green shadow-green">
             <div className={`bg-image bg-green ${styles.wrapper}`}></div>
@@ -34,21 +39,19 @@ export const ReferralList = () => {
                     xmlns="http://www.w3.org/1999/xhtml"
                 >
                     <ul className={styles["referral-list"]}>
-                        {Array(10)
-                            .fill(0)
-                            .map((_, i) => (
-                                <li
-                                    key={i}
-                                    className={styles["referral-list-item"]}
-                                >
-                                    <Avatar src={AvatarImg} />
-                                    <span>Username</span>
-                                    <p>
-                                        +1.1k
-                                        <Ticket />
-                                    </p>
-                                </li>
-                            ))}
+                        {referrals.map((referral) => (
+                            <li
+                                key={referral?.id}
+                                className={styles["referral-list-item"]}
+                            >
+                                <Avatar src={AvatarImg} />
+                                <span>{referral?.fullname}</span>
+                                <p>
+                                    +${referral?.amount}k
+                                    <Ticket />
+                                </p>
+                            </li>
+                        ))}
                     </ul>
                 </foreignObject>
                 <g filter="url(#filter0_ddddd_4350_2228)">

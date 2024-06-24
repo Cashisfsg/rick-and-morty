@@ -1,4 +1,4 @@
-import { ReferralList } from "@/entities/user";
+import { FetchReferrals, ReferralList } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 
 import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
@@ -34,7 +34,11 @@ export const ReferralPage = () => {
                 </h1>
             </header>
 
-            <ReferralList />
+            <FetchReferrals
+                renderSuccess={(referrals) => (
+                    <ReferralList referrals={referrals} />
+                )}
+            />
         </article>
     );
 };
