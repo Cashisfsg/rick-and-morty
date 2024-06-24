@@ -13,11 +13,11 @@ interface CaptchaSliderProps {
 }
 
 // const CORRECT = 20;
-const TRANSLATE_HORIZONTAL = 30;
-const TRANSLATE_VERTICAL = 40;
+// const TRANSLATE_HORIZONTAL = 30 + Math.round(Math.random() * 245);
+const TRANSLATE_VERTICAL = 40 + Math.round(Math.random() * 215);
 const TOLERANCE = 5;
 
-console.log("Translate horizontal: ", TRANSLATE_HORIZONTAL);
+// console.log("Translate horizontal: ", TRANSLATE_HORIZONTAL);
 console.log("Translate vertical: ", TRANSLATE_VERTICAL);
 
 export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
@@ -96,7 +96,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
             sliderCtx.clip(path);
             sliderCtx.drawImage(
                 img,
-                -correct - TRANSLATE_HORIZONTAL + offsetX,
+                -correct + offsetX,
                 -TRANSLATE_VERTICAL - offsetY,
                 drawWidth,
                 drawHeight
@@ -107,7 +107,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
             // Создание полупрозрачного черного фона поверх вырезанного фрагмента
             ctx.save();
 
-            ctx.translate(correct + TRANSLATE_HORIZONTAL, TRANSLATE_VERTICAL); // Сдвиг фрагмента
+            ctx.translate(correct, TRANSLATE_VERTICAL); // Сдвиг фрагмента
             ctx.globalAlpha = 0.7; // Установка прозрачности
             // ctx.fillStyle = "rgba(0, 0, 0, 0.5)"; // Установка цвета фона
             ctx.clip(path); // Применение клиппинга
@@ -125,8 +125,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
 
         if (!canvasRef.current || !sliderPieceRef.current) return;
 
-        if (Math.abs(pieceX - correctX - TRANSLATE_HORIZONTAL) > TOLERANCE)
-            return;
+        if (Math.abs(pieceX - correctX) > TOLERANCE) return;
 
         const canvas = canvasRef.current;
         const sliderPieceCanvas = sliderPieceRef.current;
