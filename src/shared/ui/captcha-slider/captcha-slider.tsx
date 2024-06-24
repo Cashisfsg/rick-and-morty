@@ -17,6 +17,9 @@ const TRANSLATE_HORIZONTAL = 30 + Math.round(Math.random() * 245);
 const TRANSLATE_VERTICAL = 40 + Math.round(Math.random() * 215);
 const TOLERANCE = 5;
 
+console.log("Translate horizontal: ", TRANSLATE_HORIZONTAL);
+console.log("Translate vertical: ", TRANSLATE_VERTICAL);
+
 export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     // src = "https://abrakadabra.fun/uploads/posts/2022-01/1642082451_3-abrakadabra-fun-p-oboi-rik-morti-3.jpg",
     src = "https://kartinki.pics/uploads/posts/2022-03/thumbs/1647923157_12-kartinkin-net-p-rik-i-morti-kartinki-v-khoroshem-kachestve-13.jpg",
