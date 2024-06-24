@@ -8,7 +8,7 @@ import { formatNumber } from "@/shared/lib/helpers/format-number";
 import styles from "./index.module.css";
 
 export const QuestPopover = () => {
-    const { data: quest } = usePopoverContext();
+    const { data: quest } = usePopoverContext() as { data: Quest };
     const [completeQuest] = useCompleteQuestMutation();
 
     const onClickHandler: React.MouseEventHandler<
@@ -17,7 +17,7 @@ export const QuestPopover = () => {
         if (quest === undefined || !quest) return;
 
         try {
-            await completeQuest({ id: (quest as Quest).id }).unwrap();
+            await completeQuest({ id: quest.id }).unwrap();
         } catch (error) {
             console.error(error);
         }
@@ -34,7 +34,7 @@ export const QuestPopover = () => {
                         Join our telegram channel
                     </h2>
                     <p>
-                        +{formatNumber((quest as Quest).amount)}
+                        +{formatNumber(quest.amount)}
                         <Ticket className="svg-shadow-blue" />
                     </p>
                 </hgroup>

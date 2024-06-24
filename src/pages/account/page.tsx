@@ -1,4 +1,7 @@
-import { useTonConnectUI, useTonWallet } from "@tonconnect/ui-react";
+import {
+    // useTonConnectUI,
+    useTonWallet,
+} from "@tonconnect/ui-react";
 
 import {
     AccountPopoverProvider,
@@ -12,6 +15,7 @@ import { TicketCounter } from "@/entities/ticket";
 
 import { Popover } from "@/shared/ui/popover";
 import { Button } from "@/shared/ui/button";
+import { formatCurrency } from "@/shared/lib/format-currency";
 
 import { Token } from "@/assets/icons";
 
@@ -23,7 +27,7 @@ export const AccountPage = () => {
 
     console.log(wallet);
 
-    const [tonConnectUI] = useTonConnectUI();
+    // const [tonConnectUI] = useTonConnectUI();
 
     // tonConnectUI.openSingleWalletModal();
 
@@ -47,9 +51,9 @@ export const AccountPage = () => {
 
             <h1 className="font-secondary">
                 <p
-                    className={`text-pink text-shadow-pink ${styles["coin-counter"]}`}
+                    className={`${wallet ? "text-pink text-shadow-pink" : "text-gray"} ${styles["coin-counter"]}`}
                 >
-                    <span>2 238</span>
+                    <span>{formatCurrency(user?.balance || 0)}</span>
                     <Token className="svg-shadow-pink" />
                 </p>
 

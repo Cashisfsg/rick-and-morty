@@ -285,6 +285,10 @@ fieldset {
     color: var(--blue-blue);
 }
 
+.text-gray {
+    color: #898989;
+}
+
 .text-pink {
     color: var(--pink-light-pink);
 }
