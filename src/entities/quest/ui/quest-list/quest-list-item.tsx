@@ -1,4 +1,4 @@
-import { Popover } from "@/shared/ui/popover";
+import { Popover, usePopoverContext } from "@/shared/ui/popover";
 
 import { Telegram, Ticket, ChevronRight } from "@/assets/icons";
 import { Quest } from "../../api/types";
@@ -13,10 +13,17 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
     quest,
     ...props
 }) => {
+    const { setData } = usePopoverContext();
+
+    const onClickHandler = (quest: Quest) => {
+        setData(quest);
+    };
+
     return (
         <li {...props}>
             <Popover.Trigger
-                className={`${styles.quest}  bg-green border-green shadow-green`}
+                onClick={() => onClickHandler(quest)}
+                className={`${styles.quest} bg-green border-green shadow-green`}
             >
                 <Telegram
                     height="24"

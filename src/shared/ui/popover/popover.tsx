@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { useState, useMemo, useId } from "react";
 
 import { Portal as PopoverPortal } from "@/shared/ui/portal";
 import { PopoverContext, usePopoverContext } from "./use-popover-context";
@@ -9,9 +9,14 @@ interface PopoverRootProps extends React.PropsWithChildren {}
 
 export const Root: React.FC<PopoverRootProps> = ({ children }) => {
     const popoverId = `popover-${useId()}`;
+    const [data, setData] = useState<unknown>(null);
+    const contextValue = useMemo(
+        () => ({ popoverId, data, setData }),
+        [popoverId, data, setData]
+    );
 
     return (
-        <PopoverContext.Provider value={{ popoverId }}>
+        <PopoverContext.Provider value={contextValue}>
             {children}
         </PopoverContext.Provider>
     );
