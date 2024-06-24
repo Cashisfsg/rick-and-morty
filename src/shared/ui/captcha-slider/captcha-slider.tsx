@@ -8,13 +8,13 @@ import styles from "./index.module.css";
 
 interface CaptchaSliderProps {
     src?: string;
-    correct: number | undefined;
+    correct: number;
     onSuccess?: () => unknown;
 }
 
 // const CORRECT = 20;
-const TRANSLATE_VERTICAL = Math.round(Math.random() * 250);
-const TRANSLATE_HORIZONTAL = Math.round(Math.random() * 250);
+const TRANSLATE_HORIZONTAL = Math.round(30 + Math.random() * 245);
+const TRANSLATE_VERTICAL = Math.round(40 + Math.random() * 215);
 const TOLERANCE = 5;
 
 export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
@@ -37,12 +37,7 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     console.log("Correct: ", correct);
 
     useEffect(() => {
-        if (
-            !canvasRef.current ||
-            !sliderPieceRef.current ||
-            correct === undefined
-        )
-            return;
+        if (!canvasRef.current || !sliderPieceRef.current) return;
 
         const canvas = canvasRef.current;
         const sliderPieceCanvas = sliderPieceRef.current;
@@ -124,7 +119,6 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     const handler = useCallback((event: Event) => {
         console.log("Handler. Correct: ", correct);
 
-        if (correct === undefined) return;
         event.stopPropagation();
 
         const correctX = correct; // Adjust based on actual position

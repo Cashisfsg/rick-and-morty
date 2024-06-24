@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 
 export const VerificationPage = () => {
     const navigate = useNavigate();
-    const [createCaptcha, { data }] = useCreateCaptchaMutation();
+    const [createCaptcha, { data, isSuccess }] = useCreateCaptchaMutation();
 
     useEffect(() => {
         (async () => {
@@ -34,7 +34,9 @@ export const VerificationPage = () => {
                 Slide to complete the puzzle
             </h1>
 
-            <CaptchaSlider correct={data?.x} onSuccess={onSuccess} />
+            {isSuccess ? (
+                <CaptchaSlider correct={data.x} onSuccess={onSuccess} />
+            ) : null}
         </main>
     );
 };
