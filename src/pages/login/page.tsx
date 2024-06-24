@@ -32,17 +32,16 @@ export const LoginPage = () => {
         (async () => {
             try {
                 dispatch(setUserInitData(initData));
-                console.log("Start params: " + referralId);
-                console.log("Is premium: " + premium);
-                await fetchUserInfo().unwrap();
+
+                if (premium === true) {
+                    await updatePremiumStatus({ isPremium: true }).unwrap();
+                } else {
+                    await fetchUserInfo().unwrap();
+                }
 
                 if (referralId === undefined) return;
 
                 await joinReferral({ id: parseInt(referralId) }).unwrap();
-
-                if (premium !== true) return;
-
-                await updatePremiumStatus({ isPremium: true }).unwrap();
             } catch (error) {
                 console.error(error);
             }

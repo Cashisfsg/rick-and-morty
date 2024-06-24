@@ -38,6 +38,7 @@ export const ReferralPage = () => {
                 renderSuccess={(referrals) => (
                     <ReferralList referrals={referrals} />
                 )}
+                loadingFallback={<ReferralList referrals={[]} />}
             />
         </article>
     );
