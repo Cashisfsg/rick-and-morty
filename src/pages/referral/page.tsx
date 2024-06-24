@@ -25,7 +25,7 @@ export const ReferralPage = () => {
         <article className={`${styles["referral-page"]}`}>
             <header>
                 <TicketCounter size="large">{user?.balance || 0}</TicketCounter>
-                <h1 className="">
+                <h1>
                     <InviteUserButton
                         shareData={{
                             url: `https://t.me/${import.meta.env.VITE_BOT_NAME}/app?startapp=${userId}`,

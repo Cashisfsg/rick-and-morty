@@ -24,7 +24,7 @@ export const LoginPage = () => {
     const premium = tg?.initDataUnsafe?.user?.is_premium;
 
     const dispatch = useAppDispatch();
-    const [fetchUserInfo] = useLazyFetchUserInfoQuery();
+    const [fetchUserInfo, { data: user }] = useLazyFetchUserInfoQuery();
     const [joinReferral] = useJoinReferralMutation();
     const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
 
@@ -33,10 +33,10 @@ export const LoginPage = () => {
             try {
                 dispatch(setUserInitData(initData));
 
+                await fetchUserInfo().unwrap();
+
                 if (premium === true) {
                     await updatePremiumStatus({ isPremium: true }).unwrap();
-                } else {
-                    await fetchUserInfo().unwrap();
                 }
 
                 if (referralId === undefined) return;
@@ -59,7 +59,10 @@ export const LoginPage = () => {
                 <figcaption>@{import.meta.env.VITE_BOT_NAME}</figcaption>
             </figure>
             <footer>
-                <Link to="/app/verify" className="bg-image bg-blue">
+                <Link
+                    to={user?.is_verified ? "/app/welcome" : "/app/verify"}
+                    className="bg-image bg-blue"
+                >
                     <Telegram className="svg-shadow-blue" />
                     Telegram
                 </Link>

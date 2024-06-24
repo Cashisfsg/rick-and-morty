@@ -8,6 +8,8 @@ export interface User {
     ref_id: number;
     wallet: Wallet;
     balance: number;
+    photo: string;
+    is_verified: boolean;
     created_at: string;
     updated_at: string;
 }
