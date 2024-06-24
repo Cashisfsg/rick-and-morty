@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useCreateCaptchaMutation } from "@/entities/user";
+import {
+    useCreateCaptchaMutation,
+    useVerifyCaptchaMutation,
+} from "@/entities/user";
 
 import { CaptchaSlider } from "@/shared/ui/captcha-slider";
 
@@ -10,6 +13,7 @@ import styles from "./index.module.css";
 export const VerificationPage = () => {
     const navigate = useNavigate();
     const [createCaptcha, { data, isSuccess }] = useCreateCaptchaMutation();
+    const [verifyCaptcha] = useVerifyCaptchaMutation();
 
     useEffect(() => {
         (async () => {
@@ -24,8 +28,14 @@ export const VerificationPage = () => {
         })();
     }, []);
 
-    const onSuccess = () => {
-        console.log("Successfully verified");
+    const onSuccess = async () => {
+        if (!isSuccess) return;
+        try {
+            await verifyCaptcha({ x: data.x, y: data.y }).unwrap();
+            navigate("/app/welcome");
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
