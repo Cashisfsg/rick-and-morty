@@ -114,7 +114,14 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
 
             ctx.restore();
         };
-    }, [src, canvasRef, sliderPieceRef, state]);
+    }, [
+        src,
+        canvasRef,
+        sliderPieceRef,
+        state,
+        translateVertical,
+        translateHorizontal,
+    ]);
 
     const handler = useCallback((event: Event) => {
         event.stopPropagation();
