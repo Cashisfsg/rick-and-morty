@@ -7,6 +7,7 @@ export interface User {
     is_premium: boolean;
     ref_id: number;
     wallet: Wallet;
+    balance: number;
     created_at: string;
     updated_at: string;
 }

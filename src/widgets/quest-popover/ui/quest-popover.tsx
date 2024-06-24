@@ -28,6 +28,12 @@ export const QuestPopover = () => {
                 Subscribe
             </Button>
 
+            <Button
+                className={`${styles["subscribe-button"]} button-blue text-shadow-blue font-secondary`}
+            >
+                Verify
+            </Button>
+
             <Popover.Close className={styles["close-button"]}>
                 <Cross className="text-green" />
             </Popover.Close>

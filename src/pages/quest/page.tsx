@@ -32,6 +32,7 @@ export const QuestPage = () => {
                         </>
                     )}
                 />
+
                 <Popover.Portal>
                     <QuestPopover />
                 </Popover.Portal>

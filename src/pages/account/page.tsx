@@ -7,6 +7,7 @@ import {
 } from "@/widgets/account-popover";
 
 import { ConnectWalletButton } from "@/entities/wallet";
+import { useFetchUserInfoQuery } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 
 import { Popover } from "@/shared/ui/popover";
@@ -18,6 +19,7 @@ import styles from "./index.module.css";
 
 export const AccountPage = () => {
     const wallet = useTonWallet();
+    const { data: user } = useFetchUserInfoQuery();
 
     console.log(wallet);
 
@@ -40,7 +42,7 @@ export const AccountPage = () => {
                 ) : (
                     <ConnectWalletButton />
                 )}
-                <TicketCounter>{2238}</TicketCounter>
+                <TicketCounter>{user?.balance || 0}</TicketCounter>
             </header>
 
             <h1 className="font-secondary">
