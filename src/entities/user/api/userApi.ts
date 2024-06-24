@@ -28,9 +28,9 @@ export const userApi = rootApi
                     providesTags: (result) =>
                         result
                             ? [
-                                  ...result.map(({ id }) => ({
+                                  ...result.map(({ user_id }) => ({
                                       type: "Referral" as const,
-                                      id: id as number,
+                                      id: user_id as number,
                                   })),
                                   "Referral",
                               ]

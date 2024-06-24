@@ -42,10 +42,10 @@ export const ReferralList: React.FC<ReferralListProps> = ({ referrals }) => {
                     <ul className={styles["referral-list"]}>
                         {referrals.map((referral) => (
                             <li
-                                key={referral?.id}
+                                key={referral?.user_id}
                                 className={styles["referral-list-item"]}
                             >
-                                <Avatar src={AvatarImg} />
+                                <Avatar src={referral?.photo || AvatarImg} />
                                 <span className="truncate text-start">
                                     {referral?.fullname}
                                 </span>

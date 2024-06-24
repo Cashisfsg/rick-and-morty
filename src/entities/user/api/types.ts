@@ -19,9 +19,10 @@ export interface Wallet {}
 export type FetchUserInfoResponse = User;
 
 export interface Referral {
-    id: number;
+    user_id: number;
     fullname: string;
     amount: number;
+    photo: string;
 }
 
 export type FetchUserReferralsResponse = Referral[];
