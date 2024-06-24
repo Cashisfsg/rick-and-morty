@@ -16,6 +16,10 @@
     border-bottom: var(--border-green);
     scroll-snap-align: start;
 
+    & > span {
+        width: 100%;
+    }
+
     & > p {
         padding: 0.5rem;
         border-radius: var(--rounded-full);

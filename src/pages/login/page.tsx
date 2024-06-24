@@ -12,8 +12,7 @@ import { useAppDispatch } from "@/app/providers/redux/hooks";
 
 import styles from "./index.module.css";
 import { TelegramClient } from "@/shared/api/types";
-import { useTonConnectUI } from "@tonconnect/ui-react";
-import { useConnectWalletMutation } from "@/entities/wallet";
+";
 
 export const LoginPage = () => {
     const tg = (

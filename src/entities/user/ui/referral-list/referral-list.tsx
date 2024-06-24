@@ -46,9 +46,11 @@ export const ReferralList: React.FC<ReferralListProps> = ({ referrals }) => {
                                 className={styles["referral-list-item"]}
                             >
                                 <Avatar src={AvatarImg} />
-                                <span>{referral?.fullname}</span>
+                                <span className="truncate">
+                                    {referral?.fullname}
+                                </span>
                                 <p>
-                                    +${formatNumber(referral?.amount)}
+                                    +{formatNumber(referral?.amount)}
                                     <Ticket />
                                 </p>
                             </li>
