@@ -1,4 +1,8 @@
-import { FetchReferrals, ReferralList } from "@/entities/user";
+import {
+    FetchReferrals,
+    ReferralList,
+    useFetchUserInfoQuery,
+} from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 
 import { ClipboardCopy } from "@/shared/ui/clipboard-copy";
@@ -15,10 +19,12 @@ export const ReferralPage = () => {
 
     const userId = tg?.initDataUnsafe?.user?.id;
 
+    const { data: user } = useFetchUserInfoQuery();
+
     return (
         <article className={`${styles["referral-page"]}`}>
             <header>
-                <TicketCounter size="large">{2238}</TicketCounter>
+                <TicketCounter size="large">{user?.balance || 0}</TicketCounter>
                 <h1 className="">
                     <InviteUserButton
                         shareData={{
