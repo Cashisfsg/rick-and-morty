@@ -34,6 +34,8 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     const sliderPieceRef = useRef<HTMLCanvasElement>(null);
     const image = useRef<HTMLImageElement>(new Image());
 
+    console.log("Correct: ", correct);
+
     useEffect(() => {
         if (
             !canvasRef.current ||
@@ -120,6 +122,8 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     }, [src, canvasRef, sliderPieceRef, state, correct]);
 
     const handler = useCallback((event: Event) => {
+        console.log("Handler. Correct: ", correct);
+
         if (correct === undefined) return;
         event.stopPropagation();
 
@@ -206,7 +210,6 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                 </button>
                 <canvas
                     id="canvas"
-                    // style={{ width: "100%", height: "100%" }}
                     style={{
                         position: "absolute",
                         inset: 0,
