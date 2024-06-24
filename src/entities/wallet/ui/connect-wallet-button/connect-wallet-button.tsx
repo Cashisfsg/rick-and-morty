@@ -30,16 +30,18 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
             if (!wallet) return;
 
             try {
+                const userFriendlyAddress = toUserFriendlyAddress(
+                    wallet.account.address,
+                    wallet.account.chain === CHAIN.TESTNET
+                );
+
                 console.log(
                     "User friendly address in connect wallet button: ",
-                    toUserFriendlyAddress(
-                        wallet.account.address,
-                        wallet.account.chain === CHAIN.TESTNET
-                    )
+                    userFriendlyAddress
                 );
 
                 await connectWallet({
-                    ton_address: wallet.account.address,
+                    ton_address: userFriendlyAddress,
                 }).unwrap();
             } catch (error) {
                 console.error(error);
