@@ -4,6 +4,8 @@ import type {
     ConnectWalletSuccessResponse,
 } from "./types";
 
+import { userApi } from "@/entities/user";
+
 export const walletApi = rootApi.enhanceEndpoints({}).injectEndpoints({
     endpoints: (builder) => ({
         connectWallet: builder.mutation<
@@ -13,10 +15,13 @@ export const walletApi = rootApi.enhanceEndpoints({}).injectEndpoints({
             query: ({ ton_address }) => ({
                 url: `/wallet/connect?ton_address=${ton_address}`,
                 method: "POST",
-                // body: {
-                //     ton_address: ton_address,
-                // },
             }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(userApi.util.invalidateTags(["User"]));
+                } catch {}
+            },
         }),
     }),
 });
