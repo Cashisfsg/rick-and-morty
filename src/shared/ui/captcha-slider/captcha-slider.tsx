@@ -13,8 +13,8 @@ interface CaptchaSliderProps {
 }
 
 // const CORRECT = 20;
-const TRANSLATE_HORIZONTAL = Math.round(30 + Math.random() * 245);
-const TRANSLATE_VERTICAL = Math.round(40 + Math.random() * 215);
+const TRANSLATE_HORIZONTAL = 30 + Math.round(Math.random() * 245);
+const TRANSLATE_VERTICAL = 40 + Math.round(Math.random() * 215);
 const TOLERANCE = 5;
 
 export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
