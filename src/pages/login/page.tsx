@@ -6,13 +6,13 @@ import QR from "@/assets/img/qr-code.png";
 import {
     useLazyFetchUserInfoQuery,
     useJoinReferralMutation,
+    useUpdatePremiumStatusMutation,
     setUserInitData,
 } from "@/entities/user";
 import { useAppDispatch } from "@/app/providers/redux/hooks";
 
 import styles from "./index.module.css";
 import { TelegramClient } from "@/shared/api/types";
-";
 
 export const LoginPage = () => {
     const tg = (
@@ -21,28 +21,33 @@ export const LoginPage = () => {
 
     const initData = tg?.initData;
     const referralId = tg?.initDataUnsafe?.start_param;
+    const premium = tg?.initDataUnsafe?.user?.is_premium;
 
     const dispatch = useAppDispatch();
-    const [trigger] = useLazyFetchUserInfoQuery();
+    const [fetchUserInfo] = useLazyFetchUserInfoQuery();
     const [joinReferral] = useJoinReferralMutation();
+    const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
 
     useEffect(() => {
         (async () => {
             try {
                 dispatch(setUserInitData(initData));
                 console.log("Start params: " + referralId);
-                await trigger().unwrap();
+                console.log("Is premium: " + premium);
+                await fetchUserInfo().unwrap();
 
                 if (referralId === undefined) return;
 
                 await joinReferral({ id: parseInt(referralId) }).unwrap();
+
+                if (premium !== true) return;
+
+                await updatePremiumStatus({ isPremium: true }).unwrap();
             } catch (error) {
                 console.error(error);
             }
         })();
-    }, [initData, referralId]);
-
-    // useFetchUserInfoQuery();
+    }, []);
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
@@ -62,19 +67,6 @@ export const LoginPage = () => {
                 <Link to="/" className="bg-image bg-blue">
                     <X className="svg-shadow-blue" />X
                 </Link>
-                <button
-                    onClick={async () => {
-                        try {
-                            await joinReferral({
-                                id: parseInt(referralId),
-                            }).unwrap();
-                        } catch (error) {
-                            console.error(error);
-                        }
-                    }}
-                >
-                    Join referral
-                </button>
             </footer>
         </main>
     );
