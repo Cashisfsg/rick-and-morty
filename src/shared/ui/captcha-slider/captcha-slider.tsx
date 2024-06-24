@@ -13,8 +13,8 @@ interface CaptchaSliderProps {
 }
 
 // const CORRECT = 20;
-const TRANSLATE_HORIZONTAL = 30 + Math.round(Math.random() * 245);
-const TRANSLATE_VERTICAL = 40 + Math.round(Math.random() * 215);
+const TRANSLATE_HORIZONTAL = 30;
+const TRANSLATE_VERTICAL = 40;
 const TOLERANCE = 5;
 
 console.log("Translate horizontal: ", TRANSLATE_HORIZONTAL);
