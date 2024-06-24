@@ -7,12 +7,14 @@ import {
 } from "@/entities/user";
 
 import { CaptchaSlider } from "@/shared/ui/captcha-slider";
+import { Loader } from "@/shared/ui/loader";
 
 import styles from "./index.module.css";
 
 export const VerificationPage = () => {
     const navigate = useNavigate();
-    const [createCaptcha, { data, isSuccess }] = useCreateCaptchaMutation();
+    const [createCaptcha, { data, isSuccess, isLoading }] =
+        useCreateCaptchaMutation();
     const [verifyCaptcha] = useVerifyCaptchaMutation();
 
     useEffect(() => {
@@ -43,6 +45,8 @@ export const VerificationPage = () => {
             <h1 className="text-blue font-secondary">
                 Slide to complete the puzzle
             </h1>
+
+            {isLoading ? <Loader /> : null}
 
             {isSuccess ? (
                 <CaptchaSlider correct={data.x} onSuccess={onSuccess} />
