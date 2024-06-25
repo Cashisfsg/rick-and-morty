@@ -3,6 +3,8 @@ import { Popover, usePopoverContext } from "@/shared/ui/popover";
 import { Telegram, Ticket, ChevronRight } from "@/assets/icons";
 import { Quest } from "../../api/types";
 
+import { formatNumber } from "@/shared/lib/helpers/format-number";
+
 import styles from "./index.module.css";
 
 interface QuestListItemProps extends React.ComponentPropsWithoutRef<"li"> {
@@ -33,7 +35,7 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
                 <p>{quest?.description}</p>
                 <ChevronRight className="text-green" />
                 <span className="text-shadow-blue">
-                    +{quest?.amount}k
+                    +{formatNumber(quest?.amount)}
                     <Ticket className="svg-shadow-blue" />
                 </span>
             </Popover.Trigger>
