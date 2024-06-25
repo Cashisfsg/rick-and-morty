@@ -22,7 +22,7 @@ export const QuestPage = () => {
 
             <Popover.Root>
                 <FetchQuest
-                    params={{ page: 0, limit: 10 }}
+                    queryParams={{ page: 0, limit: 10 }}
                     renderSuccess={(quests) => (
                         <>
                             {quests.length !== 0 ? (
