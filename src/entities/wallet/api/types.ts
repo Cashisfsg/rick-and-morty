@@ -17,3 +17,7 @@ export interface Wallet {
     user_id: number;
     address: string;
 }
+
+export interface DisconnectWalletResponse {
+    detail: string;
+}

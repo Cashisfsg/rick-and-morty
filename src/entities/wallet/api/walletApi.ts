@@ -2,6 +2,7 @@ import { rootApi } from "@/app/providers/redux/api/rootApi";
 import type {
     ConnectWalletRequest,
     ConnectWalletSuccessResponse,
+    DisconnectWalletResponse,
 } from "./types";
 
 import { userApi } from "@/entities/user";
@@ -23,7 +24,20 @@ export const walletApi = rootApi.enhanceEndpoints({}).injectEndpoints({
                 } catch {}
             },
         }),
+        disconnectWallet: builder.mutation<DisconnectWalletResponse, void>({
+            query: () => ({
+                url: "/wallet/disconnect",
+                method: "POST",
+            }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(userApi.util.invalidateTags(["User"]));
+                } catch {}
+            },
+        }),
     }),
 });
 
-export const { useConnectWalletMutation } = walletApi;
+export const { useConnectWalletMutation, useDisconnectWalletMutation } =
+    walletApi;

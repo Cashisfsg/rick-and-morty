@@ -1,33 +1,50 @@
-import { useFetchQuestListQuery, type QuestListResponse } from "../../api";
+import {
+    useFetchQuestListQuery,
+    questEntityAdapter,
+    questEntitySelector,
+    type FetchQuestsRequest,
+    type FetchQuestsResponse,
+} from "../../api";
 import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
 
 import { Loader } from "@/shared/ui/loader";
 
 interface FetchQuestProps {
-    params: { page: number; limit: number };
-    renderSuccess: (quests: QuestListResponse) => React.ReactElement;
+    queryParams: FetchQuestsRequest;
+    renderSuccess: (quests: FetchQuestsResponse) => React.ReactElement;
     loadingFallback?: React.ReactNode;
     renderError?: (error: string | undefined) => React.ReactElement;
 }
 
 export const FetchQuest: React.FC<FetchQuestProps> = ({
-    params,
+    queryParams,
     renderSuccess,
     loadingFallback = <Loader />,
     renderError = (error) => <pre>{error || "Unknown error"}</pre>,
 }) => {
-    const { data, isLoading, isError, error } = useFetchQuestListQuery({
-        page: params.page,
-        limit: params.limit,
-    });
+    const { data, isLoading, isSuccess, isError, error } =
+        useFetchQuestListQuery(
+            {
+                page: queryParams.page,
+                limit: queryParams.limit,
+            },
+            {
+                selectFromResult: ({ data, ...otherParams }) => ({
+                    data: questEntitySelector.selectAll(
+                        data ?? questEntityAdapter.getInitialState()
+                    ),
+                    ...otherParams,
+                }),
+            }
+        );
 
-    console.log("Fetch quest error: ", handleErrorResponse(error), error);
+    console.error("Fetch quest error: ", handleErrorResponse(error), error);
 
     if (isLoading) return loadingFallback;
 
     if (isError) return renderError(handleErrorResponse(error));
 
-    if (data) return renderSuccess(data);
+    if (isSuccess) return renderSuccess(data);
 
     return <></>;
 };

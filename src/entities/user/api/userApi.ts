@@ -54,8 +54,11 @@ export const userApi = rootApi
                 JoinReferralRequest
             >({
                 query: ({ id }) => ({
-                    url: `/user/joined?referral_id=${id}`,
+                    url: "/user/joined",
                     method: "POST",
+                    params: {
+                        referral_id: id,
+                    },
                 }),
                 invalidatesTags: (result, error, arg) =>
                     error ? [] : [{ type: "Referral", id: arg.id }],

@@ -1,4 +1,4 @@
-export interface QuestListRequest {
+export interface FetchQuestsRequest {
     page: number;
     limit: number;
 }
@@ -12,9 +12,10 @@ export interface Quest {
     available: boolean;
     type: string;
     is_completed: boolean;
+    created_at: string;
 }
 
-export type QuestListResponse = Quest[];
+export type FetchQuestsResponse = Quest[];
 
 export interface CompleteQuestRequest {
     id: number;

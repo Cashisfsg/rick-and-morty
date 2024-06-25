@@ -1,10 +1,18 @@
+import { EntityState, createEntityAdapter } from "@reduxjs/toolkit";
+
 import { rootApi } from "@/app/providers/redux/api/rootApi";
 import type {
-    QuestListRequest,
-    QuestListResponse,
+    Quest,
+    FetchQuestsRequest,
     CompleteQuestRequest,
     CompleteQuestResponse,
 } from "./types";
+
+export const questEntityAdapter = createEntityAdapter({
+    selectId: (quest: Quest) => quest.id,
+});
+
+export const questEntitySelector = questEntityAdapter.getSelectors();
 
 export const questApi = rootApi
     .enhanceEndpoints({
@@ -12,18 +20,41 @@ export const questApi = rootApi
     })
     .injectEndpoints({
         endpoints: (builder) => ({
-            fetchQuestList: builder.query<QuestListResponse, QuestListRequest>({
-                query: ({ page = 0, limit = 10 }) => ({
+            fetchQuestList: builder.query<
+                EntityState<Quest, number>,
+                FetchQuestsRequest
+            >({
+                query: ({ page, limit }) => ({
                     url: "/task/",
                     params: { page, limit },
                 }),
+                transformResponse: (response: Quest[]) => {
+                    return questEntityAdapter.addMany(
+                        questEntityAdapter.getInitialState(),
+                        response
+                    );
+                },
+                serializeQueryArgs: ({ endpointName }) => {
+                    return endpointName;
+                },
+                forceRefetch: ({ currentArg, previousArg }) => {
+                    return currentArg?.limit !== previousArg?.limit;
+                },
+                merge: (currentCacheData, responseData) => {
+                    questEntityAdapter.addMany(
+                        currentCacheData,
+                        questEntitySelector.selectAll(responseData)
+                    );
+                },
                 providesTags: (result) =>
                     result
                         ? [
-                              ...result.map(({ id }) => ({
-                                  type: "Quest" as const,
-                                  id: id as number,
-                              })),
+                              ...Object.values(result.entities).map(
+                                  ({ id }) => ({
+                                      type: "Quest" as const,
+                                      id: id as number,
+                                  })
+                              ),
                               "Quest",
                           ]
                         : ["Quest"],
@@ -39,6 +70,8 @@ export const questApi = rootApi
                         task_id: id,
                     },
                 }),
+                invalidatesTags: (result, error, arg) =>
+                    error ? [] : [{ type: "Quest", id: arg.id }],
             }),
         }),
     });
