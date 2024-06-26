@@ -6,21 +6,22 @@ import { useFetchUserInfoQuery } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 import { Popover } from "@/shared/ui/popover";
 
-import { DynamicList } from "@/shared/ui/dynamic-list/dynamic-list";
+// import { DynamicList } from "@/shared/ui/dynamic-list/dynamic-list";
 
 import styles from "./index.module.css";
 import { QuestListItem } from "@/entities/quest/ui/quest-list/quest-list-item";
+import { Virtuoso } from "react-virtuoso";
 
-function hasNextPage(page: number, limit: number, itemCount: number): boolean {
-    console.log("Page: " + page);
-    console.log("Limit: " + limit);
-    console.log("Items count: " + itemCount);
-    console.log(
-        "Fetch next page condition: ",
-        (page + 1) * limit === itemCount
-    );
-    return itemCount === (page + 1) * limit;
-}
+// function hasNextPage(page: number, limit: number, itemCount: number): boolean {
+//     console.log("Page: " + page);
+//     console.log("Limit: " + limit);
+//     console.log("Items count: " + itemCount);
+//     console.log(
+//         "Fetch next page condition: ",
+//         (page + 1) * limit === itemCount
+//     );
+//     return itemCount === (page + 1) * limit;
+// }
 
 export const QuestPage = () => {
     const [page, setPage] = useState(0);
@@ -41,15 +42,27 @@ export const QuestPage = () => {
                 <FetchQuest
                     queryParams={{ page: page, limit: limit }}
                     renderSuccess={(
-                        quests,
-                        isLoading,
-                        isFetching,
-                        isSuccess
+                        quests
+                        // isLoading,
+                        // isFetching,
+                        // isSuccess
                     ) => {
                         return (
                             <>
+                                <Virtuoso
+                                    data={quests}
+                                    itemContent={(index, quest) => (
+                                        <QuestListItem quest={quest} />
+                                    )}
+                                    endReached={() =>
+                                        setPage(
+                                            (previousPage) => previousPage + 1
+                                        )
+                                    }
+                                    style={{ height: "400px", width: "100%" }}
+                                />
                                 {/* {quests.length !== 0 ? ( */}
-                                <DynamicList
+                                {/* <DynamicList
                                     hasNextPage={hasNextPage(
                                         page,
                                         limit,
@@ -67,7 +80,8 @@ export const QuestPage = () => {
                                     {({ index }) => (
                                         <QuestListItem quest={quests[index]} />
                                     )}
-                                </DynamicList>
+                                </DynamicList> */}
+
                                 {/* // ) : (
                                 //     <p className="text-green-secondary text-5.5">
                                 //         No available quests
