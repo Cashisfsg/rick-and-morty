@@ -14,7 +14,8 @@ interface FetchQuestProps {
     renderSuccess: (
         quests: FetchQuestsResponse,
         isLoading: boolean,
-        isSuccess: boolean
+        isSuccess: boolean,
+        isFetching: boolean
     ) => React.ReactElement;
     loadingFallback?: React.ReactNode;
     renderError?: (error: string | undefined) => React.ReactElement;
@@ -26,7 +27,7 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
     loadingFallback = <Loader />,
     renderError = (error) => <pre>{error || "Unknown error"}</pre>,
 }) => {
-    const { data, isLoading, isSuccess, isError, error } =
+    const { data, isLoading, isSuccess, isError, isFetching, error } =
         useFetchQuestListQuery(
             {
                 page: queryParams.page,
@@ -48,7 +49,7 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
 
     if (isError) return renderError(handleErrorResponse(error));
 
-    if (isSuccess) return renderSuccess(data, isLoading, isSuccess);
+    if (isSuccess) return renderSuccess(data, isLoading, isSuccess, isFetching);
 
     return <></>;
 };
