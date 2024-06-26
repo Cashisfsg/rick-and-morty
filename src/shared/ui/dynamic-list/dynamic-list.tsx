@@ -31,18 +31,21 @@ export const DynamicList: React.FC<DynamicListProps> = ({
             : items.length
         : 0;
 
+    console.log("Is success: ", isSuccess);
     console.log("Item count: ", itemCount);
 
     const isItemLoaded = (index: number) =>
         !hasNextPage || index < items.length;
 
-    const loadMoreItems = useCallback(() => {
-        console.log("Loading more items");
-        console.log("Is next page loading: ", isNextPageLoading);
-        console.log("Is next page loading: ", isNextPageLoading);
+    // const loadMoreItems = useCallback(() => {
+    //     console.log("Loading more items");
+    //     console.log("Is next page loading: ", isNextPageLoading);
+    //     console.log("Is next page loading: ", isNextPageLoading);
 
-        isNextPageLoading ? () => {} : loadNextPage();
-    }, [isNextPageLoading, loadNextPage]);
+    //     isNextPageLoading ? () => {} : loadNextPage();
+    // }, [isNextPageLoading, loadNextPage]);
+
+    const loadMoreItems = isNextPageLoading ? () => {} : loadNextPage;
 
     // const Item = ({ index, style }) => (
     // <div style={style}>
