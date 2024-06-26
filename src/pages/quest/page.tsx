@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { QuestPopover } from "@/widgets/quest-popover";
 
-import { FetchQuest } from "@/entities/quest";
+import { QuestList } from "@/entities/quest";
 import { useFetchUserInfoQuery } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 import { Popover } from "@/shared/ui/popover";
@@ -39,7 +39,8 @@ export const QuestPage = () => {
             </header>
 
             <Popover.Root>
-                <FetchQuest />
+                {/* <FetchQuest /> */}
+                <QuestList />
                 {/* <FetchQuest
                     queryParams={{ page: page, limit: limit }}
                     renderSuccess={(
