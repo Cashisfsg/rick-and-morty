@@ -46,23 +46,23 @@ export const QuestPage = () => {
                         // isLoading,
                         // isFetching,
                         // isSuccess
-                    ) => {
-                        return (
-                            <>
-                                <Virtuoso
-                                    data={quests}
-                                    itemContent={(index, quest) => (
-                                        <QuestListItem quest={quest} />
-                                    )}
-                                    endReached={() =>
-                                        setPage(
-                                            (previousPage) => previousPage + 1
-                                        )
-                                    }
-                                    style={{ height: "400px", width: "100%" }}
-                                />
-                                {/* {quests.length !== 0 ? ( */}
-                                {/* <DynamicList
+                    ) => (
+                        <>
+                            <Virtuoso
+                                data={quests}
+                                itemContent={(index, quest) => (
+                                    <QuestListItem
+                                        key={quest.id}
+                                        quest={quest}
+                                    />
+                                )}
+                                endReached={() =>
+                                    setPage((previousPage) => previousPage + 1)
+                                }
+                                style={{ height: "400px", width: "100%" }}
+                            />
+                            {/* {quests.length !== 0 ? ( */}
+                            {/* <DynamicList
                                     hasNextPage={hasNextPage(
                                         page,
                                         limit,
@@ -82,14 +82,13 @@ export const QuestPage = () => {
                                     )}
                                 </DynamicList> */}
 
-                                {/* // ) : (
+                            {/* // ) : (
                                 //     <p className="text-green-secondary text-5.5">
                                 //         No available quests
                                 //     </p>
                                 // )} */}
-                            </>
-                        );
-                    }}
+                        </>
+                    )}
                 />
 
                 <Popover.Portal>
