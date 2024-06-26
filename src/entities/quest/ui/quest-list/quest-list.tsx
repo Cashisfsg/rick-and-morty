@@ -1,4 +1,4 @@
-import { useState, forwardRef } from "react";
+import React, { useState } from "react";
 import { VirtuosoGrid } from "react-virtuoso";
 
 import { FetchQuest } from "../fetch";
@@ -19,23 +19,15 @@ export const QuestList = () => {
                     <VirtuosoGrid
                         data={quests}
                         components={{
-                            List: forwardRef(({ children, ...props }, ref) => (
-                                <List ref={ref} {...props}>
-                                    {children}
-                                </List>
-                            )),
-                            Item: ({ children, ...props }) => (
-                                <div role="listitem" {...props}>
-                                    {children}
-                                </div>
-                            ),
+                            List: VirtualList,
+                            Item: VirtualListItem,
                         }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
                         )}
-                        // endReached={() =>
-                        //     setPage((previousPage) => previousPage + 1)
-                        // }
+                        endReached={() =>
+                            setPage((previousPage) => previousPage + 1)
+                        }
                         totalCount={quests.length}
                         style={{ height: "357px", width: "100%" }}
                     />
@@ -45,14 +37,17 @@ export const QuestList = () => {
     );
 };
 
-interface ListProps extends React.ComponentProps<"div"> {}
+export const VirtualList = React.forwardRef<
+    HTMLUListElement,
+    React.LiHTMLAttributes<HTMLUListElement>
+>((props, forwardRef) => {
+    return <ul {...props} className={styles["quest-list"]} ref={forwardRef} />;
+});
 
-export const List: React.FC<ListProps> = ({ className = "", ...props }) => {
-    return (
-        <div
-            role="listbox"
-            className={`${styles["quest-list"]} ${className}`}
-            {...props}
-        />
-    );
+interface VirtualListItemProps extends React.ComponentPropsWithoutRef<"li"> {}
+
+export const VirtualListItem: React.FC<VirtualListItemProps> = ({
+    ...props
+}) => {
+    return <li {...props} />;
 };
