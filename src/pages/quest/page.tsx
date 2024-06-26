@@ -11,13 +11,21 @@ import { DynamicList } from "@/shared/ui/dynamic-list/dynamic-list";
 import styles from "./index.module.css";
 import { QuestListItem } from "@/entities/quest/ui/quest-list/quest-list-item";
 
+function hasNextPage(page: number, limit: number, itemCount: number): boolean {
+    console.log("Page: " + page);
+    console.log("Limit: " + limit);
+    console.log("Items count: " + itemCount);
+    console.log(
+        "Fetch next page condition: ",
+        (page + 1) * limit === quests.length
+    );
+    return itemCount === (page + 1) * limit;
+}
+
 export const QuestPage = () => {
     const [page, setPage] = useState(0);
     const limit = 3;
     const { data: user } = useFetchUserInfoQuery();
-
-    console.log("rerendering quest list");
-    console.log("Current page in component: " + page);
 
     return (
         <article className={`${styles["referral-page"]} main-content`}>
@@ -38,27 +46,19 @@ export const QuestPage = () => {
                         isFetching,
                         isSuccess
                     ) => {
-                        console.log("Is loading requests: ", isLoading);
-                        console.log("Is fetching requests: ", isFetching);
-
                         return (
                             <>
                                 {/* {quests.length !== 0 ? ( */}
                                 <DynamicList
-                                    hasNextPage={
-                                        (page + 1) * limit === quests.length
-                                    }
+                                    hasNextPage={hasNextPage(
+                                        page,
+                                        limit,
+                                        quests.length
+                                    )}
                                     isNextPageLoading={isFetching}
                                     isSuccess={isSuccess}
                                     items={quests}
                                     loadNextPage={() => {
-                                        console.log("Loading next page...");
-                                        console.log("Current page: " + page);
-                                        console.log(
-                                            "Fetch next page condition: ",
-                                            (page + 1) * limit === quests.length
-                                        );
-
                                         setPage(
                                             (previousPage) => previousPage + 1
                                         );
