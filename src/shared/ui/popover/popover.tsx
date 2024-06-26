@@ -1,4 +1,4 @@
-import { useState, useMemo, useId } from "react";
+import { useState, useMemo, useRef, useId } from "react";
 
 import { Portal as PopoverPortal } from "@/shared/ui/portal";
 import { PopoverContext, usePopoverContext } from "./use-popover-context";
@@ -9,9 +9,10 @@ interface PopoverRootProps extends React.PropsWithChildren {}
 
 export const Root: React.FC<PopoverRootProps> = ({ children }) => {
     const popoverId = `popover-${useId()}`;
+    const popoverRef = useRef<HTMLDivElement>(null);
     const [data, setData] = useState<unknown>(null);
     const contextValue = useMemo(
-        () => ({ popoverId, data, setData }),
+        () => ({ popoverId, popoverRef, data, setData }),
         [popoverId, data, setData]
     );
 
@@ -55,17 +56,18 @@ type PopoverContentProps<E extends React.ElementType> = TagType<E> &
 
 export const Content = <E extends React.ElementType = "div">({
     as,
-    className,
+    className = "",
     ...props
 }: PopoverContentProps<E>) => {
-    const { popoverId } = usePopoverContext();
+    const { popoverId, popoverRef } = usePopoverContext();
     const TagName = as || "div";
 
     return (
         <TagName
             id={popoverId}
             popover="auto"
-            className={`${styles.popover} ${className || ""} bg-image bg-green`}
+            className={`${styles.popover} ${className} bg-image bg-green`}
+            ref={popoverRef}
             {...props}
         />
     );
@@ -73,12 +75,15 @@ export const Content = <E extends React.ElementType = "div">({
 
 interface PopoverCloseProps extends React.ComponentPropsWithoutRef<"button"> {}
 
-export const Close: React.FC<PopoverCloseProps> = ({ className, ...props }) => {
+export const Close: React.FC<PopoverCloseProps> = ({
+    className = "",
+    ...props
+}) => {
     const { popoverId } = usePopoverContext();
 
     return (
         <button
-            className={`popover-close-button ${className || ""}`}
+            className={`popover-close-button ${className}`}
             popovertarget={popoverId}
             popovertargetaction="hide"
             {...props}

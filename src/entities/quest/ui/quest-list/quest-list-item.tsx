@@ -15,11 +15,12 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
     quest,
     ...props
 }) => {
-    const { setData } = usePopoverContext();
+    const { popoverRef, setData } = usePopoverContext();
 
     const onClickHandler = (quest: Quest) => {
         if (quest?.is_completed) return;
         setData(quest);
+        popoverRef.current?.hidePopover();
     };
 
     return (
@@ -42,7 +43,9 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
                         className="border-green shadow-green text-green"
                     />
                 )}
-                <p>{quest?.description}</p>
+                <p className={quest?.is_completed ? "text-gray" : undefined}>
+                    {quest?.description}
+                </p>
                 {quest?.is_completed ? (
                     <Done />
                 ) : (
