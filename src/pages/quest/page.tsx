@@ -13,7 +13,7 @@ import { QuestListItem } from "@/entities/quest/ui/quest-list/quest-list-item";
 
 export const QuestPage = () => {
     const [page, setPage] = useState(0);
-    const limit = 5;
+    const limit = 3;
     const { data: user } = useFetchUserInfoQuery();
 
     console.log("rerendering quest list");
@@ -45,7 +45,7 @@ export const QuestPage = () => {
                             <>
                                 {/* {quests.length !== 0 ? ( */}
                                 <DynamicList
-                                    hasNextPage={false}
+                                    hasNextPage={page * limit !== quests.length}
                                     isNextPageLoading={isFetching}
                                     isSuccess={isSuccess}
                                     items={quests}
