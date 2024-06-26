@@ -18,9 +18,9 @@ export const QuestList = () => {
                 renderSuccess={(quests) => (
                     <Virtuoso
                         data={quests}
-                        components={{
-                            List: List,
-                        }}
+                        // components={{
+                        //     List: List,
+                        // }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
                         )}
@@ -28,7 +28,8 @@ export const QuestList = () => {
                             setPage((previousPage) => previousPage + 1)
                         }
                         totalCount={quests.length}
-                        style={{ height: "400px", width: "100%" }}
+                        // style={{ height: "400px", width: "100%" }}
+                        className={styles["quest-list"]}
                     />
                 )}
             />
