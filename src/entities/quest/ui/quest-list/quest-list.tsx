@@ -28,7 +28,8 @@ export const QuestList = () => {
                         endReached={() =>
                             setPage((previousPage) => previousPage + 1)
                         }
-                        // totalCount={quests.length}
+                        initialItemCount={0}
+                        totalCount={quests.length}
                         style={{ height: "357px", width: "100%" }}
                         className="hide-scrollbar"
                     />
