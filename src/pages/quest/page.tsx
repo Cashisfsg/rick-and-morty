@@ -17,7 +17,7 @@ function hasNextPage(page: number, limit: number, itemCount: number): boolean {
     console.log("Items count: " + itemCount);
     console.log(
         "Fetch next page condition: ",
-        (page + 1) * limit === quests.length
+        (page + 1) * limit === itemCount
     );
     return itemCount === (page + 1) * limit;
 }
