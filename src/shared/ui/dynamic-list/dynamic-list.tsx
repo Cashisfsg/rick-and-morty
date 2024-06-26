@@ -33,6 +33,8 @@ export const DynamicList: React.FC<DynamicListProps> = ({
             : items.length
         : 0;
 
+    console.log("Item count: ", itemCount);
+
     const isItemLoaded = (index: number) =>
         !hasNextPage && index < items.length;
 
