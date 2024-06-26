@@ -35,6 +35,10 @@ export const DynamicList: React.FC<DynamicListProps> = ({
         !hasNextPage && index < items.length;
 
     const loadMoreItems = useCallback(() => {
+        console.log("Loading more items");
+        console.log("Is next page loading: ", isNextPageLoading);
+        console.log("Is next page loading: ", isNextPageLoading);
+
         isNextPageLoading ? () => {} : loadNextPage;
     }, [isNextPageLoading, loadNextPage]);
 

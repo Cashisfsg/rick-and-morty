@@ -29,12 +29,7 @@ export const QuestPage = () => {
             <Popover.Root>
                 <FetchQuest
                     queryParams={{ page: page, limit: limit }}
-                    renderSuccess={(
-                        quests,
-                        isLoading,
-                        isSuccess,
-                        isFetching
-                    ) => (
+                    renderSuccess={(quests, isSuccess, isFetching) => (
                         <>
                             {quests.length !== 0 ? (
                                 <DynamicList
