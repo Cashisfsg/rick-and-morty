@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useMemo } from "react";
 import { FixedSizeList as List, ListChildComponentProps } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 
@@ -35,8 +35,15 @@ export const DynamicList: React.FC<DynamicListProps> = ({
     console.log("Is success: ", isSuccess);
     console.log("Item count: ", itemCount);
 
-    const isItemLoaded = (index: number) =>
-        !hasNextPage || index < items.length;
+    // const isItemLoaded = (index: number) =>
+    // !hasNextPage || index < items.length;
+
+    const isItemLoaded = useMemo(
+        (index: number) => {
+            return !hasNextPage || index < items.length;
+        },
+        [hasNextPage, items.length]
+    );
 
     // const loadMoreItems = useCallback(() => {
     //     console.log("Loading more items");
