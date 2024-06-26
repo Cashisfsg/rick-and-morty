@@ -69,6 +69,7 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
 
                 setPage((previousPage) => previousPage + 1);
             }}
+            totalCount={data.length}
             style={{ height: "400px", width: "100%" }}
         />
     );
