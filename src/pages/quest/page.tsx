@@ -42,9 +42,12 @@ export const QuestPage = () => {
                                     isNextPageLoading={isFetching}
                                     isSuccess={isSuccess}
                                     items={quests}
-                                    loadNextPage={() =>
-                                        setPage((page) => page + 1)
-                                    }
+                                    loadNextPage={() => {
+                                        console.log("Loading next page...");
+                                        console.log("Current page: " + page);
+
+                                        setPage((page) => page + 1);
+                                    }}
                                 >
                                     {({ index }) => (
                                         <QuestListItem quest={quests[index]} />
