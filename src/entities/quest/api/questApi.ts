@@ -41,7 +41,7 @@ export const questApi = rootApi
                     return currentArg?.limit !== previousArg?.limit;
                 },
                 merge: (currentCacheData, responseData) => {
-                    questEntityAdapter.addMany(
+                    questEntityAdapter.setMany(
                         currentCacheData,
                         questEntitySelector.selectAll(responseData)
                     );
