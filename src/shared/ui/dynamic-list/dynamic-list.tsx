@@ -25,6 +25,8 @@ export const DynamicList: React.FC<DynamicListProps> = ({
 }) => {
     // const [page, setPage] = useState(0);
 
+    console.log("Quest list has next page: ", hasNextPage);
+
     const itemCount = isSuccess
         ? hasNextPage
             ? items.length + 1
