@@ -60,7 +60,7 @@ export const DynamicList: React.FC<DynamicListProps> = ({
                 <List
                     height={400}
                     itemCount={itemCount}
-                    itemSize={60.5}
+                    itemSize={61}
                     width="100%"
                     onItemsRendered={onItemsRendered}
                     ref={ref}
