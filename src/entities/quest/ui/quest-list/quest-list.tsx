@@ -18,11 +18,11 @@ export const QuestList = () => {
                 renderSuccess={(quests) => (
                     <Virtuoso
                         data={quests}
-                        components={{
-                            List: (props) => <List {...props} />,
-                        }}
+                        // components={{
+                        //     List: (props) => <List {...props} />,
+                        // }}
                         itemContent={(index, quest) => (
-                            <QuestListItem quest={quest} />
+                            <QuestListItem key={quest.id} quest={quest} />
                         )}
                         endReached={() =>
                             setPage((previousPage) => previousPage + 1)
