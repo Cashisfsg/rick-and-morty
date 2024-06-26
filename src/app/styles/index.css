@@ -245,6 +245,10 @@ fieldset {
     border: 2px solid var(--blue-light-blue);
 }
 
+.border-gray {
+    border: 2px solid #898989;
+}
+
 .rounded-xl {
     border-radius: 0.75rem;
 }

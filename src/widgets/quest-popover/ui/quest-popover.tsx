@@ -1,28 +1,28 @@
 import { useCompleteQuestMutation, Quest } from "@/entities/quest/api";
 
 import { Cross, Telegram, Ticket } from "@/assets/icons";
-// import { Button } from "@/shared/ui/button";
+import { Button } from "@/shared/ui/button";
 import { Popover, usePopoverContext } from "@/shared/ui/popover";
 import { formatNumber } from "@/shared/lib/helpers/format-number";
-// import { TelegramClient } from "@/shared/api/types";
+import { TelegramClient } from "@/shared/api/types";
 
 import styles from "./index.module.css";
 
 export const QuestPopover = () => {
-    // const tg = (
-    //     window as Window & typeof globalThis & { Telegram: TelegramClient }
-    // ).Telegram.WebApp;
+    const tg = (
+        window as Window & typeof globalThis & { Telegram: TelegramClient }
+    ).Telegram.WebApp;
 
     const { data: quest } = usePopoverContext() as { data: Quest };
     const [completeQuest] = useCompleteQuestMutation();
 
     const onClickHandler: React.MouseEventHandler<
-        HTMLAnchorElement
+        HTMLButtonElement
     > = async () => {
-        if (quest === undefined || !quest) return;
+        if (quest === undefined || !quest || quest?.is_completed) return;
 
         try {
-            // tg.openLink(quest?.url);
+            tg.openLink(quest?.url);
             await completeQuest({ id: quest.id }).unwrap();
         } catch (error) {
             console.error(error);
@@ -46,14 +46,12 @@ export const QuestPopover = () => {
                 </hgroup>
             </header>
 
-            <a
-                href={quest?.url}
-                target="_blank"
+            <Button
                 onClick={onClickHandler}
                 className={`${styles["subscribe-button"]} button-blue text-shadow-blue font-secondary`}
             >
                 Subscribe
-            </a>
+            </Button>
 
             {/* <Button
                 onClick={onClickHandler}
