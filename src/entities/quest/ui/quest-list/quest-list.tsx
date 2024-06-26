@@ -30,6 +30,7 @@ export const QuestList = () => {
                         }
                         totalCount={quests.length}
                         style={{ height: "357px", width: "100%" }}
+                        className="hide-scrollbar"
                     />
                 )}
             />

@@ -194,6 +194,11 @@ fieldset {
     row-gap: 2.5rem;
 }
 
+.hide-scrollbar {
+    /* overflow-y: auto; */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
 .w-full {
     width: 100%;
 }
