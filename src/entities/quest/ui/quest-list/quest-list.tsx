@@ -22,7 +22,7 @@ export const QuestList = () => {
                             List: forwardRef((props, ref) => (
                                 <List ref={ref} {...props} />
                             )),
-                            Item: (props) => <li {...props} />,
+                            Item: (props) => <div role="listitem" {...props} />,
                         }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
@@ -31,8 +31,7 @@ export const QuestList = () => {
                             setPage((previousPage) => previousPage + 1)
                         }
                         totalCount={quests.length}
-                        // style={{ height: "400px", width: "100%" }}
-                        className={styles["quest-list"]}
+                        style={{ height: "357px !important", width: "100%" }}
                     />
                 )}
             />
@@ -40,8 +39,14 @@ export const QuestList = () => {
     );
 };
 
-interface ListProps extends React.ComponentProps<"ul"> {}
+interface ListProps extends React.ComponentProps<"div"> {}
 
 export const List: React.FC<ListProps> = ({ className = "", ...props }) => {
-    return <ul className={`${styles["quest-list"]} ${className}`} {...props} />;
+    return (
+        <div
+            role="listbox"
+            className={`${styles["quest-list"]} ${className}`}
+            {...props}
+        />
+    );
 };
