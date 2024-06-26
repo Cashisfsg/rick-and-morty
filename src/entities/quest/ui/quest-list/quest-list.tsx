@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { QuestListItem } from "./quest-list-item";
-import { type Quest } from "../../api";
+// import { type Quest } from "../../api";
 
 import styles from "./index.module.css";
 import { FetchQuest } from "../fetch";
@@ -21,6 +21,9 @@ export const QuestList = () => {
                         components={{
                             List: (props) => <List {...props} />,
                         }}
+                        itemContent={(index, quest) => (
+                            <QuestListItem quest={quest} />
+                        )}
                         endReached={() =>
                             setPage((previousPage) => previousPage + 1)
                         }
