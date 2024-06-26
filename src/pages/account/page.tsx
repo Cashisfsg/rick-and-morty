@@ -77,7 +77,7 @@ export const AccountPage = () => {
                     className={`${wallet ? "text-pink text-shadow-pink" : "text-gray"} ${styles["coin-counter"]}`}
                 >
                     <span>{formatCurrency(user?.balance || 0)}</span>
-                    <Token className={wallet ? "svg-shadow-pink" : undefined} />
+                    <Token className={wallet ? "svg-shadow-pink" : ""} />
                 </p>
 
                 <p className={styles["balance-controls"]}>

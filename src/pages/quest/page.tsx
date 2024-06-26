@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { QuestPopover } from "@/widgets/quest-popover";
 
 import { FetchQuest, QuestList } from "@/entities/quest";
@@ -5,9 +6,13 @@ import { useFetchUserInfoQuery } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 import { Popover } from "@/shared/ui/popover";
 
+import { DynamicList } from "@/shared/ui/dynamic-list/dynamic-list";
+
 import styles from "./index.module.css";
 
 export const QuestPage = () => {
+    const [page, setPage] = useState(0);
+    const limit = 5;
     const { data: user } = useFetchUserInfoQuery();
 
     return (
@@ -22,11 +27,18 @@ export const QuestPage = () => {
 
             <Popover.Root>
                 <FetchQuest
-                    queryParams={{ page: 0, limit: 10 }}
-                    renderSuccess={(quests) => (
+                    queryParams={{ page: page, limit: limit }}
+                    renderSuccess={(quests, isLoading, isSuccess) => (
                         <>
                             {quests.length !== 0 ? (
-                                <QuestList quests={quests} />
+                                <DynamicList
+                                    isLoading={isLoading}
+                                    isSuccess={isSuccess}
+                                    setPage={setPage}
+                                    items={quests}
+                                >
+                                    {() => <QuestList quests={quests} />}
+                                </DynamicList>
                             ) : (
                                 <p className="text-green-secondary text-5.5">
                                     No available quests

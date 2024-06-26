@@ -11,7 +11,11 @@ import { Loader } from "@/shared/ui/loader";
 
 interface FetchQuestProps {
     queryParams: FetchQuestsRequest;
-    renderSuccess: (quests: FetchQuestsResponse) => React.ReactElement;
+    renderSuccess: (
+        quests: FetchQuestsResponse,
+        isLoading: boolean,
+        isSuccess: boolean
+    ) => React.ReactElement;
     loadingFallback?: React.ReactNode;
     renderError?: (error: string | undefined) => React.ReactElement;
 }
@@ -44,7 +48,7 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
 
     if (isError) return renderError(handleErrorResponse(error));
 
-    if (isSuccess) return renderSuccess(data);
+    if (isSuccess) return renderSuccess(data, isLoading, isSuccess);
 
     return <></>;
 };

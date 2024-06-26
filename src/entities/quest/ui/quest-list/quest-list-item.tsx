@@ -43,7 +43,7 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
                     />
                 )}
                 <p
-                    className={`w-full truncate ${quest?.is_completed ? "text-gray" : undefined}`}
+                    className={`w-full truncate text-start ${quest?.is_completed ? "text-gray" : ""}`}
                 >
                     {quest?.description}
                 </p>
@@ -61,9 +61,7 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
                 >
                     +{formatNumber(quest?.amount)}
                     <Ticket
-                        className={
-                            quest?.is_completed ? undefined : "svg-shadow-blue"
-                        }
+                        className={quest?.is_completed ? "" : "svg-shadow-blue"}
                     />
                 </span>
             </Popover.Trigger>
