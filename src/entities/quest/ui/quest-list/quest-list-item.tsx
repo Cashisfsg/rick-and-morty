@@ -59,7 +59,7 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
                             : "text-blue-secondary text-shadow-blue"
                     }
                 >
-                    +{formatNumber(quest?.amount)}
+                    +{formatNumber(quest?.amount || 0)}
                     <Ticket
                         className={quest?.is_completed ? "" : "svg-shadow-blue"}
                     />
