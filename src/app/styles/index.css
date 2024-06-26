@@ -289,6 +289,10 @@ fieldset {
     color: var(--blue-blue);
 }
 
+.text-blue-secondary {
+    color: var(--blue-light-blue);
+}
+
 .text-gray {
     color: #898989;
 }

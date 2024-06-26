@@ -1,6 +1,7 @@
 import { EntityState, createEntityAdapter } from "@reduxjs/toolkit";
 
 import { rootApi } from "@/app/providers/redux/api/rootApi";
+import { userApi } from "@/entities/user";
 import type {
     Quest,
     FetchQuestsRequest,
@@ -72,6 +73,12 @@ export const questApi = rootApi
                 }),
                 invalidatesTags: (result, error, arg) =>
                     error ? [] : [{ type: "Quest", id: arg.id }],
+                async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                    try {
+                        await queryFulfilled;
+                        dispatch(userApi.util.invalidateTags(["User"]));
+                    } catch {}
+                },
             }),
         }),
     });

@@ -42,7 +42,9 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
                         className="border-green shadow-green text-green"
                     />
                 )}
-                <p className={quest?.is_completed ? "text-gray" : undefined}>
+                <p
+                    className={`w-full truncate ${quest?.is_completed ? "text-gray" : undefined}`}
+                >
                     {quest?.description}
                 </p>
                 {quest?.is_completed ? (
@@ -54,7 +56,7 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
                     className={
                         quest?.is_completed
                             ? "text-gray"
-                            : "text-blue text-shadow-blue"
+                            : "text-blue-secondary text-shadow-blue"
                     }
                 >
                     +{formatNumber(quest?.amount)}
