@@ -39,7 +39,7 @@ export const questApi = rootApi
                     return endpointName;
                 },
                 forceRefetch: ({ currentArg, previousArg }) => {
-                    return currentArg?.limit !== previousArg?.limit;
+                    return currentArg?.page !== previousArg?.page;
                 },
                 merge: (currentCacheData, responseData) => {
                     questEntityAdapter.setMany(
