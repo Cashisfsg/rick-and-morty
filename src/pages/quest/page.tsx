@@ -45,7 +45,7 @@ export const QuestPage = () => {
                             <>
                                 {/* {quests.length !== 0 ? ( */}
                                 <DynamicList
-                                    hasNextPage={true}
+                                    hasNextPage={page * limit !== quests.length}
                                     isNextPageLoading={isFetching}
                                     isSuccess={isSuccess}
                                     items={quests}
