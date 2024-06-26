@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { VirtuosoGrid } from "react-virtuoso";
+import { Virtuoso } from "react-virtuoso";
 
 import { FetchQuest } from "../fetch";
 import { QuestListItem } from "./quest-list-item";
@@ -16,12 +16,12 @@ export const QuestList = () => {
             <FetchQuest
                 queryParams={{ page: page, limit: limit }}
                 renderSuccess={(quests) => (
-                    <VirtuosoGrid
+                    <Virtuoso
                         data={quests}
-                        // components={{
-                        //     List: VirtualList,
-                        //     Item: VirtualListItem,
-                        // }}
+                        components={{
+                            List: VirtualList,
+                            Item: VirtualListItem,
+                        }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
                         )}
