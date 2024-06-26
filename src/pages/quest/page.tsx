@@ -16,6 +16,9 @@ export const QuestPage = () => {
     const limit = 5;
     const { data: user } = useFetchUserInfoQuery();
 
+    console.log("rerendering quest list");
+    console.log("Current page in component: " + page);
+
     return (
         <article className={`${styles["referral-page"]} main-content`}>
             <header className={`${styles.header} `}>
@@ -49,7 +52,9 @@ export const QuestPage = () => {
                                         console.log("Loading next page...");
                                         console.log("Current page: " + page);
 
-                                        setPage((page) => page + 1);
+                                        setPage(
+                                            (previousPage) => previousPage + 1
+                                        );
                                     }}
                                 >
                                     {({ index }) => (
