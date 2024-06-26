@@ -1,7 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { QuestPopover } from "@/widgets/quest-popover";
 
-import { FetchQuest, QuestList } from "@/entities/quest";
+import { FetchQuest } from "@/entities/quest";
 import { useFetchUserInfoQuery } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 import { Popover } from "@/shared/ui/popover";
@@ -9,8 +9,8 @@ import { Popover } from "@/shared/ui/popover";
 // import { DynamicList } from "@/shared/ui/dynamic-list/dynamic-list";
 
 import styles from "./index.module.css";
-import { QuestListItem } from "@/entities/quest/ui/quest-list/quest-list-item";
-import { Virtuoso } from "react-virtuoso";
+// import { QuestListItem } from "@/entities/quest/ui/quest-list/quest-list-item";
+// import { Virtuoso } from "react-virtuoso";
 
 // function hasNextPage(page: number, limit: number, itemCount: number): boolean {
 //     console.log("Page: " + page);
@@ -24,8 +24,8 @@ import { Virtuoso } from "react-virtuoso";
 // }
 
 export const QuestPage = () => {
-    const [page, setPage] = useState(0);
-    const limit = 3;
+    // const [page, setPage] = useState(0);
+    // const limit = 3;
     const { data: user } = useFetchUserInfoQuery();
 
     return (
@@ -39,7 +39,8 @@ export const QuestPage = () => {
             </header>
 
             <Popover.Root>
-                <FetchQuest
+                <FetchQuest />
+                {/* <FetchQuest
                     queryParams={{ page: page, limit: limit }}
                     renderSuccess={(
                         quests
@@ -62,7 +63,7 @@ export const QuestPage = () => {
                                 style={{ height: "400px", width: "100%" }}
                             />
                             {/* {quests.length !== 0 ? ( */}
-                            {/* <DynamicList
+                {/* <DynamicList
                                     hasNextPage={hasNextPage(
                                         page,
                                         limit,
@@ -82,14 +83,11 @@ export const QuestPage = () => {
                                     )}
                                 </DynamicList> */}
 
-                            {/* // ) : (
+                {/* // ) : (
                                 //     <p className="text-green-secondary text-5.5">
                                 //         No available quests
                                 //     </p>
                                 // )} */}
-                        </>
-                    )}
-                />
 
                 <Popover.Portal>
                     <QuestPopover />
