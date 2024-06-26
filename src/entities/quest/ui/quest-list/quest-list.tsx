@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 
 export const QuestList = () => {
     const [page, setPage] = useState(0);
-    const limit = 10;
+    const limit = 3;
 
     return (
         <section>
