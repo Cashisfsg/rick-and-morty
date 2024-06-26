@@ -9,6 +9,7 @@ import { Popover } from "@/shared/ui/popover";
 import { DynamicList } from "@/shared/ui/dynamic-list/dynamic-list";
 
 import styles from "./index.module.css";
+import { QuestListItem } from "@/entities/quest/ui/quest-list/quest-list-item";
 
 export const QuestPage = () => {
     const [page, setPage] = useState(0);
