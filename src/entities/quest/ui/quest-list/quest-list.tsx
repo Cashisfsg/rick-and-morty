@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { VirtuosoGrid } from "react-virtuoso";
 
 import { FetchQuest } from "../fetch";
@@ -18,9 +18,12 @@ export const QuestList = () => {
                 renderSuccess={(quests) => (
                     <VirtuosoGrid
                         data={quests}
-                        // components={{
-                        //     List: List,
-                        // }}
+                        components={{
+                            List: forwardRef((props, ref) => (
+                                <List ref={ref} {...props} />
+                            )),
+                            Item: (props) => <li {...props} />,
+                        }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
                         )}
