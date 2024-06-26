@@ -19,11 +19,6 @@ export const QuestPage = () => {
     console.log("rerendering quest list");
     console.log("Current page in component: " + page);
 
-    console.log(
-        "Fetch next page condition: ",
-        (page + 1) * limit === quests.length
-    );
-
     return (
         <article className={`${styles["referral-page"]} main-content`}>
             <header className={`${styles.header} `}>
@@ -59,6 +54,10 @@ export const QuestPage = () => {
                                     loadNextPage={() => {
                                         console.log("Loading next page...");
                                         console.log("Current page: " + page);
+                                        console.log(
+                                            "Fetch next page condition: ",
+                                            (page + 1) * limit === quests.length
+                                        );
 
                                         setPage(
                                             (previousPage) => previousPage + 1
