@@ -19,7 +19,7 @@ export const QuestList = () => {
                     <Virtuoso
                         data={quests}
                         components={{
-                            List: (props) => <List {...props} />,
+                            List: List,
                         }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
