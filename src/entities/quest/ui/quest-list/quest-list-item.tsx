@@ -1,6 +1,6 @@
 import { Popover, usePopoverContext } from "@/shared/ui/popover";
 
-import { Telegram, Ticket, ChevronRight, Done } from "@/assets/icons";
+import { Telegram, Referral, Ticket, ChevronRight, Done } from "@/assets/icons";
 import { Quest } from "../../api/types";
 
 import { formatNumber } from "@/shared/lib/helpers/format-number";
@@ -25,13 +25,17 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
         <li {...props}>
             <Popover.Trigger
                 onClick={() => onClickHandler(quest)}
-                className={`${styles.quest} ${quest?.is_completed ? "border-gray" : "bg-green border-green shadow-green"}`}
+                className={`${styles.quest} bg-green bg-image ${quest?.is_completed ? "border-gray" : "border-green shadow-green"}`}
             >
-                <Telegram
-                    height="24"
-                    width="24"
-                    className="border-green shadow-green text-green"
-                />
+                {quest?.is_completed ? (
+                    <Referral height="24" width="24" className="text-gray" />
+                ) : (
+                    <Telegram
+                        height="24"
+                        width="24"
+                        className="border-green shadow-green text-green"
+                    />
+                )}
                 <p>{quest?.description}</p>
                 {quest?.is_completed ? (
                     <Done />
