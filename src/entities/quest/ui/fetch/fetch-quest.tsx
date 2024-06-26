@@ -49,7 +49,7 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
 
     if (isError) return renderError(handleErrorResponse(error));
 
-    if (isSuccess) return renderSuccess(data, isLoading, isSuccess, isFetching);
+    if (isSuccess) return renderSuccess(data, isLoading, isFetching, isSuccess);
 
     return <></>;
 };
