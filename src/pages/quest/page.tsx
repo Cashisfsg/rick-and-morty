@@ -38,6 +38,7 @@ export const QuestPage = () => {
                         isFetching,
                         isSuccess
                     ) => {
+                        console.log("Is loading requests: ", isLoading);
                         console.log("Is fetching requests: ", isFetching);
 
                         return (

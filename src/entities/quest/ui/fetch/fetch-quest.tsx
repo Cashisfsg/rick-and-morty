@@ -43,6 +43,8 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
             }
         );
 
+    console.log("Fetch quest list query params: ", queryParams);
+
     // console.error("Fetch quest error: ", handleErrorResponse(error), error);
 
     // if (isLoading) return loadingFallback;
