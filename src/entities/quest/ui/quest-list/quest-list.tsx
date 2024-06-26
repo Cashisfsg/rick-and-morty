@@ -18,17 +18,17 @@ export const QuestList = () => {
                 renderSuccess={(quests) => (
                     <VirtuosoGrid
                         data={quests}
-                        components={{
-                            List: VirtualList,
-                            Item: VirtualListItem,
-                        }}
+                        // components={{
+                        //     List: VirtualList,
+                        //     Item: VirtualListItem,
+                        // }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
                         )}
                         endReached={() =>
                             setPage((previousPage) => previousPage + 1)
                         }
-                        initialItemCount={0}
+                        // initialItemCount={0}
                         totalCount={quests.length}
                         style={{ height: "357px", width: "100%" }}
                         className="hide-scrollbar"
