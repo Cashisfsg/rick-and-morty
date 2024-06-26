@@ -6,10 +6,8 @@ interface DynamicListProps {
     hasNextPage: boolean;
     isNextPageLoading: boolean;
     isSuccess: boolean;
-    // setPage: React.Dispatch<React.SetStateAction<number>>;
     items: unknown[];
     loadNextPage: () => void;
-    // limit: number;
     children: React.ComponentType<ListChildComponentProps<any>>;
 }
 
@@ -36,7 +34,7 @@ export const DynamicList: React.FC<DynamicListProps> = ({
     console.log("Item count: ", itemCount);
 
     const isItemLoaded = (index: number) =>
-        !hasNextPage && index < items.length;
+        !hasNextPage || index < items.length;
 
     const loadMoreItems = useCallback(() => {
         console.log("Loading more items");
