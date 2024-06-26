@@ -31,7 +31,7 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
     renderError = (error) => <pre>{error || "Unknown error"}</pre>,
 }) => {
     const [page, setPage] = useState(0);
-    const limit = 3;
+    const limit = 5;
 
     const { data, isError, error } = useFetchQuestListQuery(
         {
