@@ -39,32 +39,28 @@ export const QuestPage = () => {
 
                         return (
                             <>
-                                {quests.length !== 0 ? (
-                                    <DynamicList
-                                        hasNextPage={true}
-                                        isNextPageLoading={isFetching}
-                                        isSuccess={isSuccess}
-                                        items={quests}
-                                        loadNextPage={() => {
-                                            console.log("Loading next page...");
-                                            console.log(
-                                                "Current page: " + page
-                                            );
+                                {/* {quests.length !== 0 ? ( */}
+                                <DynamicList
+                                    hasNextPage={true}
+                                    isNextPageLoading={isFetching}
+                                    isSuccess={isSuccess}
+                                    items={quests}
+                                    loadNextPage={() => {
+                                        console.log("Loading next page...");
+                                        console.log("Current page: " + page);
 
-                                            setPage((page) => page + 1);
-                                        }}
-                                    >
-                                        {({ index }) => (
-                                            <QuestListItem
-                                                quest={quests[index]}
-                                            />
-                                        )}
-                                    </DynamicList>
-                                ) : (
-                                    <p className="text-green-secondary text-5.5">
-                                        No available quests
-                                    </p>
-                                )}
+                                        setPage((page) => page + 1);
+                                    }}
+                                >
+                                    {({ index }) => (
+                                        <QuestListItem quest={quests[index]} />
+                                    )}
+                                </DynamicList>
+                                {/* // ) : (
+                                //     <p className="text-green-secondary text-5.5">
+                                //         No available quests
+                                //     </p>
+                                // )} */}
                             </>
                         );
                     }}
