@@ -31,6 +31,7 @@ export const DynamicList: React.FC<DynamicListProps> = ({
             : items.length
         : 0;
 
+    console.log("Items length: ", items.length);
     console.log("Is success: ", isSuccess);
     console.log("Item count: ", itemCount);
 
