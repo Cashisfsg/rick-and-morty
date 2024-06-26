@@ -34,32 +34,40 @@ export const QuestPage = () => {
                         isLoading,
                         isFetching,
                         isSuccess
-                    ) => (
-                        <>
-                            {quests.length !== 0 ? (
-                                <DynamicList
-                                    hasNextPage={true}
-                                    isNextPageLoading={isFetching}
-                                    isSuccess={isSuccess}
-                                    items={quests}
-                                    loadNextPage={() => {
-                                        console.log("Loading next page...");
-                                        console.log("Current page: " + page);
+                    ) => {
+                        console.log("Is fetching requests: ", isFetching);
 
-                                        setPage((page) => page + 1);
-                                    }}
-                                >
-                                    {({ index }) => (
-                                        <QuestListItem quest={quests[index]} />
-                                    )}
-                                </DynamicList>
-                            ) : (
-                                <p className="text-green-secondary text-5.5">
-                                    No available quests
-                                </p>
-                            )}
-                        </>
-                    )}
+                        return (
+                            <>
+                                {quests.length !== 0 ? (
+                                    <DynamicList
+                                        hasNextPage={true}
+                                        isNextPageLoading={isFetching}
+                                        isSuccess={isSuccess}
+                                        items={quests}
+                                        loadNextPage={() => {
+                                            console.log("Loading next page...");
+                                            console.log(
+                                                "Current page: " + page
+                                            );
+
+                                            setPage((page) => page + 1);
+                                        }}
+                                    >
+                                        {({ index }) => (
+                                            <QuestListItem
+                                                quest={quests[index]}
+                                            />
+                                        )}
+                                    </DynamicList>
+                                ) : (
+                                    <p className="text-green-secondary text-5.5">
+                                        No available quests
+                                    </p>
+                                )}
+                            </>
+                        );
+                    }}
                 />
 
                 <Popover.Portal>
