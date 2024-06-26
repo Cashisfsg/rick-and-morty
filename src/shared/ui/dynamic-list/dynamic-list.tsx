@@ -3,31 +3,40 @@ import { FixedSizeList as List, ListChildComponentProps } from "react-window";
 import InfiniteLoader from "react-window-infinite-loader";
 
 interface DynamicListProps {
-    isLoading: boolean;
+    hasNextPage: boolean;
+    isNextPageLoading: boolean;
     isSuccess: boolean;
-    setPage: React.Dispatch<React.SetStateAction<number>>;
+    // setPage: React.Dispatch<React.SetStateAction<number>>;
     items: unknown[];
+    loadNextPage: () => void;
     // limit: number;
     children: React.ComponentType<ListChildComponentProps<any>>;
 }
 
 export const DynamicList: React.FC<DynamicListProps> = ({
-    isLoading,
+    hasNextPage,
+    isNextPageLoading,
     isSuccess,
-    setPage,
+    // setPage,
     items,
+    loadNextPage,
     // limit,
     children,
 }) => {
     // const [page, setPage] = useState(0);
 
-    const isItemLoaded = (index: number) => !isLoading && index < items.length;
+    const itemCount = isSuccess
+        ? hasNextPage
+            ? items.length + 1
+            : items.length
+        : 0;
+
+    const isItemLoaded = (index: number) =>
+        !hasNextPage && index < items.length;
 
     const loadMoreItems = useCallback(() => {
-        if (isLoading) return Promise.resolve();
-        setPage((prevPage) => prevPage + 1);
-        return Promise.resolve();
-    }, [isLoading]);
+        isNextPageLoading ? () => {} : loadNextPage;
+    }, [isNextPageLoading, loadNextPage]);
 
     // const Item = ({ index, style }) => (
     // <div style={style}>
@@ -38,15 +47,15 @@ export const DynamicList: React.FC<DynamicListProps> = ({
     return (
         <InfiniteLoader
             isItemLoaded={isItemLoaded}
-            itemCount={isSuccess ? items.length + 1 : 0}
+            itemCount={itemCount}
             loadMoreItems={loadMoreItems}
         >
             {({ onItemsRendered, ref }) => (
                 <List
                     height={400}
-                    itemCount={isSuccess ? items.length + 1 : 0}
+                    itemCount={itemCount}
                     itemSize={35}
-                    width={300}
+                    width="100%"
                     onItemsRendered={onItemsRendered}
                     ref={ref}
                 >

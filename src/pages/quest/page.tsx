@@ -32,10 +32,13 @@ export const QuestPage = () => {
                         <>
                             {quests.length !== 0 ? (
                                 <DynamicList
-                                    isLoading={isLoading}
+                                    hasNextPage={true}
+                                    isNextPageLoading={isLoading}
                                     isSuccess={isSuccess}
-                                    setPage={setPage}
                                     items={quests}
+                                    loadNextPage={() =>
+                                        setPage((page) => page + 1)
+                                    }
                                 >
                                     {() => <QuestList quests={quests} />}
                                 </DynamicList>
