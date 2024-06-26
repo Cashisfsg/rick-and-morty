@@ -33,11 +33,11 @@ export const QuestList = () => {
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
                         )}
-                        endReached={() =>
-                            setPage((previousPage) => previousPage + 1)
-                        }
+                        // endReached={() =>
+                        //     setPage((previousPage) => previousPage + 1)
+                        // }
                         totalCount={quests.length}
-                        style={{ height: "357px !important", width: "100%" }}
+                        style={{ height: "357px", width: "100%" }}
                     />
                 )}
             />
