@@ -49,7 +49,7 @@ export const TgChannelPopover = () => {
 
             <Button
                 onClick={verifyChannelSubscription}
-                className={`${styles["subscribe-button"]} button-base button-blue text-shadow-blue`}
+                className={`${styles["verify-button"]} button-base button-blue text-shadow-blue`}
             >
                 Verify
             </Button>
