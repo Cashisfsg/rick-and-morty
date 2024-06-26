@@ -18,17 +18,23 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
     const { setData } = usePopoverContext();
 
     const onClickHandler = (quest: Quest) => {
+        if (quest?.is_completed) return;
         setData(quest);
     };
 
     return (
         <li {...props}>
             <Popover.Trigger
+                disabled={quest?.is_completed}
                 onClick={() => onClickHandler(quest)}
                 className={`${styles.quest} bg-green bg-image ${quest?.is_completed ? "border-gray" : "border-green shadow-green"}`}
             >
                 {quest?.is_completed ? (
-                    <Referral height="24" width="24" className="text-gray" />
+                    <Referral
+                        height="24"
+                        width="24"
+                        className="text-gray border-gray"
+                    />
                 ) : (
                     <Telegram
                         height="24"
