@@ -39,8 +39,8 @@ export const DynamicList: React.FC<DynamicListProps> = ({
         console.log("Is next page loading: ", isNextPageLoading);
         console.log("Is next page loading: ", isNextPageLoading);
 
-        isNextPageLoading ? () => {} : loadNextPage;
-    }, [isNextPageLoading, loadNextPage]);
+        hasNextPage ? () => {} : loadNextPage;
+    }, [hasNextPage, isNextPageLoading, loadNextPage]);
 
     // const Item = ({ index, style }) => (
     // <div style={style}>
