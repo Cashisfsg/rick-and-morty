@@ -1,7 +1,4 @@
-import {
-    // EntityState,
-    createEntityAdapter,
-} from "@reduxjs/toolkit";
+import { EntityState, createEntityAdapter } from "@reduxjs/toolkit";
 
 import { rootApi } from "@/app/providers/redux/api/rootApi";
 import type {
@@ -23,43 +20,41 @@ export const questApi = rootApi
     })
     .injectEndpoints({
         endpoints: (builder) => ({
-            fetchQuestList: builder.query<Quest[], FetchQuestsRequest>({
+            fetchQuestList: builder.query<
+                EntityState<Quest, number>,
+                FetchQuestsRequest
+            >({
                 query: ({ page, limit }) => ({
                     url: "/task/",
                     params: { page, limit },
                 }),
-                // transformResponse: (response: Quest[]) => {
-                //     return questEntityAdapter.addMany(
-                //         questEntityAdapter.getInitialState(),
-                //         response
-                //     );
-                // },
+                transformResponse: (response: Quest[]) => {
+                    return questEntityAdapter.addMany(
+                        questEntityAdapter.getInitialState(),
+                        response
+                    );
+                },
                 serializeQueryArgs: ({ endpointName }) => {
                     return endpointName;
                 },
-                // forceRefetch: ({ currentArg, previousArg }) => {
-                //     return currentArg?.limit !== previousArg?.limit;
-                // },
-                // merge: (currentCacheData, responseData) => {
-                //     questEntityAdapter.addMany(
-                //         currentCacheData,
-                //         questEntitySelector.selectAll(responseData)
-                //     );
-                // },
                 forceRefetch: ({ currentArg, previousArg }) => {
                     return currentArg?.limit !== previousArg?.limit;
                 },
-                // Слияние текущего кэша и нового ответа
                 merge: (currentCacheData, responseData) => {
-                    return [...currentCacheData, ...responseData];
+                    questEntityAdapter.addMany(
+                        currentCacheData,
+                        questEntitySelector.selectAll(responseData)
+                    );
                 },
                 providesTags: (result) =>
                     result
                         ? [
-                              ...result.map(({ id }) => ({
-                                  type: "Quest" as const,
-                                  id: id as number,
-                              })),
+                              ...Object.values(result.entities).map(
+                                  ({ id }) => ({
+                                      type: "Quest" as const,
+                                      id: id as number,
+                                  })
+                              ),
                               "Quest",
                           ]
                         : ["Quest"],

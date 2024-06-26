@@ -1,7 +1,7 @@
 import {
     useFetchQuestListQuery,
-    // questEntityAdapter,
-    // questEntitySelector,
+    questEntityAdapter,
+    questEntitySelector,
     type FetchQuestsRequest,
     type FetchQuestsResponse,
 } from "../../api";
@@ -27,15 +27,15 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
             {
                 page: queryParams.page,
                 limit: queryParams.limit,
+            },
+            {
+                selectFromResult: ({ data, ...otherParams }) => ({
+                    data: questEntitySelector.selectAll(
+                        data ?? questEntityAdapter.getInitialState()
+                    ),
+                    ...otherParams,
+                }),
             }
-            // {
-            //     selectFromResult: ({ data, ...otherParams }) => ({
-            //         data: questEntitySelector.selectAll(
-            //             data ?? questEntityAdapter.getInitialState()
-            //         ),
-            //         ...otherParams,
-            //     }),
-            // }
         );
 
     console.error("Fetch quest error: ", handleErrorResponse(error), error);
