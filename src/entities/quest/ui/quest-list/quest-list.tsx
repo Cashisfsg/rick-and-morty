@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { Virtuoso } from "react-virtuoso";
 
+import { FetchQuest } from "../fetch";
 import { QuestListItem } from "./quest-list-item";
 // import { type Quest } from "../../api";
 
 import styles from "./index.module.css";
-import { FetchQuest } from "../fetch";
-import { Virtuoso } from "react-virtuoso";
 
 export const QuestList = () => {
     const [page, setPage] = useState(0);
@@ -18,9 +18,9 @@ export const QuestList = () => {
                 renderSuccess={(quests) => (
                     <Virtuoso
                         data={quests}
-                        // components={{
-                        //     List: (props) => <List {...props} />,
-                        // }}
+                        components={{
+                            List: (props) => <List {...props} />,
+                        }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
                         )}
