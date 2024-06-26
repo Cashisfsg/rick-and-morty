@@ -64,7 +64,11 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
             itemContent={(index, quest) => (
                 <QuestListItem key={quest.id} quest={quest} />
             )}
-            endReached={() => setPage((previousPage) => previousPage + 1)}
+            endReached={() => {
+                console.log("End reached");
+
+                setPage((previousPage) => previousPage + 1);
+            }}
             style={{ height: "400px", width: "100%" }}
         />
     );
