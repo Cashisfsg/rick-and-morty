@@ -26,8 +26,8 @@ export const TgChannelPopover = () => {
 
     const verifyChannelSubscription = async () => {
         try {
-            await verify({ id: channel.id }).unwrap();
-            navigate("/app/account");
+            const { status } = await verify({ id: channel.id }).unwrap();
+            if (status) navigate("/app/account");
         } catch (error) {
             console.error(error);
         }
