@@ -1,7 +1,7 @@
 import { TgChannelPopover } from "@/widgets/tg-channel-popover";
 // import { ConnectWalletPopover } from "@/widgets/connect-wallet-popover";
 
-import { ChannelsList } from "@/entities/channel";
+import { ChannelsList, FetchChannels } from "@/entities/channel";
 
 import { Popover } from "@/shared/ui/popover";
 
@@ -22,7 +22,11 @@ export const WelcomePage = () => {
 
             <Popover.Root>
                 <TgChannelPopover />
-                <ChannelsList />
+                <FetchChannels
+                    renderSuccess={(channels) => (
+                        <ChannelsList channels={channels} />
+                    )}
+                />
             </Popover.Root>
         </main>
     );

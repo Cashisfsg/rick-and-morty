@@ -26,6 +26,10 @@
     margin-block-start: 6rem;
 }
 
+.verify-button {
+    margin-block-start: 1.5rem;
+}
+
 .close-button {
     position: absolute;
     inset: 0 0 auto auto;
