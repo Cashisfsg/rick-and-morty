@@ -39,7 +39,7 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
             limit: limit,
         },
         {
-            // refetchOnMountOrArgChange: true,
+            refetchOnMountOrArgChange: true,
             selectFromResult: ({ data, ...otherParams }) => ({
                 data: questEntitySelector.selectAll(
                     data ?? questEntityAdapter.getInitialState()
