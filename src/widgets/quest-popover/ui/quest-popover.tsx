@@ -15,6 +15,7 @@ export const QuestPopover = () => {
 
     const { data: quest } = usePopoverContext() as { data: Quest };
     const [completeQuest] = useCompleteQuestMutation();
+    const { popoverRef } = usePopoverContext();
 
     const onClickHandler: React.MouseEventHandler<
         HTMLButtonElement
@@ -24,6 +25,7 @@ export const QuestPopover = () => {
         try {
             tg.openLink(quest?.url);
             await completeQuest({ id: quest.id }).unwrap();
+            popoverRef.current?.hidePopover();
         } catch (error) {
             console.error(error);
         }
