@@ -19,10 +19,16 @@ export const QuestList = () => {
                     <VirtuosoGrid
                         data={quests}
                         components={{
-                            List: forwardRef((props, ref) => (
-                                <List ref={ref} {...props} />
+                            List: forwardRef(({ children, ...props }, ref) => (
+                                <List ref={ref} {...props}>
+                                    {children}
+                                </List>
                             )),
-                            Item: (props) => <div role="listitem" {...props} />,
+                            Item: ({ children, ...props }) => (
+                                <div role="listitem" {...props}>
+                                    {children}
+                                </div>
+                            ),
                         }}
                         itemContent={(index, quest) => (
                             <QuestListItem key={quest.id} quest={quest} />
