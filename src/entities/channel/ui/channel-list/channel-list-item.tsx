@@ -5,8 +5,6 @@ import { TelegramChannel } from "../../api";
 import { ChevronRight } from "@/assets/icons";
 import styles from "./index.module.css";
 
-import TelegramChannelLogo from "@/assets/img/tg-avatar.png";
-
 interface ChannelListItemProps {
     channel: TelegramChannel;
 }
@@ -26,7 +24,7 @@ export const ChannelListItem: React.FC<ChannelListItemProps> = ({
             className={`${styles["channel-list-item"]} bg-green border-green bg-image shadow-green rounded-xl`}
         >
             <img
-                src={TelegramChannelLogo}
+                src={channel?.photo}
                 alt="Telegram channel logo"
                 height="32"
                 width="32"
