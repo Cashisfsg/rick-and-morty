@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { Telegram, X } from "@/assets/icons";
-import QR from "@/assets/img/qr-code.png";
+import { useAppDispatch } from "@/app/providers/redux/hooks";
 import {
     useLazyFetchUserInfoQuery,
     useJoinReferralMutation,
     useUpdatePremiumStatusMutation,
     setUserInitData,
 } from "@/entities/user";
-import { useAppDispatch } from "@/app/providers/redux/hooks";
+import { useFetchAllChannelsQuery } from "@/entities/channel";
+import { TelegramClient } from "@/shared/api/types";
+import QR from "@/assets/img/qr-code.png";
+import { Telegram, X } from "@/assets/icons";
 
 import styles from "./index.module.css";
-import { TelegramClient } from "@/shared/api/types";
 
 export const LoginPage = () => {
     const tg = (
@@ -27,6 +28,7 @@ export const LoginPage = () => {
     const [fetchUserInfo, { data: user }] = useLazyFetchUserInfoQuery();
     const [joinReferral] = useJoinReferralMutation();
     const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
+    const { data: channels } = useFetchAllChannelsQuery();
 
     useEffect(() => {
         (async () => {
@@ -60,7 +62,13 @@ export const LoginPage = () => {
             </figure>
             <footer>
                 <Link
-                    to={user?.is_verified ? "/app/welcome" : "/app/verify"}
+                    to={
+                        channels?.length === 0
+                            ? "/app/account"
+                            : user?.is_verified
+                              ? "/app/welcome"
+                              : "/app/verify"
+                    }
                     className="bg-image bg-blue"
                 >
                     <Telegram className="svg-shadow-blue" />
