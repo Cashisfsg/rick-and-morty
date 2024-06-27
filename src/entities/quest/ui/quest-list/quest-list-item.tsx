@@ -1,7 +1,5 @@
 import { Popover, usePopoverContext } from "@/shared/ui/popover";
 
-import { useAppDispatch } from "@/app/providers/redux/hooks";
-
 import { Telegram, Referral, Ticket, ChevronRight, Done } from "@/assets/icons";
 import { Quest } from "../../api/types";
 

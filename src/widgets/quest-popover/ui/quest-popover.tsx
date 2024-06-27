@@ -19,9 +19,7 @@ export const QuestPopover = () => {
     ).Telegram.WebApp;
 
     const dispatch = useAppDispatch();
-    const {
-        data: { quest, index },
-    } = usePopoverContext() as {
+    const { data } = usePopoverContext() as {
         data: { quest: Quest; index: number };
     };
     const [completeQuest] = useCompleteQuestMutation();
@@ -30,14 +28,19 @@ export const QuestPopover = () => {
     const onClickHandler: React.MouseEventHandler<
         HTMLButtonElement
     > = async () => {
-        if (quest === undefined || !quest || quest?.is_completed) return;
+        if (
+            data?.quest === undefined ||
+            !data?.quest ||
+            data?.quest?.is_completed
+        )
+            return;
 
         try {
-            tg.openLink(quest?.url);
-            await completeQuest({ id: quest.id }).unwrap();
+            tg.openLink(data?.quest?.url);
+            await completeQuest({ id: data?.quest.id }).unwrap();
             dispatch(
                 questApi.endpoints.fetchQuestList.initiate(
-                    { page: Math.floor(index / 3), limit: 3 },
+                    { page: Math.floor(data?.index / 3), limit: 3 },
                     { subscribe: false, forceRefetch: true }
                 )
             );
@@ -55,10 +58,10 @@ export const QuestPopover = () => {
                 </span>
                 <hgroup>
                     <h2 className="text-green text-center text-shadow-green font-secondary">
-                        {quest?.description}
+                        {data?.quest?.description}
                     </h2>
                     <p>
-                        +{formatNumber(quest?.amount || 0)}
+                        +{formatNumber(data?.quest?.amount || 0)}
                         <Ticket className="svg-shadow-blue" />
                     </p>
                 </hgroup>
