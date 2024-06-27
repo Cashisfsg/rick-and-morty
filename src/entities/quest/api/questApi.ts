@@ -10,7 +10,7 @@ import type {
 } from "./types";
 
 export const questEntityAdapter = createEntityAdapter({
-    selectId: (quest: Quest) => quest.task_id,
+    selectId: (quest: Quest) => quest.id,
 });
 
 export const questEntitySelector = questEntityAdapter.getSelectors();
