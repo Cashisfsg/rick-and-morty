@@ -10,7 +10,7 @@ import type {
 } from "./types";
 
 export const questEntityAdapter = createEntityAdapter({
-    selectId: (quest: Quest) => quest.id,
+    selectId: (quest: Quest) => quest.task_id,
 });
 
 export const questEntitySelector = questEntityAdapter.getSelectors();
@@ -71,8 +71,7 @@ export const questApi = rootApi
                         task_id: id,
                     },
                 }),
-                invalidatesTags: (result, error) =>
-                    error ? [] : [{ type: "Quest", id: result?.task_id }],
+                invalidatesTags: (result, error) => (error ? [] : ["Quest"]),
                 async onQueryStarted(_, { dispatch, queryFulfilled }) {
                     try {
                         await queryFulfilled;
