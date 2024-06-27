@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 
 export const QuestList = () => {
     const [page, setPage] = useState(0);
-    const limit = 3;
+    const limit = 10;
 
     return (
         <section>
@@ -27,6 +27,7 @@ export const QuestList = () => {
                                 key={quest.id}
                                 quest={quest}
                                 index={index}
+                                limit={limit}
                             />
                         )}
                         endReached={() =>

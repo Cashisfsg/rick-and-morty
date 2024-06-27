@@ -10,18 +10,20 @@ import styles from "./index.module.css";
 interface QuestListItemProps extends React.ComponentPropsWithoutRef<"button"> {
     quest: Quest;
     index: number;
+    limit: number;
 }
 
 export const QuestListItem: React.FC<QuestListItemProps> = ({
     quest,
     index,
+    limit,
     ...props
 }) => {
     const { setData } = usePopoverContext();
 
     const onClickHandler = (quest: Quest) => {
         if (quest?.is_completed) return;
-        setData({ quest: quest, index: index });
+        setData({ quest: quest, index: index, limit: limit });
     };
 
     return (

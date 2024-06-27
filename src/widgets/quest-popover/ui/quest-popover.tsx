@@ -20,7 +20,7 @@ export const QuestPopover = () => {
 
     const dispatch = useAppDispatch();
     const { data } = usePopoverContext() as {
-        data: { quest: Quest; index: number };
+        data: { quest: Quest; index: number; limit: number } | null;
     };
     const [completeQuest] = useCompleteQuestMutation();
     const { popoverRef } = usePopoverContext();
@@ -40,7 +40,7 @@ export const QuestPopover = () => {
             await completeQuest({ id: data?.quest.id }).unwrap();
             dispatch(
                 questApi.endpoints.fetchQuestList.initiate(
-                    { page: Math.floor(data?.index / 3), limit: 3 },
+                    { page: Math.floor(data?.index / data?.limit), limit: 3 },
                     { subscribe: false, forceRefetch: true }
                 )
             );
