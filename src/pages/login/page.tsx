@@ -8,7 +8,7 @@ import {
     useUpdatePremiumStatusMutation,
     setUserInitData,
 } from "@/entities/user";
-import { useFetchAllChannelsQuery } from "@/entities/channel";
+import { useLazyFetchAllChannelsQuery } from "@/entities/channel";
 import { TelegramClient } from "@/shared/api/types";
 import QR from "@/assets/img/qr-code.png";
 import { Telegram, X } from "@/assets/icons";
@@ -28,14 +28,17 @@ export const LoginPage = () => {
     const [fetchUserInfo, { data: user }] = useLazyFetchUserInfoQuery();
     const [joinReferral] = useJoinReferralMutation();
     const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
-    const { data: channels } = useFetchAllChannelsQuery();
+    const [fetchChannels, { data: channels }] = useLazyFetchAllChannelsQuery();
 
     useEffect(() => {
         (async () => {
             try {
                 dispatch(setUserInitData(initData));
 
-                await fetchUserInfo().unwrap();
+                await Promise.all([
+                    fetchUserInfo().unwrap(),
+                    fetchChannels().unwrap(),
+                ]);
 
                 if (premium === true) {
                     await updatePremiumStatus({ isPremium: true }).unwrap();
