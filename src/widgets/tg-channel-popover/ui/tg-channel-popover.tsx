@@ -11,6 +11,8 @@ import { Cross } from "@/assets/icons";
 
 import styles from "./index.module.css";
 
+import TelegramChannelLogo from "@/assets/img/tg-avatar.png";
+
 export const TgChannelPopover = () => {
     const tg = (
         window as Window & typeof globalThis & { Telegram: TelegramClient }
@@ -36,7 +38,13 @@ export const TgChannelPopover = () => {
     return (
         <Popover.Content as="section" className={styles["tg-channel-popover"]}>
             <header>
-                <img src="" alt="" width="64" height="64" />
+                <img
+                    src={TelegramChannelLogo}
+                    alt="Telegram channel logo"
+                    width="64"
+                    height="64"
+                    className="rounded-full shadow-green"
+                />
                 <h2>Join {channel?.title} telegram channel</h2>
             </header>
 
