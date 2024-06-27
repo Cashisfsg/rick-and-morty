@@ -50,9 +50,7 @@ export const questApi = rootApi
                 providesTags: (result) => {
                     if (!result) return ["Quest"];
 
-                    const allEntities = questEntitySelector.selectAll(
-                        questEntityAdapter.getInitialState()
-                    );
+                    const allEntities = questEntitySelector.selectAll(result);
 
                     console.log("All entities: ", allEntities);
 
@@ -81,12 +79,7 @@ export const questApi = rootApi
                     try {
                         await queryFulfilled;
                         dispatch(userApi.util.invalidateTags(["User"]));
-                        dispatch(
-                            questApi.endpoints.fetchQuestList.initiate(
-                                { page: 0, limit: 3 },
-                                { subscribe: false, forceRefetch: true }
-                            )
-                        );
+                        dispatch(questApi.util.resetApiState());
                     } catch {}
                 },
             }),
