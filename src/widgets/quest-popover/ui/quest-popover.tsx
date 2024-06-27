@@ -40,7 +40,10 @@ export const QuestPopover = () => {
             await completeQuest({ id: data?.quest.id }).unwrap();
             dispatch(
                 questApi.endpoints.fetchQuestList.initiate(
-                    { page: Math.floor(data?.index / data?.limit), limit: 3 },
+                    {
+                        page: Math.floor(data?.index / data?.limit),
+                        limit: data?.limit,
+                    },
                     { subscribe: false, forceRefetch: true }
                 )
             );
