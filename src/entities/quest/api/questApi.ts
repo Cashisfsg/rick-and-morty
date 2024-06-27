@@ -47,21 +47,21 @@ export const questApi = rootApi
                         questEntitySelector.selectAll(responseData)
                     );
                 },
-                providesTags: (result) => {
-                    if (!result) return ["Quest"];
+                // providesTags: (result) => {
+                //     if (!result) return ["Quest"];
 
-                    const allEntities = questEntitySelector.selectAll(result);
+                //     const allEntities = questEntitySelector.selectAll(result);
 
-                    console.log("All entities: ", allEntities);
+                //     console.log("All entities: ", allEntities);
 
-                    return [
-                        ...allEntities.map(({ id }) => ({
-                            type: "Quest" as const,
-                            id: id as number,
-                        })),
-                        "Quest",
-                    ];
-                },
+                //     return [
+                //         ...allEntities.map(({ id }) => ({
+                //             type: "Quest" as const,
+                //             id: id as number,
+                //         })),
+                //         "Quest",
+                //     ];
+                // },
             }),
             completeQuest: builder.mutation<
                 CompleteQuestResponse,
@@ -79,12 +79,12 @@ export const questApi = rootApi
                     try {
                         await queryFulfilled;
                         dispatch(userApi.util.invalidateTags(["User"]));
-                        dispatch(
-                            questApi.endpoints.fetchQuestList.initiate(
-                                { page: 0, limit: 3 },
-                                { subscribe: false, forceRefetch: true }
-                            )
-                        );
+                        // dispatch(
+                        //     questApi.endpoints.fetchQuestList.initiate(
+                        //         { page: 0, limit: 3 },
+                        //         { subscribe: false, forceRefetch: true }
+                        //     )
+                        // );
                     } catch {}
                 },
             }),

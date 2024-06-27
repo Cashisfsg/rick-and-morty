@@ -1,5 +1,7 @@
 import { Popover, usePopoverContext } from "@/shared/ui/popover";
 
+import { useAppDispatch } from "@/app/providers/redux/hooks";
+
 import { Telegram, Referral, Ticket, ChevronRight, Done } from "@/assets/icons";
 import { Quest } from "../../api/types";
 
@@ -9,6 +11,7 @@ import styles from "./index.module.css";
 
 interface QuestListItemProps extends React.ComponentPropsWithoutRef<"button"> {
     quest: Quest;
+    index: number;
 }
 
 export const QuestListItem: React.FC<QuestListItemProps> = ({
@@ -19,11 +22,10 @@ export const QuestListItem: React.FC<QuestListItemProps> = ({
 
     const onClickHandler = (quest: Quest) => {
         if (quest?.is_completed) return;
-        setData(quest);
+        setData({ quest: quest, index: index });
     };
 
     return (
-        // <li {...props}>
         <Popover.Trigger
             disabled={quest?.is_completed}
             onClick={() => onClickHandler(quest)}

@@ -23,7 +23,11 @@ export const QuestList = () => {
                             Item: VirtualListItem,
                         }}
                         itemContent={(index, quest) => (
-                            <QuestListItem key={quest.id} quest={quest} />
+                            <QuestListItem
+                                key={quest.id}
+                                quest={quest}
+                                index={index}
+                            />
                         )}
                         endReached={() =>
                             setPage(Math.ceil(quests.length / limit))

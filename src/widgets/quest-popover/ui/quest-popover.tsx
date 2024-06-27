@@ -1,4 +1,9 @@
-import { useCompleteQuestMutation, Quest } from "@/entities/quest/api";
+import { useAppDispatch } from "@/app/providers/redux/hooks";
+import {
+    useCompleteQuestMutation,
+    Quest,
+    questApi,
+} from "@/entities/quest/api";
 
 import { Cross, Telegram, Ticket } from "@/assets/icons";
 import { Button } from "@/shared/ui/button";
@@ -13,7 +18,12 @@ export const QuestPopover = () => {
         window as Window & typeof globalThis & { Telegram: TelegramClient }
     ).Telegram.WebApp;
 
-    const { data: quest } = usePopoverContext() as { data: Quest };
+    const dispatch = useAppDispatch();
+    const {
+        data: { quest, index },
+    } = usePopoverContext() as {
+        data: { quest: Quest; index: number };
+    };
     const [completeQuest] = useCompleteQuestMutation();
     const { popoverRef } = usePopoverContext();
 
@@ -25,6 +35,12 @@ export const QuestPopover = () => {
         try {
             tg.openLink(quest?.url);
             await completeQuest({ id: quest.id }).unwrap();
+            dispatch(
+                questApi.endpoints.fetchQuestList.initiate(
+                    { page: Math.floor(index / 3), limit: 3 },
+                    { subscribe: false, forceRefetch: true }
+                )
+            );
             popoverRef.current?.hidePopover();
         } catch (error) {
             console.error(error);
