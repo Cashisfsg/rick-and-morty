@@ -71,12 +71,17 @@ export const questApi = rootApi
                         task_id: id,
                     },
                 }),
-                invalidatesTags: (result, error, arg) =>
-                    error ? [] : [{ type: "Quest", id: arg.id }],
-                async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                // invalidatesTags: (result, error, arg) =>
+                // error ? [] : [{ type: "Quest", id: arg.id }],
+                async onQueryStarted({ id }, { dispatch, queryFulfilled }) {
                     try {
                         await queryFulfilled;
                         dispatch(userApi.util.invalidateTags(["User"]));
+                        dispatch(
+                            questApi.util.invalidateTags([
+                                { type: "Quest", id: id },
+                            ])
+                        );
                     } catch {}
                 },
             }),
