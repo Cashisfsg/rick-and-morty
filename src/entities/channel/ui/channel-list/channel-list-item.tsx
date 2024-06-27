@@ -28,7 +28,7 @@ export const ChannelListItem: React.FC<ChannelListItemProps> = ({
                 alt="Telegram channel logo"
                 height="32"
                 width="32"
-                className={`${styles["channel-logo"]} rounded-full shadow-green`}
+                className={`${styles["channel-logo"]} rounded-full border-green shadow-green`}
             />
             <span className={`${styles["channel-name"]} text-start `}>
                 {channel?.title}

@@ -41,7 +41,7 @@ export const TgChannelPopover = () => {
                     alt="Telegram channel logo"
                     width="64"
                     height="64"
-                    className="rounded-full shadow-green"
+                    className="rounded-full border-green shadow-green"
                 />
                 <h2>Join {channel?.title} telegram channel</h2>
             </header>
