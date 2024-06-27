@@ -71,7 +71,7 @@ export const questApi = rootApi
                         task_id: id,
                     },
                 }),
-                invalidatesTags: (result, error) => (error ? [] : ["Quest"]),
+                // invalidatesTags: (result, error) => (error ? [] : ["Quest"]),
                 async onQueryStarted(_, { dispatch, queryFulfilled }) {
                     try {
                         await queryFulfilled;
