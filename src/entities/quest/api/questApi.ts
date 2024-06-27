@@ -47,18 +47,21 @@ export const questApi = rootApi
                         questEntitySelector.selectAll(responseData)
                     );
                 },
-                providesTags: (result) =>
-                    result
-                        ? [
-                              ...Object.values(result.entities).map(
-                                  ({ id }) => ({
-                                      type: "Quest" as const,
-                                      id: id as number,
-                                  })
-                              ),
-                              "Quest",
-                          ]
-                        : ["Quest"],
+                providesTags: (result) => {
+                    if (!result) return ["Quest"];
+
+                    const allEntities = questEntitySelector.selectAll(result);
+
+                    console.log("All entities: ", allEntities);
+
+                    return [
+                        ...allEntities.map(({ id }) => ({
+                            type: "Quest" as const,
+                            id: id as number,
+                        })),
+                        "Quest",
+                    ];
+                },
             }),
             completeQuest: builder.mutation<
                 CompleteQuestResponse,
