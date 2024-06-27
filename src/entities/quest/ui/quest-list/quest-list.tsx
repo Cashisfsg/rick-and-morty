@@ -21,7 +21,7 @@ export const QuestList = () => {
                         components={{
                             List: VirtualList,
                             Item: VirtualListItem,
-                            ScrollSeekPlaceholder: Scroller,
+                            TopItemList: Scroller,
                         }}
                         itemContent={(index, quest) => (
                             <QuestListItem
