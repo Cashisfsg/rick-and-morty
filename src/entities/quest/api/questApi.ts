@@ -51,13 +51,10 @@ export const questApi = rootApi
                     result
                         ? [
                               ...Object.values(result.entities).map(
-                                  ({ id }) => {
-                                      console.log(id);
-                                      return {
-                                          type: "Quest" as const,
-                                          id: id as number,
-                                      };
-                                  }
+                                  ({ id }) => ({
+                                      type: "Quest" as const,
+                                      id: id as number,
+                                  })
                               ),
                               "Quest",
                           ]
@@ -74,19 +71,17 @@ export const questApi = rootApi
                         task_id: id,
                     },
                 }),
-                invalidatesTags: (result, error, arg) => {
-                    console.log(arg.id);
-                    return error ? [] : [{ type: "Quest", id: arg.id }];
-                },
+                invalidatesTags: (result, error) => (error ? [] : ["Quest"]),
                 async onQueryStarted(_, { dispatch, queryFulfilled }) {
                     try {
                         await queryFulfilled;
                         dispatch(userApi.util.invalidateTags(["User"]));
-                        // dispatch(
-                        //     questApi.util.invalidateTags([
-                        //         { type: "Quest", id: id },
-                        //     ])
-                        // );
+                        dispatch(
+                            questApi.endpoints.fetchQuestList.initiate(
+                                { page: 0, limit: 3 },
+                                { subscribe: false, forceRefetch: true }
+                            )
+                        );
                     } catch {}
                 },
             }),
