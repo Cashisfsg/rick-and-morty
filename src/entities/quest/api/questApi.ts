@@ -50,7 +50,9 @@ export const questApi = rootApi
                 providesTags: (result) => {
                     if (!result) return ["Quest"];
 
-                    const allEntities = questEntitySelector.selectAll(result);
+                    const allEntities = questEntitySelector.selectAll(
+                        questEntityAdapter.getInitialState()
+                    );
 
                     console.log("All entities: ", allEntities);
 
