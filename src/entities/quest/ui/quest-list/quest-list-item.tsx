@@ -16,6 +16,7 @@ interface QuestListItemProps extends React.ComponentPropsWithoutRef<"button"> {
 
 export const QuestListItem: React.FC<QuestListItemProps> = ({
     quest,
+    index,
     ...props
 }) => {
     const { setData } = usePopoverContext();
