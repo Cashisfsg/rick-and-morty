@@ -51,10 +51,13 @@ export const questApi = rootApi
                     result
                         ? [
                               ...Object.values(result.entities).map(
-                                  ({ id }) => ({
-                                      type: "Quest" as const,
-                                      id: id as number,
-                                  })
+                                  ({ id }) => {
+                                      console.log(id);
+                                      return {
+                                          type: "Quest" as const,
+                                          id: id as number,
+                                      };
+                                  }
                               ),
                               "Quest",
                           ]
@@ -71,7 +74,10 @@ export const questApi = rootApi
                         task_id: id,
                     },
                 }),
-                invalidatesTags: (result, error) => (error ? [] : ["Quest"]),
+                invalidatesTags: (result, error, arg) => {
+                    console.log(arg.id);
+                    return error ? [] : [{ type: "Quest", id: arg.id }];
+                },
                 async onQueryStarted(_, { dispatch, queryFulfilled }) {
                     try {
                         await queryFulfilled;
