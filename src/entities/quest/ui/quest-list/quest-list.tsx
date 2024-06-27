@@ -21,6 +21,7 @@ export const QuestList = () => {
                         components={{
                             List: VirtualList,
                             Item: VirtualListItem,
+                            Scroller: Scroller,
                         }}
                         itemContent={(index, quest) => (
                             <QuestListItem
@@ -44,7 +45,9 @@ export const QuestList = () => {
     );
 };
 
-export const VirtualList = React.forwardRef<
+const Scroller = (props) => <div role="scrollbar" {...props} />;
+
+const VirtualList = React.forwardRef<
     HTMLUListElement,
     React.LiHTMLAttributes<HTMLUListElement>
 >((props, forwardRef) => {
@@ -53,8 +56,6 @@ export const VirtualList = React.forwardRef<
 
 interface VirtualListItemProps extends React.ComponentPropsWithoutRef<"li"> {}
 
-export const VirtualListItem: React.FC<VirtualListItemProps> = ({
-    ...props
-}) => {
+const VirtualListItem: React.FC<VirtualListItemProps> = ({ ...props }) => {
     return <li {...props} />;
 };
