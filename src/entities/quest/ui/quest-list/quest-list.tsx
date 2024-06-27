@@ -21,7 +21,6 @@ export const QuestList = () => {
                         components={{
                             List: VirtualList,
                             Item: VirtualListItem,
-                            Group: Scroller,
                         }}
                         itemContent={(index, quest) => (
                             <QuestListItem
@@ -36,16 +35,14 @@ export const QuestList = () => {
                         }
                         // initialItemCount={0}
                         totalCount={quests.length}
-                        style={{ height: "357px", width: "100%" }}
-                        className="hide-scrollbar"
+                        // style={{ height: "357px", width: "100%" }}
+                        className={`hide-scrollbar ${styles["virtual-list"]}`}
                     />
                 )}
             />
         </section>
     );
 };
-
-const Scroller = (props) => <div role="scrollbar" {...props} />;
 
 const VirtualList = React.forwardRef<
     HTMLUListElement,
