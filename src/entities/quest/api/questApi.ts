@@ -79,7 +79,12 @@ export const questApi = rootApi
                     try {
                         await queryFulfilled;
                         dispatch(userApi.util.invalidateTags(["User"]));
-                        dispatch(questApi.util.resetApiState());
+                        dispatch(
+                            questApi.endpoints.fetchQuestList.initiate(
+                                { page: 0, limit: 3 },
+                                { subscribe: false, forceRefetch: true }
+                            )
+                        );
                     } catch {}
                 },
             }),

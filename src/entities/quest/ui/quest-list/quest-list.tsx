@@ -26,7 +26,7 @@ export const QuestList = () => {
                             <QuestListItem key={quest.id} quest={quest} />
                         )}
                         endReached={() =>
-                            setPage((previousPage) => previousPage + 1)
+                            setPage(Math.ceil(quests.length / limit))
                         }
                         // initialItemCount={0}
                         totalCount={quests.length}
