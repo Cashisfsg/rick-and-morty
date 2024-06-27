@@ -45,7 +45,10 @@ export const QuestList = () => {
     );
 };
 
-const Scroller = (props) => <div role="scrollbar" {...props} />;
+const Scroller = React.forwardRef<
+    HTMLDivElement,
+    React.LiHTMLAttributes<HTMLDivElement>
+>((props, forwardRef) => <div role="scrollbar" ref={forwardRef} {...props} />);
 
 const VirtualList = React.forwardRef<
     HTMLUListElement,
