@@ -6,6 +6,7 @@
     padding-inline: 0.75rem;
 
     scroll-snap-type: y mandatory;
+    scroll-padding-block-start: 0.25rem;
 
     & > div {
         padding-block: 0.25rem;
@@ -20,7 +21,7 @@
     padding-block: 0.25rem;
     margin-inline: -0.75rem;
     padding-inline: 0.75rem;
-    scroll-padding-block-start: 0.25rem;
+    /* scroll-padding-block-start: 0.25rem; */
 
     /* overflow-y: auto; */
     scrollbar-width: none;
