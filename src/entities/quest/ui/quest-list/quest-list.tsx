@@ -21,7 +21,7 @@ export const QuestList = () => {
                         components={{
                             List: VirtualList,
                             Item: VirtualListItem,
-                            Scroller: Scroller,
+                            ScrollSeekPlaceholder: Scroller,
                         }}
                         itemContent={(index, quest) => (
                             <QuestListItem
@@ -45,10 +45,7 @@ export const QuestList = () => {
     );
 };
 
-const Scroller = React.forwardRef<
-    HTMLDivElement,
-    React.LiHTMLAttributes<HTMLDivElement>
->((props, forwardRef) => <div role="scrollbar" ref={forwardRef} {...props} />);
+const Scroller = (props) => <div role="scrollbar" {...props} />;
 
 const VirtualList = React.forwardRef<
     HTMLUListElement,
