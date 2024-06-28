@@ -37,7 +37,7 @@ export const TgChannelPopover = () => {
         <Popover.Content as="section" className={styles["tg-channel-popover"]}>
             <header>
                 <img
-                    src={channel?.photo}
+                    src={`${import.meta.env.VITE_BASE_API_URL}/media/${channel?.photo}`}
                     alt="Telegram channel logo"
                     width="64"
                     height="64"

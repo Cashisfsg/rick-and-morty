@@ -24,7 +24,7 @@ export const ChannelListItem: React.FC<ChannelListItemProps> = ({
             className={`${styles["channel-list-item"]} bg-green border-green bg-image shadow-green rounded-xl`}
         >
             <img
-                src={channel?.photo}
+                src={`${import.meta.env.VITE_BASE_API_URL}/media/${channel?.photo}`}
                 alt="Telegram channel logo"
                 height="32"
                 width="32"
