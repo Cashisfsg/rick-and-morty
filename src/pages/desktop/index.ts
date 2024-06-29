@@ -1,0 +1,1 @@
+export { DesktopPage } from "./page";

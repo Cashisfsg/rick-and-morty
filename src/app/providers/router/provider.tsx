@@ -11,7 +11,11 @@ import { MainLayout } from "@/pages/main-layout";
 import { LayoutWithNavigation } from "@/pages/layout-with-navigation";
 // import { LayoutWithoutNavigation } from "@/pages/layout-without-navigation";
 
-import { LoginPage } from "@/pages/login";
+const DesktopPage = lazy(async () =>
+    import("@/pages/desktop").then((module) => ({
+        default: module.DesktopPage,
+    }))
+);
 
 const WelcomePage = lazy(async () =>
     import("@/pages/welcome").then((module) => ({
@@ -47,7 +51,7 @@ import { TelegramClient } from "@/shared/api/types";
 const desktopRouter = createBrowserRouter([
     {
         path: "/",
-        element: <LoginPage />,
+        element: <DesktopPage />,
     },
     {
         path: "*",
@@ -60,6 +64,10 @@ const mobileRouter = createBrowserRouter([
         path: "/",
         element: <MainLayout />,
         children: [
+            {
+                index: true,
+                element: <Navigate to="/app/verify" />,
+            },
             {
                 path: "app",
                 element: (
@@ -113,6 +121,10 @@ const mobileRouter = createBrowserRouter([
                 ],
             },
         ],
+    },
+    {
+        path: "*",
+        element: <Navigate to="/" />,
     },
 ]);
 

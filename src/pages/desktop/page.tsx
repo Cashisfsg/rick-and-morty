@@ -15,7 +15,7 @@ import { Telegram, X } from "@/assets/icons";
 
 import styles from "./index.module.css";
 
-export const LoginPage = () => {
+export const DesktopPage = () => {
     const tg = (
         window as Window & typeof globalThis & { Telegram: TelegramClient }
     )?.Telegram?.WebApp;
@@ -34,8 +34,6 @@ export const LoginPage = () => {
         (async () => {
             try {
                 dispatch(setUserInitData(initData));
-
-                alert(`Platform: ${tg?.platform}`);
 
                 await Promise.all([
                     fetchUserInfo().unwrap(),
