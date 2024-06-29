@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch } from "@/app/providers/redux/hooks";
 import {
@@ -11,6 +11,8 @@ import {
 import { useLazyFetchAllChannelsQuery } from "@/entities/channel";
 import { TelegramClient } from "@/shared/api/types";
 
+import { LoadingPage } from "../loading";
+
 export const RedirectPage = () => {
     const tg = (
         window as Window & typeof globalThis & { Telegram: TelegramClient }
@@ -20,18 +22,19 @@ export const RedirectPage = () => {
     const referralId = tg?.initDataUnsafe?.start_param;
     const premium = tg?.initDataUnsafe?.user?.is_premium;
 
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const [fetchUserInfo, { data: user }] = useLazyFetchUserInfoQuery();
+    const [fetchUserInfo] = useLazyFetchUserInfoQuery();
     const [joinReferral] = useJoinReferralMutation();
     const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
-    const [fetchChannels, { data: channels }] = useLazyFetchAllChannelsQuery();
+    const [fetchChannels] = useLazyFetchAllChannelsQuery();
 
     useEffect(() => {
         (async () => {
             try {
                 dispatch(setUserInitData(initData));
 
-                await Promise.all([
+                const [user, channels] = await Promise.all([
                     fetchUserInfo().unwrap(),
                     fetchChannels().unwrap(),
                 ]);
@@ -40,7 +43,20 @@ export const RedirectPage = () => {
                     await updatePremiumStatus({ isPremium: true }).unwrap();
                 }
 
-                if (referralId === undefined) return;
+                if (referralId === undefined) {
+                    if (!user?.is_verified) {
+                        navigate("/app/verify");
+                        return;
+                    }
+
+                    if (channels?.length === 0) {
+                        navigate("/app/account");
+                        return;
+                    }
+
+                    navigate("/app/welcome");
+                    return;
+                }
 
                 await joinReferral({ id: parseInt(referralId) }).unwrap();
             } catch (error) {
@@ -49,13 +65,15 @@ export const RedirectPage = () => {
         })();
     }, []);
 
-    if (channels?.length === 0) {
-        return <Navigate to="/app/account" />;
-    }
+    // if (channels?.length === 0) {
+    //     return <Navigate to="/app/account" />;
+    // }
 
-    if (user?.is_verified) {
-        return <Navigate to="/app/welcome" />;
-    }
+    // if (user?.is_verified) {
+    //     return <Navigate to="/app/welcome" />;
+    // }
 
-    return <Navigate to="/app/verify" />;
+    // return <Navigate to="/app/verify" />;
+
+    return <LoadingPage />;
 };
