@@ -8,8 +8,10 @@
     & figure {
         margin-block-start: 2rem;
         line-height: 1.25;
-        border-radius: 12px;
-        overflow: hidden;
+
+        & img {
+            border-radius: 12px;
+        }
     }
 
     & figcaption {
