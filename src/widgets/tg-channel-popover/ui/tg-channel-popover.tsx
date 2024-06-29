@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import {
     TelegramChannel,
     useVerifyChannelSubscriptionMutation,
@@ -16,9 +14,8 @@ export const TgChannelPopover = () => {
         window as Window & typeof globalThis & { Telegram: TelegramClient }
     ).Telegram.WebApp;
 
-    const navigate = useNavigate();
     const [verify] = useVerifyChannelSubscriptionMutation();
-    const { data: channel } = usePopoverContext() as { data: TelegramChannel };
+    const { data: channel, popoverRef } = usePopoverContext();
 
     const onClickHandler = () => {
         tg.openTelegramLink(channel?.url);
@@ -26,8 +23,8 @@ export const TgChannelPopover = () => {
 
     const verifyChannelSubscription = async () => {
         try {
-            const { status } = await verify({ id: channel.id }).unwrap();
-            if (status) navigate("/app/account");
+            await verify({ id: channel.id }).unwrap();
+            popoverRef.current?.hidePopover();
         } catch (error) {
             console.error(error);
         }

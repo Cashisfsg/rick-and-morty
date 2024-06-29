@@ -34,7 +34,7 @@ export const VerificationPage = () => {
         if (!isSuccess) return;
         try {
             await verifyCaptcha({ x: data.x, y: data.y }).unwrap();
-            navigate("/app/welcome");
+            navigate("/root/app/welcome");
         } catch (error) {
             console.error(error);
         }

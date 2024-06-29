@@ -67,15 +67,5 @@ export const RedirectPage = () => {
         })();
     }, []);
 
-    // if (channels?.length === 0) {
-    //     return <Navigate to="/app/account" />;
-    // }
-
-    // if (user?.is_verified) {
-    //     return <Navigate to="/app/welcome" />;
-    // }
-
-    // return <Navigate to="/app/verify" />;
-
     return <LoadingPage />;
 };

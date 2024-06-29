@@ -9,22 +9,22 @@ import styles from "./index.module.css";
 
 const links = [
     {
-        url: "/app/account",
+        url: "/root/app/account",
         icon: Account,
         title: "Account",
     },
     {
-        url: "/app/game",
+        url: "/root/app/game",
         icon: Games,
         title: "Games",
     },
     {
-        url: "/app/quest",
+        url: "/root/app/quest",
         icon: Quests,
         title: "Quests",
     },
     {
-        url: "/app/referral",
+        url: "/root/app/referral",
         icon: Referral,
         title: "Referral",
     },
