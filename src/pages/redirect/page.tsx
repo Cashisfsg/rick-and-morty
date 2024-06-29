@@ -25,17 +25,19 @@ export const RedirectPage = () => {
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const [fetchUserInfo, { data: user }] = useLazyFetchUserInfoQuery();
+    const [fetchUserInfo] = useLazyFetchUserInfoQuery();
     const [joinReferral] = useJoinReferralMutation();
     const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
-    const [fetchChannels, { data: channels }] = useLazyFetchAllChannelsQuery();
+    const [fetchChannels] = useLazyFetchAllChannelsQuery();
 
     useEffect(() => {
         (async () => {
+            let response;
+
             try {
                 dispatch(setUserInitData(initData));
 
-                await Promise.all([
+                response = await Promise.all([
                     fetchUserInfo().unwrap(),
                     fetchChannels().unwrap(),
                 ]);
@@ -50,12 +52,12 @@ export const RedirectPage = () => {
             } catch (error) {
                 throw new Error(handleErrorResponse(error) || "Unknow Error");
             } finally {
-                if (!user?.is_verified) {
+                if (response !== undefined && !response[0]?.is_verified) {
                     navigate("/root/app/verify");
                     return;
                 }
 
-                if (channels?.length === 0) {
+                if (response !== undefined && response[1]?.length === 0) {
                     navigate("/root/app/account");
                     return;
                 }
