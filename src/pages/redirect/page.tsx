@@ -62,7 +62,7 @@ export const RedirectPage = () => {
                 navigate("/root/app/welcome");
                 return;
             } catch (error) {
-                console.error(error);
+                throw new Error(error);
             }
         })();
     }, []);
