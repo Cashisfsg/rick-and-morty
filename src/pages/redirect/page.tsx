@@ -39,6 +39,8 @@ export const RedirectPage = () => {
                     fetchChannels().unwrap(),
                 ]);
 
+                console.log(user, channels);
+
                 if (premium === true) {
                     await updatePremiumStatus({ isPremium: true }).unwrap();
                 }
