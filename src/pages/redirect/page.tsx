@@ -12,6 +12,7 @@ import { useLazyFetchAllChannelsQuery } from "@/entities/channel";
 import { TelegramClient } from "@/shared/api/types";
 
 import { LoadingPage } from "../loading";
+import { handleErrorResponse } from "@/shared/lib/helpers/handle-error-response";
 
 export const RedirectPage = () => {
     const tg = (
@@ -64,7 +65,7 @@ export const RedirectPage = () => {
                 navigate("/root/app/welcome");
                 return;
             } catch (error) {
-                throw new Error(error?.message);
+                throw new Error(handleErrorResponse(error) || "Unknow Error");
             }
         })();
     }, []);

@@ -21,23 +21,14 @@ const isErrorWithMessage = (error: unknown): error is { message: string } => {
     );
 };
 
-export const handleErrorResponse = (
-    error: unknown,
-    callback?: (error: string) => void
-) => {
+export const handleErrorResponse = (error: unknown) => {
     if (isFetchBaseQueryError(error)) {
         const errorMessage =
             "error" in error
                 ? error.error
                 : (error.data as { status: number; message: string }).message;
-        if (callback === undefined) {
-            return errorMessage;
-        }
-        callback(errorMessage);
+        return errorMessage;
     } else if (isErrorWithMessage(error)) {
-        if (callback === undefined) {
-            return error.message;
-        }
-        callback(error.message);
+        return error.message;
     }
 };
