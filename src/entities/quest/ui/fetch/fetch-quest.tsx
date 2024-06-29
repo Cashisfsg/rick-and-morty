@@ -20,7 +20,7 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
     queryParams,
     renderSuccess,
     loadingFallback = <Loader />,
-    renderError = (error) => <pre>{error || "Unknown error"}</pre>,
+    renderError = (error) => <pre>{error}</pre>,
 }) => {
     const { data, isLoading, isSuccess, isError, error } =
         useFetchQuestListQuery(
@@ -40,7 +40,8 @@ export const FetchQuest: React.FC<FetchQuestProps> = ({
 
     if (isLoading) return loadingFallback;
 
-    if (isError) return renderError(handleErrorResponse(error));
+    if (isError)
+        return renderError(handleErrorResponse(error) || "Unknown error");
 
     if (isSuccess) return renderSuccess(data);
 

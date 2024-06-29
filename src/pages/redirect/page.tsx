@@ -25,24 +25,20 @@ export const RedirectPage = () => {
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const [fetchUserInfo] = useLazyFetchUserInfoQuery();
+    const [fetchUserInfo, { data: user }] = useLazyFetchUserInfoQuery();
     const [joinReferral] = useJoinReferralMutation();
     const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
-    const [fetchChannels] = useLazyFetchAllChannelsQuery();
+    const [fetchChannels, { data: channels }] = useLazyFetchAllChannelsQuery();
 
     useEffect(() => {
         (async () => {
             try {
                 dispatch(setUserInitData(initData));
 
-                const [user, channels] = await Promise.all([
+                await Promise.all([
                     fetchUserInfo().unwrap(),
                     fetchChannels().unwrap(),
                 ]);
-
-                console.log("User: ", user);
-                console.log("Channels: ", channels);
-                console.log("Referral id: ", referralId);
 
                 if (premium === true) {
                     await updatePremiumStatus({ isPremium: true }).unwrap();
@@ -51,7 +47,9 @@ export const RedirectPage = () => {
                 if (referralId) {
                     await joinReferral({ id: parseInt(referralId) }).unwrap();
                 }
-
+            } catch (error) {
+                throw new Error(handleErrorResponse(error) || "Unknow Error");
+            } finally {
                 if (!user?.is_verified) {
                     navigate("/root/app/verify");
                     return;
@@ -64,8 +62,6 @@ export const RedirectPage = () => {
 
                 navigate("/root/app/welcome");
                 return;
-            } catch (error) {
-                throw new Error(handleErrorResponse(error) || "Unknow Error");
             }
         })();
     }, []);

@@ -12,7 +12,7 @@ interface FetchChannelsProps {
 export const FetchChannels: React.FC<FetchChannelsProps> = ({
     renderSuccess,
     loadingFallback = <Loader />,
-    renderError = (error) => <pre>{error || "Unknown error"}</pre>,
+    renderError = (error) => <pre>{error}</pre>,
 }) => {
     const { data, isLoading, isSuccess, isError, error } =
         useFetchAllChannelsQuery();
@@ -21,7 +21,8 @@ export const FetchChannels: React.FC<FetchChannelsProps> = ({
 
     if (isLoading) return loadingFallback;
 
-    if (isError) return renderError(handleErrorResponse(error));
+    if (isError)
+        return renderError(handleErrorResponse(error) || "Unknown error");
 
     if (isSuccess) return renderSuccess(data);
 
