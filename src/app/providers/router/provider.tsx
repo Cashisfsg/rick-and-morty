@@ -47,6 +47,7 @@ import { VerificationPage } from "@/pages/verification/page";
 import { LoadingPage } from "@/pages/loading";
 
 import { TelegramClient } from "@/shared/api/types";
+import { RedirectPage } from "@/pages/redirect";
 
 const desktopRouter = createBrowserRouter([
     {
@@ -60,6 +61,10 @@ const desktopRouter = createBrowserRouter([
 ]);
 
 const mobileRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <RedirectPage />,
+    },
     {
         path: "/",
         element: <MainLayout />,
