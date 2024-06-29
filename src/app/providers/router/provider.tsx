@@ -42,11 +42,20 @@ import { VerificationPage } from "@/pages/verification/page";
 
 import { LoadingPage } from "@/pages/loading";
 
-const router = createBrowserRouter([
+import { TelegramClient } from "@/shared/api/types";
+
+const desktopRouter = createBrowserRouter([
     {
         path: "/",
         element: <LoginPage />,
     },
+    {
+        path: "*",
+        element: <Navigate to="/" />,
+    },
+]);
+
+const mobileRouter = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout />,
@@ -105,12 +114,14 @@ const router = createBrowserRouter([
             },
         ],
     },
-    {
-        path: "*",
-        element: <Navigate to="/" />,
-    },
 ]);
 
 export const Provider = () => {
+    const tg = (
+        window as Window & typeof globalThis & { Telegram: TelegramClient }
+    )?.Telegram?.WebApp;
+
+    const router = tg?.platform === "tdesktop" ? desktopRouter : mobileRouter;
+
     return <RouterProvider router={router} />;
 };
