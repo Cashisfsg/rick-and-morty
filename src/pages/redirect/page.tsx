@@ -45,22 +45,22 @@ export const RedirectPage = () => {
                     await updatePremiumStatus({ isPremium: true }).unwrap();
                 }
 
-                if (referralId === undefined) {
-                    if (!user?.is_verified) {
-                        navigate("/root/app/verify");
-                        return;
-                    }
+                if (referralId) {
+                    await joinReferral({ id: parseInt(referralId) }).unwrap();
+                }
 
-                    if (channels?.length === 0) {
-                        navigate("/root/app/account");
-                        return;
-                    }
-
-                    navigate("/root/app/welcome");
+                if (!user?.is_verified) {
+                    navigate("/root/app/verify");
                     return;
                 }
 
-                await joinReferral({ id: parseInt(referralId) }).unwrap();
+                if (channels?.length === 0) {
+                    navigate("/root/app/account");
+                    return;
+                }
+
+                navigate("/root/app/welcome");
+                return;
             } catch (error) {
                 console.error(error);
             }

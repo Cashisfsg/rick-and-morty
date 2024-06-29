@@ -74,17 +74,18 @@ export const AccountPage = () => {
 
             <h1 className="font-secondary">
                 <p
-                    className={`${wallet ? "text-pink text-shadow-pink" : "text-gray"} ${styles["coin-counter"]}`}
+                    // className={`${wallet ? "text-pink text-shadow-pink" : "text-gray"} ${styles["coin-counter"]}`}
+                    className={`text-gray ${styles["coin-counter"]}`}
                 >
                     <span>{formatCurrency(user?.balance || 0)}</span>
                     <Token className={wallet ? "svg-shadow-pink" : ""} />
                 </p>
 
                 <p className={styles["balance-controls"]}>
-                    <Button className="button-pink" disabled={!wallet}>
+                    <Button className="button-pink" disabled={true}>
                         Top Up
                     </Button>
-                    <Button className="button-pink" disabled={!wallet}>
+                    <Button className="button-pink" disabled={true}>
                         Withdraw
                     </Button>
                 </p>
