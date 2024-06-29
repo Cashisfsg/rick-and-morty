@@ -35,6 +35,8 @@ export const LoginPage = () => {
             try {
                 dispatch(setUserInitData(initData));
 
+                alert(`Platform: ${tg?.platform}`);
+
                 await Promise.all([
                     fetchUserInfo().unwrap(),
                     fetchChannels().unwrap(),
