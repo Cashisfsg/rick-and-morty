@@ -46,16 +46,18 @@ export const RedirectPage = () => {
                 }
 
                 if (referralId === undefined) {
-                    // if (!user?.is_verified) {
-                    //     navigate("/app/verify");
-                    //     return;
-                    // }
-                    // if (channels?.length === 0) {
-                    //     navigate("/app/account");
-                    //     return;
-                    // }
-                    // navigate("/app/welcome");
-                    // return;
+                    if (!user?.is_verified) {
+                        navigate("/root/app/verify");
+                        return;
+                    }
+
+                    if (channels?.length === 0) {
+                        navigate("/root/app/account");
+                        return;
+                    }
+
+                    navigate("/root/app/welcome");
+                    return;
                 }
 
                 await joinReferral({ id: parseInt(referralId) }).unwrap();

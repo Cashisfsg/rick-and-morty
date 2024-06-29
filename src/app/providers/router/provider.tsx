@@ -66,12 +66,12 @@ const mobileRouter = createBrowserRouter([
         element: <RedirectPage />,
     },
     {
-        path: "/root",
+        path: "root",
         element: <MainLayout />,
         children: [
             {
                 index: true,
-                element: <Navigate to="/app/verify" />,
+                element: <Navigate to="/root/app/verify" />,
             },
             {
                 path: "app",
@@ -83,7 +83,7 @@ const mobileRouter = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <Navigate to="/app/account" />,
+                        element: <Navigate to="/root/app/account" />,
                     },
                     {
                         path: "account",
@@ -103,7 +103,7 @@ const mobileRouter = createBrowserRouter([
                     },
                     {
                         path: "*",
-                        element: <Navigate to="/app/account" />,
+                        element: <Navigate to="/root/app/account" />,
                     },
                 ],
             },
@@ -121,7 +121,7 @@ const mobileRouter = createBrowserRouter([
                     },
                     {
                         path: "*",
-                        element: <Navigate to="/app/welcome" />,
+                        element: <Navigate to="/root/app/welcome" />,
                     },
                 ],
             },
@@ -140,5 +140,5 @@ export const Provider = () => {
 
     const router = tg?.platform === "tdesktop" ? desktopRouter : mobileRouter;
 
-    return <RouterProvider router={mobileRouter} />;
+    return <RouterProvider router={router} />;
 };
