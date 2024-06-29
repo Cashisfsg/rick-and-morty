@@ -66,7 +66,7 @@ const mobileRouter = createBrowserRouter([
         element: <RedirectPage />,
     },
     {
-        path: "/",
+        path: "/root",
         element: <MainLayout />,
         children: [
             {
