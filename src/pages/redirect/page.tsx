@@ -39,7 +39,9 @@ export const RedirectPage = () => {
                     fetchChannels().unwrap(),
                 ]);
 
-                console.log(user, channels);
+                console.log("User: ", user);
+                console.log("Channels: ", channels);
+                console.log("Referral id: ", referralId);
 
                 if (premium === true) {
                     await updatePremiumStatus({ isPremium: true }).unwrap();
