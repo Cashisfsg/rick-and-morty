@@ -1,15 +1,5 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-
-import { useAppDispatch } from "@/app/providers/redux/hooks";
-import {
-    useLazyFetchUserInfoQuery,
-    useJoinReferralMutation,
-    useUpdatePremiumStatusMutation,
-    setUserInitData,
-} from "@/entities/user";
-import { useLazyFetchAllChannelsQuery } from "@/entities/channel";
 import { TelegramClient } from "@/shared/api/types";
+
 import QR from "@/assets/img/qr-code.png";
 import { Telegram, X } from "@/assets/icons";
 
@@ -20,38 +10,9 @@ export const DesktopPage = () => {
         window as Window & typeof globalThis & { Telegram: TelegramClient }
     )?.Telegram?.WebApp;
 
-    const initData = tg?.initData;
-    const referralId = tg?.initDataUnsafe?.start_param;
-    const premium = tg?.initDataUnsafe?.user?.is_premium;
-
-    const dispatch = useAppDispatch();
-    const [fetchUserInfo, { data: user }] = useLazyFetchUserInfoQuery();
-    const [joinReferral] = useJoinReferralMutation();
-    const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
-    const [fetchChannels, { data: channels }] = useLazyFetchAllChannelsQuery();
-
-    useEffect(() => {
-        (async () => {
-            try {
-                dispatch(setUserInitData(initData));
-
-                await Promise.all([
-                    fetchUserInfo().unwrap(),
-                    fetchChannels().unwrap(),
-                ]);
-
-                if (premium === true) {
-                    await updatePremiumStatus({ isPremium: true }).unwrap();
-                }
-
-                if (referralId === undefined) return;
-
-                await joinReferral({ id: parseInt(referralId) }).unwrap();
-            } catch (error) {
-                console.error(error);
-            }
-        })();
-    }, []);
+    const onClickHandler = (url: string) => {
+        tg?.openLink(url);
+    };
 
     return (
         <main className={`${styles["login-page"]} content-wrapper`}>
@@ -64,22 +25,19 @@ export const DesktopPage = () => {
                 <figcaption>@{import.meta.env.VITE_BOT_NAME}</figcaption>
             </figure>
             <footer>
-                <Link
-                    to={
-                        channels?.length === 0
-                            ? "/app/account"
-                            : user?.is_verified
-                              ? "/app/welcome"
-                              : "/app/verify"
-                    }
+                <button
+                    onClick={() => onClickHandler("https://telegram.org")}
                     className="bg-image bg-blue"
                 >
                     <Telegram className="svg-shadow-blue" />
                     Telegram
-                </Link>
-                <Link to="/" className="bg-image bg-blue">
+                </button>
+                <button
+                    onClick={() => onClickHandler("https://x.com")}
+                    className="bg-image bg-blue"
+                >
                     <X className="svg-shadow-blue" />X
-                </Link>
+                </button>
             </footer>
         </main>
     );
