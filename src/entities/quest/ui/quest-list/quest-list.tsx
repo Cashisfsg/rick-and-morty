@@ -34,6 +34,7 @@ export const QuestList = () => {
                         endReached={() =>
                             setPage(Math.ceil(quests.length / limit))
                         }
+                        onScroll={(event) => event.stopPropagation()}
                         // initialItemCount={0}
                         totalCount={quests.length}
                         // style={{ height: "357px", width: "100%" }}
