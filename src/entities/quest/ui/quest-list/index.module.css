@@ -76,3 +76,11 @@
         }
     }
 }
+
+.loader {
+    height: 357px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

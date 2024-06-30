@@ -6,6 +6,7 @@ import { QuestListItem } from "./quest-list-item";
 // import { type Quest } from "../../api";
 
 import styles from "./index.module.css";
+import { Loader } from "@/shared/ui/loader";
 
 export const QuestList = () => {
     const [page, setPage] = useState(0);
@@ -39,6 +40,11 @@ export const QuestList = () => {
                         className={`hide-scrollbar ${styles["virtual-list"]}`}
                     />
                 )}
+                loadingFallback={
+                    <div className={styles.loader}>
+                        <Loader />
+                    </div>
+                }
             />
         </section>
     );
