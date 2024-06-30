@@ -26,14 +26,16 @@ export const DesktopPage = () => {
             </figure>
             <footer>
                 <button
-                    onClick={() => onClickHandler("https://telegram.org")}
+                    onClick={() =>
+                        onClickHandler("https://t.me/+Bewg3qbjZZtkYmI0")
+                    }
                     className="bg-image bg-blue"
                 >
                     <Telegram className="svg-shadow-blue" />
                     Telegram
                 </button>
                 <button
-                    onClick={() => onClickHandler("https://x.com")}
+                    onClick={() => onClickHandler("https://x.com/ricklewtf")}
                     className="bg-image bg-blue"
                 >
                     <X className="svg-shadow-blue" />X
