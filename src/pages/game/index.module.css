@@ -1,6 +1,15 @@
 .game-page {
     /* margin-block-end: -2rem; */
+    display: grid;
+    grid-template-rows: minmax(min-conent, 1fr);
+    grid-auto-rows: minmax(0, 1fr);
     align-self: start;
     height: calc(100% + 2rem);
+    width: 100%;
     overflow: hidden;
+}
+
+.light {
+    height: 100%;
+    width: 100%;
 }

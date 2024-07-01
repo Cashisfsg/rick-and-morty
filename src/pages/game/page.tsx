@@ -1,5 +1,7 @@
 import styles from "./index.module.css";
 
+import Light from "@/assets/img/light.png";
+
 export const GamePage = () => {
     return (
         <article
@@ -1961,7 +1963,10 @@ export const GamePage = () => {
                 </defs>
             </svg>
 
-            <svg
+            {/* <div> */}
+            <img src={Light} className={styles.light} />
+            {/* </div> */}
+            {/* <svg
                 width="360"
                 height="213"
                 viewBox="0 0 360 213"
@@ -3018,7 +3023,7 @@ export const GamePage = () => {
                         <rect width="360" height="213" fill="white" />
                     </clipPath>
                 </defs>
-            </svg>
+            </svg> */}
         </article>
     );
 };
