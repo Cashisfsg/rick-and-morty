@@ -1,17 +1,17 @@
 .virtual-list {
     /* height: 357px !important; */
-    width: calc(100% + 1.5rem);
+    width: calc(100% + 0.5rem);
     padding-block: 0.25rem;
-    margin-inline: -0.75rem;
-    padding-inline: 0.75rem;
+    margin-inline: -0.25rem;
+    padding-inline: 0.25rem;
 
     /* scroll-snap-type: y mandatory; */
     scroll-padding-block-start: 0.25rem;
 
     & > div {
         padding-block: 0.25rem;
-        margin-inline: -0.75rem;
-        padding-inline: 0.75rem;
+        margin-inline: -0.25rem;
+        padding-inline: 0.25rem;
     }
 }
 
