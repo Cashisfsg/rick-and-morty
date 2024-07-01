@@ -5,7 +5,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-snap-type: y mandatory;
-    padding-inline: 1.5rem 1rem;
+    padding-inline: 0.75rem 0.25rem;
 }
 
 .referral-list-item {
