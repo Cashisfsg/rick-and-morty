@@ -101,6 +101,8 @@ body {
 }
 
 #root {
+    position: relative;
+    height: 100vh;
     flex: 1 1 auto;
     text-align: center;
     display: grid;
@@ -115,7 +117,9 @@ body {
     display: grid;
     grid-template-rows: 1fr auto;
 
-    min-height: 100vh;
+    height: 100%;
+    overflow: hidden;
+    /* min-height: 100vh; */
     width: 100%;
     /* padding-inline: 1.125rem; */
     padding-block: 3rem;
@@ -179,8 +183,10 @@ fieldset {
 }
 
 .background-video {
-    grid-area: 1 / 1;
-    width: 100%;
+    /* grid-area: 1 / 1; */
+    /* width: 100%; */
+    position: absolute;
+    inset: 0;
     height: 100%;
     object-fit: cover;
     padding-inline: unset;
