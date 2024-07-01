@@ -1,6 +1,6 @@
 .game-page {
-    margin-block-end: -2rem;
-    align-self: end;
-    height: 100%;
+    /* margin-block-end: -2rem; */
+    align-self: start;
+    height: calc(100% + 2rem);
     overflow: hidden;
 }
