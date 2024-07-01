@@ -1,5 +1,5 @@
 .virtual-list {
-    height: 357px !important;
+    /* height: 357px !important; */
     width: calc(100% + 1.5rem);
     padding-block: 0.25rem;
     margin-inline: -0.75rem;
@@ -78,7 +78,7 @@
 }
 
 .loader {
-    height: 357px;
+    /* height: 357px; */
 
     display: flex;
     align-items: center;
