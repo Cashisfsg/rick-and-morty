@@ -190,10 +190,10 @@ fieldset {
 
 .background-video {
     /* grid-area: 1 / 1; */
-    /* width: 100%; */
     position: absolute;
     inset: 0;
     height: 100%;
+    width: 100%;
     object-fit: cover;
     padding-inline: unset;
 }
