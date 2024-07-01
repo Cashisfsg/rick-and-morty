@@ -21,8 +21,8 @@ export const VerificationPage = () => {
         (async () => {
             try {
                 await createCaptcha({
-                    x: { start: 30, end: 275 },
-                    y: { start: 40, end: 215 },
+                    x: { start: 30, end: 245 },
+                    y: { start: 40, end: 190 },
                 }).unwrap();
             } catch (error) {
                 console.error(error);

@@ -5,7 +5,7 @@
 .slider {
     height: 52px;
     place-content: center;
-    margin-block-start: 1rem;
+    margin-block-start: -1rem;
 }
 
 .canvas {
@@ -16,7 +16,7 @@
 .refresh-button {
     position: absolute;
     display: flex;
-    inset: 1.5rem auto auto 1rem;
+    inset: 10% auto auto 6%;
     font-size: 1.5rem;
     transform-origin: center center;
     transition: transform 0.3s ease-in-out;

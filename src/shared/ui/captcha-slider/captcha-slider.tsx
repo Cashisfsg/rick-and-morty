@@ -14,7 +14,7 @@ interface CaptchaSliderProps {
 
 // const CORRECT = 20;
 // const TRANSLATE_HORIZONTAL = 30 + Math.round(Math.random() * 245);
-const TRANSLATE_VERTICAL = 40 + Math.round(Math.random() * 215);
+const TRANSLATE_VERTICAL = 40 + Math.round(Math.random() * 190);
 const TOLERANCE = 5;
 
 // console.log("Translate horizontal: ", TRANSLATE_HORIZONTAL);
@@ -195,8 +195,8 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
     };
 
     return (
-        <figure>
-            <Hologram>
+        <>
+            <figure className={styles["captcha-wrapper"]}>
                 <button className={styles["refresh-button"]} onClick={rerender}>
                     <Refresh className="text-green" />
                 </button>
@@ -224,8 +224,8 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                     height="50"
                     ref={sliderPieceRef}
                 />
-            </Hologram>
-
+                <Hologram></Hologram>
+            </figure>
             <div className={styles.slider}>
                 <input
                     type="range"
@@ -243,6 +243,6 @@ export const CaptchaSlider: React.FC<CaptchaSliderProps> = ({
                     className={`${styles["input-range"]} bg-blue border-blue shadow-blue rounded-full`}
                 />
             </div>
-        </figure>
+        </>
     );
 };
