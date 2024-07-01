@@ -175,7 +175,15 @@ export const ReferralList: React.FC<ReferralListProps> = ({ referrals }) => {
                     key={referral?.user_id}
                     className={styles["referral-list-item"]}
                 >
-                    <Avatar src={referral?.photo || AvatarImg} />
+                    <Avatar
+                        src={
+                            `${import.meta.env.VITE_BASE_API_URL}/media/${referral?.photo}` ||
+                            AvatarImg
+                        }
+                        onError={(event) =>
+                            event.currentTarget.setAttribute("src", AvatarImg)
+                        }
+                    />
                     <span className="truncate text-start">
                         {referral?.fullname}
                     </span>

@@ -30,7 +30,7 @@ export const ReferralPage = () => {
         <article className={`${styles["referral-page"]} main-content`}>
             <header>
                 <TicketCounter size="large">
-                    {balance?.balance || 0}
+                    {balance?.tickets || 0}
                 </TicketCounter>
                 <h1>
                     <InviteUserButton

@@ -14,7 +14,7 @@ export const QuestPage = () => {
         <article className={`${styles["quest-page"]} main-content`}>
             <header className={`${styles.header} `}>
                 <TicketCounter size="large">
-                    {balance?.balance || 0}
+                    {balance?.tickets || 0}
                 </TicketCounter>
                 <hgroup>
                     <h1>Hey, Morty, you know what? </h1>
