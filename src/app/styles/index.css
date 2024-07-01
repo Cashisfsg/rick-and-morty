@@ -88,8 +88,13 @@
 html {
     /* height: 100%; */
     scrollbar-gutter: stable;
+    overflow: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
 }
 
 body {
