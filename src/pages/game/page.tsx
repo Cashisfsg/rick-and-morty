@@ -1,4 +1,4 @@
-import "./index.module.css";
+import styles from "./index.module.css";
 
 export const GamePage = () => {
     return (
