@@ -66,7 +66,7 @@ export const ReferralPage = () => {
 
             <section
                 className={`${styles["image-container"]} bg-image bg-green border-green shadow-green`}
-                style={{ padding: "0.5rem" }}
+                style={{ padding: "0.5rem", paddingBlockEnd: "0.75rem" }}
             >
                 <header
                     className="text-start text-5.5"

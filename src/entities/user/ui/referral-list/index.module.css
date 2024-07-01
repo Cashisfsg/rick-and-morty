@@ -1,6 +1,6 @@
 .referral-list {
     height: 100%;
-    max-height: 600px;
+    /* max-height: 600px; */
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
