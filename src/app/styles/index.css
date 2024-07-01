@@ -198,7 +198,7 @@ fieldset {
         margin-block-start: 2.5rem;
     } */
     display: grid;
-    row-gap: 2.5rem;
+    row-gap: 2rem;
 }
 
 .hide-scrollbar {
