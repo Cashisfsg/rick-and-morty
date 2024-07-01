@@ -8,6 +8,7 @@
 
     width: 100%;
     padding-inline: 0.25rem;
+    padding-block-end: 0.25rem;
     margin-inline: -0.25rem;
 
     & > header {
