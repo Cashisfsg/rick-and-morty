@@ -82,7 +82,14 @@ export const ReferralPage = () => {
                 >
                     Referrals
                 </header>
-                <ul></ul>
+
+                <FetchReferrals
+                    renderSuccess={(referrals) => (
+                        <ReferralList referrals={referrals} />
+                    )}
+                    loadingFallback={<ReferralList referrals={[]} />}
+                />
+
                 <img
                     src={Bg}
                     alt="Distorted SVG"
@@ -90,13 +97,6 @@ export const ReferralPage = () => {
                     style={{ zIndex: -1 }}
                 />
             </section>
-
-            <FetchReferrals
-                renderSuccess={(referrals) => (
-                    <ReferralList referrals={referrals} />
-                )}
-                loadingFallback={<ReferralList referrals={[]} />}
-            />
         </article>
     );
 };
