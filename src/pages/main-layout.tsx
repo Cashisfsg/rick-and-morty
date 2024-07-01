@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 
-import Cats from "@/assets/video/cats.webm";
+import Cats from "@/assets/img/cats.gif";
 
 export const MainLayout = () => {
     return (
         <>
-            <video
+            {/* <video
                 autoPlay
                 muted
                 loop
@@ -13,7 +13,12 @@ export const MainLayout = () => {
             >
                 <source src={Cats} type="video/webm" />
                 Your browser does not support the video tag.
-            </video>
+            </video> */}
+            <img
+                src={Cats}
+                alt="Background animation"
+                className="background-video content-wrapper"
+            />
 
             <Outlet />
         </>
