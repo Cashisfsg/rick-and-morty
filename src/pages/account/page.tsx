@@ -17,7 +17,10 @@ import {
     ConnectWalletButton,
     useConnectWalletMutation,
 } from "@/entities/wallet";
-import { useFetchUserInfoQuery } from "@/entities/user";
+import {
+    useFetchUserInfoQuery,
+    useFetchUserBalanceQuery,
+} from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 
 import { Popover } from "@/shared/ui/popover";
@@ -31,6 +34,7 @@ import styles from "./index.module.css";
 export const AccountPage = () => {
     const wallet = useTonWallet();
     const { data: user } = useFetchUserInfoQuery();
+    const { data: balance } = useFetchUserBalanceQuery();
     const [connectWallet] = useConnectWalletMutation();
 
     useEffect(() => {
@@ -69,7 +73,7 @@ export const AccountPage = () => {
                 ) : (
                     <ConnectWalletButton />
                 )}
-                <TicketCounter>{user?.balance || 0}</TicketCounter>
+                <TicketCounter>{balance?.tickets || 0}</TicketCounter>
             </header>
 
             <h1 className="font-secondary">
@@ -77,7 +81,7 @@ export const AccountPage = () => {
                     // className={`${wallet ? "text-pink text-shadow-pink" : "text-gray"} ${styles["coin-counter"]}`}
                     className={`text-gray ${styles["coin-counter"]}`}
                 >
-                    <span>{formatCurrency(user?.balance || 0)}</span>
+                    <span>{formatCurrency(balance?.balance || 0)}</span>
                     <Token className={wallet ? "svg-shadow-pink" : ""} />
                 </p>
 

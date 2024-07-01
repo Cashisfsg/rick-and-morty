@@ -1,6 +1,7 @@
 import { rootApi } from "@/app/providers/redux/api/rootApi";
 import type {
     FetchUserInfoResponse,
+    FetchUserBalanceResponse,
     FetchUserReferralsResponse,
     UpdatePremiumStatusRequest,
     UpdatePremiumStatusResponse,
@@ -14,13 +15,17 @@ import type {
 
 export const userApi = rootApi
     .enhanceEndpoints({
-        addTagTypes: ["User", "Referral"],
+        addTagTypes: ["User", "Balance", "Referral"],
     })
     .injectEndpoints({
         endpoints: (builder) => ({
             fetchUserInfo: builder.query<FetchUserInfoResponse, void>({
                 query: () => "/user/me",
                 providesTags: ["User"],
+            }),
+            fetchUserBalance: builder.query<FetchUserBalanceResponse, void>({
+                query: () => "/user/balance",
+                providesTags: ["Balance"],
             }),
             fetchUserReferrals: builder.query<FetchUserReferralsResponse, void>(
                 {
@@ -61,7 +66,7 @@ export const userApi = rootApi
                     },
                 }),
                 invalidatesTags: (result, error, arg) =>
-                    error ? [] : [{ type: "Referral", id: arg.id }],
+                    error ? [] : [{ type: "Referral", id: arg.id }, "Balance"],
             }),
             createCaptcha: builder.mutation<
                 CreateCaptchaResponse,
@@ -89,6 +94,8 @@ export const userApi = rootApi
 export const {
     useFetchUserInfoQuery,
     useLazyFetchUserInfoQuery,
+    useFetchUserBalanceQuery,
+    useLazyFetchUserBalanceQuery,
     useFetchUserReferralsQuery,
     useLazyFetchUserReferralsQuery,
     useUpdatePremiumStatusMutation,

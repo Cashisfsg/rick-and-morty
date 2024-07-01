@@ -1,19 +1,21 @@
 import { QuestPopover } from "@/widgets/quest-popover";
 
 import { QuestList } from "@/entities/quest";
-import { useFetchUserInfoQuery } from "@/entities/user";
+import { useFetchUserBalanceQuery } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 import { Popover } from "@/shared/ui/popover";
 
 import styles from "./index.module.css";
 
 export const QuestPage = () => {
-    const { data: user } = useFetchUserInfoQuery();
+    const { data: balance } = useFetchUserBalanceQuery();
 
     return (
         <article className={`${styles["quest-page"]} main-content`}>
             <header className={`${styles.header} `}>
-                <TicketCounter size="large">{user?.balance || 0}</TicketCounter>
+                <TicketCounter size="large">
+                    {balance?.balance || 0}
+                </TicketCounter>
                 <hgroup>
                     <h1>Hey, Morty, you know what? </h1>
                     <p className="text-blue">You can get even more TICKETS!</p>

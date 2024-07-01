@@ -78,7 +78,7 @@ export const questApi = rootApi
                 async onQueryStarted(_, { dispatch, queryFulfilled }) {
                     try {
                         await queryFulfilled;
-                        dispatch(userApi.util.invalidateTags(["User"]));
+                        dispatch(userApi.util.invalidateTags(["Balance"]));
                         // dispatch(
                         //     questApi.endpoints.fetchQuestList.initiate(
                         //         { page: 0, limit: 3 },

@@ -9,7 +9,6 @@ export interface User {
     is_premium: boolean;
     ref_id: number;
     wallet: Wallet | null;
-    balance: number;
     photo: string;
     is_verified: boolean;
     created_at: string;
@@ -17,6 +16,11 @@ export interface User {
 }
 
 export type FetchUserInfoResponse = User;
+
+export interface FetchUserBalanceResponse {
+    tickets: number;
+    balance: number;
+}
 
 export interface Referral {
     user_id: number;

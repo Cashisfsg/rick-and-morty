@@ -1,7 +1,8 @@
 import {
     FetchReferrals,
     ReferralList,
-    useFetchUserInfoQuery,
+    // useFetchUserInfoQuery,
+    useFetchUserBalanceQuery,
 } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 
@@ -22,12 +23,15 @@ export const ReferralPage = () => {
 
     const userId = tg?.initDataUnsafe?.user?.id;
 
-    const { data: user } = useFetchUserInfoQuery();
+    // const { data: user } = useFetchUserInfoQuery();
+    const { data: balance } = useFetchUserBalanceQuery();
 
     return (
         <article className={`${styles["referral-page"]} main-content`}>
             <header>
-                <TicketCounter size="large">{user?.balance || 0}</TicketCounter>
+                <TicketCounter size="large">
+                    {balance?.balance || 0}
+                </TicketCounter>
                 <h1>
                     <InviteUserButton
                         shareData={{
