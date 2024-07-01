@@ -1,6 +1,8 @@
-.referral-page {
+.quest-page {
     display: grid;
     align-self: start;
+    height: 100%;
+    overflow: hidden;
 }
 
 .header {

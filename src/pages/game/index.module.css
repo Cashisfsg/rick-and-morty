@@ -1,0 +1,6 @@
+.game-page {
+    margin-block-end: -2rem;
+    align-self: end;
+    height: 100%;
+    overflow: hidden;
+}

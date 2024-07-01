@@ -11,7 +11,7 @@ export const QuestPage = () => {
     const { data: user } = useFetchUserInfoQuery();
 
     return (
-        <article className={`${styles["referral-page"]} main-content`}>
+        <article className={`${styles["quest-page"]} main-content`}>
             <header className={`${styles.header} `}>
                 <TicketCounter size="large">{user?.balance || 0}</TicketCounter>
                 <hgroup>

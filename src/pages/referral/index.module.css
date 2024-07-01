@@ -2,6 +2,8 @@
     display: grid;
     align-self: start;
     row-gap: 2.5rem;
+    height: 100%;
+    overflow: hidden;
 
     width: 100%;
 

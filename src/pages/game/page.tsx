@@ -1,8 +1,10 @@
+import "./index.module.css";
+
 export const GamePage = () => {
     return (
         <article
-            style={{ marginBottom: "-2rem", alignSelf: "end" }}
-            className=""
+            // style={{ marginBottom: "-2rem", alignSelf: "end" }}
+            className={styles["game-page"]}
         >
             <svg
                 width="329"

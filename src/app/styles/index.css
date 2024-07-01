@@ -122,7 +122,8 @@ body {
     /* min-height: 100vh; */
     width: 100%;
     /* padding-inline: 1.125rem; */
-    padding-block: 3rem;
+    padding-block-start: 3rem;
+    padding-block-end: 2rem;
     row-gap: 2rem;
     place-items: center;
 
