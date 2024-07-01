@@ -22,7 +22,7 @@ export const ReferralPage = () => {
     const { data: user } = useFetchUserInfoQuery();
 
     return (
-        <article className={`${styles["referral-page"]}`}>
+        <article className={`${styles["referral-page"]} main-content`}>
             <header>
                 <TicketCounter size="large">{user?.balance || 0}</TicketCounter>
                 <h1>

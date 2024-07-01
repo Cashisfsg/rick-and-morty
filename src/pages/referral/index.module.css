@@ -1,7 +1,8 @@
 .referral-page {
     display: grid;
     align-self: start;
-    row-gap: 2.5rem;
+    grid-template-rows: auto auto 1fr;
+    /* row-gap: 2.5rem; */
     height: 100%;
     overflow: hidden;
 
@@ -10,7 +11,7 @@
     & > header {
         display: grid;
         grid-template-rows: subgrid;
-        grid-row: span 2;
+        grid-row: span 2 / span 2;
 
         & > h1 {
             display: grid;

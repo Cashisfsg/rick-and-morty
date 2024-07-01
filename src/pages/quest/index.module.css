@@ -1,5 +1,6 @@
 .quest-page {
     display: grid;
+    grid-template-rows: auto auto 1fr;
     align-self: start;
     height: 100%;
     overflow: hidden;
