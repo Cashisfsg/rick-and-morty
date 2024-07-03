@@ -1,5 +1,4 @@
 import { Avatar } from "../avatar/avatar";
-import AvatarImg from "@/assets/img/avatars/avatar-1.png";
 import { Ticket } from "@/assets/icons";
 import { type Referral } from "../../api";
 import { formatNumber } from "@/shared/lib/helpers/format-number";
@@ -176,13 +175,7 @@ export const ReferralList: React.FC<ReferralListProps> = ({ referrals }) => {
                     className={styles["referral-list-item"]}
                 >
                     <Avatar
-                        src={
-                            `${import.meta.env.VITE_BASE_API_URL}/media/${referral?.photo}` ||
-                            AvatarImg
-                        }
-                        onError={(event) =>
-                            event.currentTarget.setAttribute("src", AvatarImg)
-                        }
+                        src={`${import.meta.env.VITE_BASE_API_URL}/media/${referral?.photo}`}
                     />
                     <span className="truncate text-start">
                         {referral?.fullname}

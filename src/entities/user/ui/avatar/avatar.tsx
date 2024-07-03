@@ -2,7 +2,7 @@ import { composeEventHandlers } from "@/shared/lib/compose-event-handlers";
 
 import { useFetchUserInfoQuery } from "../../api";
 
-import Avatar1 from "@/assets/img/avatars/avatar-1.png";
+import AvatarImage from "@/assets/img/avatars/avatar-1.png";
 
 import styles from "./index.module.css";
 
@@ -32,7 +32,7 @@ export const Avatar: React.FC<AvatarProps> = ({
     const onErrorHandler: React.ReactEventHandler<HTMLImageElement> = (
         event
     ) => {
-        event.currentTarget.setAttribute("src", Avatar1);
+        event.currentTarget.setAttribute("src", AvatarImage);
     };
 
     return (
