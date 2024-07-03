@@ -5,8 +5,8 @@ import {
     useTonWallet,
     toUserFriendlyAddress,
     CHAIN,
-    useTonAddress,
-    useTonConnectUI,
+    // useTonAddress,
+    // useTonConnectUI,
 } from "@tonconnect/ui-react";
 
 import {
@@ -20,7 +20,7 @@ import {
     useConnectWalletMutation,
 } from "@/entities/wallet";
 import {
-    // useFetchUserInfoQuery,
+    useFetchUserInfoQuery,
     useFetchUserBalanceQuery,
 } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
@@ -35,63 +35,63 @@ import styles from "./index.module.css";
 
 export const AccountPage = () => {
     const wallet = useTonWallet();
-    // const { data: user } = useFetchUserInfoQuery();
+    const { data: user } = useFetchUserInfoQuery();
     const { data: balance } = useFetchUserBalanceQuery();
-    // const [connectWallet] = useConnectWalletMutation();
-
-    // useEffect(() => {
-    //     if (!wallet) return;
-
-    //     const userFriendlyWalletAddress = toUserFriendlyAddress(
-    //         wallet.account.address,
-    //         wallet.account.chain === CHAIN.TESTNET
-    //     );
-
-    //     if (user?.wallet?.address === userFriendlyWalletAddress) return;
-
-    //     (async () => {
-    //         try {
-    //             await connectWallet({
-    //                 ton_address: userFriendlyWalletAddress,
-    //             }).unwrap();
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     })();
-    // }, [wallet, user?.wallet]);
-
     const [connectWallet] = useConnectWalletMutation();
-    const tonAddress = useTonAddress();
-    const [tonConnectUi] = useTonConnectUI();
-
-    console.log("Ton friendly address: ", tonAddress);
 
     useEffect(() => {
-        const unsubscribe = tonConnectUi.onStatusChange(async (wallet) => {
-            if (!wallet) return;
+        if (!wallet) return;
 
+        const userFriendlyWalletAddress = toUserFriendlyAddress(
+            wallet.account.address,
+            wallet.account.chain === CHAIN.TESTNET
+        );
+
+        if (user?.wallet?.address === userFriendlyWalletAddress) return;
+
+        (async () => {
             try {
-                const userFriendlyAddress = toUserFriendlyAddress(
-                    wallet.account.address,
-                    wallet.account.chain === CHAIN.TESTNET
-                );
-
-                console.log(
-                    "User friendly address in connect wallet button: ",
-                    userFriendlyAddress
-                );
-
                 await connectWallet({
-                    ton_address: userFriendlyAddress,
+                    ton_address: userFriendlyWalletAddress,
                 }).unwrap();
             } catch (error) {
                 console.error(error);
             }
-        });
-        return () => {
-            unsubscribe();
-        };
-    }, [tonConnectUi]);
+        })();
+    }, [wallet, user?.wallet]);
+
+    // const [connectWallet] = useConnectWalletMutation();
+    // const tonAddress = useTonAddress();
+    // const [tonConnectUi] = useTonConnectUI();
+
+    // console.log("Ton friendly address: ", tonAddress);
+
+    // useEffect(() => {
+    //     const unsubscribe = tonConnectUi.onStatusChange(async (wallet) => {
+    //         if (!wallet) return;
+
+    //         try {
+    //             const userFriendlyAddress = toUserFriendlyAddress(
+    //                 wallet.account.address,
+    //                 wallet.account.chain === CHAIN.TESTNET
+    //             );
+
+    //             console.log(
+    //                 "User friendly address in connect wallet button: ",
+    //                 userFriendlyAddress
+    //             );
+
+    //             await connectWallet({
+    //                 ton_address: userFriendlyAddress,
+    //             }).unwrap();
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     });
+    //     return () => {
+    //         unsubscribe();
+    //     };
+    // }, [tonConnectUi]);
 
     return (
         <article className={`main-content w-full ${styles["account-page"]}`}>
@@ -117,7 +117,9 @@ export const AccountPage = () => {
                     className={`text-gray ${styles["coin-counter"]}`}
                 >
                     <span>{formatCurrency(balance?.balance || 0)}</span>
-                    <Token className={wallet ? "svg-shadow-pink" : ""} />
+                    <Token
+                    // className={wallet ? "svg-shadow-pink" : ""}
+                    />
                 </p>
 
                 <p className={styles["balance-controls"]}>
