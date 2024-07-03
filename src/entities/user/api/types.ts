@@ -37,6 +37,12 @@ export interface UpdatePremiumStatusRequest {
 
 export type UpdatePremiumStatusResponse = User;
 
+export interface UpdateUserPhotoRequest {
+    photo: string;
+}
+
+export type UpdateUserPhotoResponse = User;
+
 export interface JoinReferralRequest {
     id: number;
 }

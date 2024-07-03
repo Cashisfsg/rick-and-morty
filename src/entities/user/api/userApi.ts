@@ -5,6 +5,8 @@ import type {
     FetchUserReferralsResponse,
     UpdatePremiumStatusRequest,
     UpdatePremiumStatusResponse,
+    UpdateUserPhotoRequest,
+    UpdateUserPhotoResponse,
     JoinReferralRequest,
     JoinReferralResponse,
     CreateCaptchaRequest,
@@ -53,6 +55,20 @@ export const userApi = rootApi
                         is_premium: isPremium,
                     },
                 }),
+                invalidatesTags: (result, error) => (error ? [] : ["User"]),
+            }),
+            updateUserPhoto: builder.mutation<
+                UpdateUserPhotoResponse,
+                UpdateUserPhotoRequest
+            >({
+                query: ({ photo }) => ({
+                    url: "/user/",
+                    method: "POST",
+                    body: {
+                        photo: photo,
+                    },
+                }),
+                invalidatesTags: (result, error) => (error ? [] : ["User"]),
             }),
             joinReferral: builder.mutation<
                 JoinReferralResponse,
@@ -99,6 +115,7 @@ export const {
     useFetchUserReferralsQuery,
     useLazyFetchUserReferralsQuery,
     useUpdatePremiumStatusMutation,
+    useUpdateUserPhotoMutation,
     useJoinReferralMutation,
     useCreateCaptchaMutation,
     useVerifyCaptchaMutation,
