@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTonAddress, useTonConnectUI } from "@tonconnect/ui-react";
 
 import { UserProfileImageEditorForm } from "@/features/user/profile-image-editor";
-import { useDisconnectWalletMutation } from "@/entities/wallet";
+// import { useDisconnectWalletMutation } from "@/entities/wallet";
 import { Avatar } from "@/entities/user/ui/avatar/avatar";
 import { Popover } from "@/shared/ui/popover";
 
@@ -17,7 +17,7 @@ export const AccountPopover = () => {
     const { avatarImage } = useAccountPopoverContext();
     const tonAddress = useTonAddress();
     const [tonConnectUi] = useTonConnectUI();
-    const [disconnectWallet] = useDisconnectWalletMutation();
+    // const [disconnectWallet] = useDisconnectWalletMutation();
 
     const onClickHandler: React.MouseEventHandler<
         HTMLButtonElement
@@ -25,7 +25,7 @@ export const AccountPopover = () => {
         try {
             // await tonConnectUi.disconnect();
             // await disconnectWallet();
-            await Promise.all([tonConnectUi.disconnect(), disconnectWallet()]);
+            // await Promise.all([tonConnectUi.disconnect(), disconnectWallet()]);
             await tonConnectUi.openModal();
         } catch (error) {
             console.error(error);
