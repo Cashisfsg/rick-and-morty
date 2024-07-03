@@ -116,13 +116,14 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
         HTMLFormElement & FormField
     > = async (event) => {
         event.preventDefault();
+        const form = event.currentTarget;
 
         const { avatar } = event.currentTarget;
 
         // setAvatarImage(avatar.value);
         try {
             await updatePhoto({ photo: avatar.value }).unwrap();
-            event.currentTarget.reset();
+            form.reset();
             submitButtonRef.current?.setAttribute("disabled", "");
         } catch (error) {
             console.error(error);
