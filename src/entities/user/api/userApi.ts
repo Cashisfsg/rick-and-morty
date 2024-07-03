@@ -3,10 +3,8 @@ import type {
     FetchUserInfoResponse,
     FetchUserBalanceResponse,
     FetchUserReferralsResponse,
-    UpdatePremiumStatusRequest,
-    UpdatePremiumStatusResponse,
-    UpdateUserPhotoRequest,
-    UpdateUserPhotoResponse,
+    UpdateUserRequest,
+    UpdateUserResponse,
     JoinReferralRequest,
     JoinReferralResponse,
     CreateCaptchaRequest,
@@ -44,32 +42,19 @@ export const userApi = rootApi
                             : ["Referral"],
                 }
             ),
-            updatePremiumStatus: builder.mutation<
-                UpdatePremiumStatusResponse,
-                UpdatePremiumStatusRequest
-            >({
-                query: ({ isPremium }) => ({
-                    url: "/user/",
-                    method: "POST",
-                    body: {
-                        is_premium: isPremium,
-                    },
-                }),
-                invalidatesTags: (result, error) => (error ? [] : ["User"]),
-            }),
-            updateUserPhoto: builder.mutation<
-                UpdateUserPhotoResponse,
-                UpdateUserPhotoRequest
-            >({
-                query: ({ photo }) => ({
-                    url: "/user/",
-                    method: "POST",
-                    body: {
-                        photo: photo,
-                    },
-                }),
-                invalidatesTags: (result, error) => (error ? [] : ["User"]),
-            }),
+            updateUser: builder.mutation<UpdateUserResponse, UpdateUserRequest>(
+                {
+                    query: ({ isPremium, photo }) => ({
+                        url: "/user/",
+                        method: "POST",
+                        body: {
+                            is_premium: isPremium || null,
+                            photo: photo || null,
+                        },
+                    }),
+                    invalidatesTags: (result, error) => (error ? [] : ["User"]),
+                }
+            ),
             joinReferral: builder.mutation<
                 JoinReferralResponse,
                 JoinReferralRequest
@@ -114,8 +99,7 @@ export const {
     useLazyFetchUserBalanceQuery,
     useFetchUserReferralsQuery,
     useLazyFetchUserReferralsQuery,
-    useUpdatePremiumStatusMutation,
-    useUpdateUserPhotoMutation,
+    useUpdateUserMutation,
     useJoinReferralMutation,
     useCreateCaptchaMutation,
     useVerifyCaptchaMutation,
