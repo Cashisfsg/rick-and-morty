@@ -159,10 +159,10 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
                             <input
                                 type="radio"
                                 name="avatar"
-                                value={`avatar-${index + 1}.jpg`}
+                                value={`avatar-${index + 1}.png`}
                             />
                             <Avatar
-                                src={`${import.meta.env.VITE_BASE_API_URL}/media/avatar-${index + 1}.jpg`}
+                                src={`${import.meta.env.VITE_BASE_API_URL}/media/avatar-${index + 1}.png`}
                             />
                         </label>
                     ))}
