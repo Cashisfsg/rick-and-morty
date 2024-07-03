@@ -1,8 +1,18 @@
+import { useEffect, useRef } from "react";
+
 import { Outlet } from "react-router-dom";
 
 import Cats from "@/assets/video/cats.webm";
 
 export const MainLayout = () => {
+    const backgroundVideoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (!backgroundVideoRef.current) return;
+
+        backgroundVideoRef.current.play();
+    }, []);
+
     return (
         <>
             <video
@@ -13,6 +23,7 @@ export const MainLayout = () => {
                 controls={false}
                 playsInline
                 className="background-video content-wrapper"
+                ref={backgroundVideoRef}
             >
                 <source src={Cats} type="video/webm" />
                 Your browser does not support the video tag.

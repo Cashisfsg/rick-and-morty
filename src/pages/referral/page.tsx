@@ -89,6 +89,7 @@ export const ReferralPage = () => {
                     Referrals
                     <img src={TwoLines} alt="" />
                 </header>
+
                 <svg
                     width="100%"
                     height="20"

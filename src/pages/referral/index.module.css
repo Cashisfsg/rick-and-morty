@@ -4,9 +4,9 @@
     grid-template-rows: auto auto minmax(0, 1fr);
     /* row-gap: 2.5rem; */
     height: 100%;
+    width: 100%;
     overflow: hidden;
 
-    width: 100%;
     padding-inline: 0.25rem;
     padding-block-end: 0.25rem;
     margin-inline: -0.25rem;
