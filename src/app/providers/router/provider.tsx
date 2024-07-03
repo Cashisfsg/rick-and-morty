@@ -140,5 +140,5 @@ export const Provider = () => {
 
     const router = tg?.platform === "tdesktop" ? desktopRouter : mobileRouter;
 
-    return <RouterProvider router={router} />;
+    return <RouterProvider router={mobileRouter} />;
 };
