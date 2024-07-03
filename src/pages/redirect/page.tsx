@@ -45,7 +45,7 @@ export const RedirectPage = () => {
 
                 if (premium === true || photo) {
                     await updateUser({
-                        isPremium: true,
+                        isPremium: premium,
                         photo: photo,
                     }).unwrap();
                 }
