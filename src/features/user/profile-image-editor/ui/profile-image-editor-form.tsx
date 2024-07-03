@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { useUpdateUserMutation } from "@/entities/user";
+import { useUpdateUserPhotoMutation } from "@/entities/user";
 
 import { Avatar } from "@/entities/user/ui/avatar/avatar";
 import { Button } from "@/shared/ui/button";
@@ -97,7 +97,7 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
     // const { avatarImage, setAvatarImage } = useAccountPopoverContext();
 
     // const { data: user } = useFetchUserInfoQuery();
-    const [updateUser] = useUpdateUserMutation();
+    const [updatePhoto] = useUpdateUserPhotoMutation();
 
     // const avatarRef = useRef<HTMLImageElement>(null);
     const submitButtonRef = useRef<HTMLButtonElement>(null);
@@ -122,7 +122,7 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
 
         // setAvatarImage(avatar.value);
         try {
-            await updateUser({ photo: avatar.value }).unwrap();
+            await updatePhoto({ photo: avatar.value }).unwrap();
             form.reset();
             submitButtonRef.current?.setAttribute("disabled", "");
         } catch (error) {

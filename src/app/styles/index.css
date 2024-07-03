@@ -324,6 +324,10 @@ fieldset {
     color: #898989;
 }
 
+.text-gray-secondary {
+    color: #757575;
+}
+
 .text-pink {
     color: var(--pink-light-pink);
 }

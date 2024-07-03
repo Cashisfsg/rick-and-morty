@@ -31,12 +31,17 @@ export interface Referral {
 
 export type FetchUserReferralsResponse = Referral[];
 
-export interface UpdateUserRequest {
-    isPremium?: boolean;
-    photo?: string;
+export interface UpdatePremiumStatusRequest {
+    isPremium: boolean;
 }
 
-export type UpdateUserResponse = User;
+export type UpdatePremiumStatusResponse = User;
+
+export interface UpdateUserPhotoRequest {
+    photo: string;
+}
+
+export type UpdateUserPhotoResponse = User;
 
 export interface JoinReferralRequest {
     id: number;

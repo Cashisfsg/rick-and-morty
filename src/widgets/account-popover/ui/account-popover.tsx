@@ -80,7 +80,9 @@ export const AccountPopover = () => {
                 <>
                     <hgroup>
                         <h2 className="text-green-tertiary">Avatar</h2>
-                        <p>Choose a suitable avatar</p>
+                        <p className="text-gray-secondary">
+                            Choose a suitable avatar
+                        </p>
                     </hgroup>
 
                     <UserProfileImageEditorForm />

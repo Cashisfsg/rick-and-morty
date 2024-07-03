@@ -5,7 +5,7 @@ import { useAppDispatch } from "@/app/providers/redux/hooks";
 import {
     useLazyFetchUserInfoQuery,
     useJoinReferralMutation,
-    useUpdateUserMutation,
+    useUpdatePremiumStatusMutation,
     setUserInitData,
 } from "@/entities/user";
 import { useLazyFetchAllChannelsQuery } from "@/entities/channel";
@@ -22,13 +22,12 @@ export const RedirectPage = () => {
     const initData = tg?.initData;
     const referralId = tg?.initDataUnsafe?.start_param;
     const premium = tg?.initDataUnsafe?.user?.is_premium;
-    const photo = tg?.initDataUnsafe?.user?.photo_url;
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const [fetchUserInfo] = useLazyFetchUserInfoQuery();
     const [joinReferral] = useJoinReferralMutation();
-    const [updateUser] = useUpdateUserMutation();
+    const [updatePremiumStatus] = useUpdatePremiumStatusMutation();
     const [fetchChannels] = useLazyFetchAllChannelsQuery();
 
     useEffect(() => {
@@ -43,11 +42,8 @@ export const RedirectPage = () => {
                     fetchChannels().unwrap(),
                 ]);
 
-                if (premium === true || photo) {
-                    await updateUser({
-                        isPremium: premium,
-                        photo: photo,
-                    }).unwrap();
+                if (premium === true) {
+                    await updatePremiumStatus({ isPremium: true }).unwrap();
                 }
 
                 if (referralId) {
