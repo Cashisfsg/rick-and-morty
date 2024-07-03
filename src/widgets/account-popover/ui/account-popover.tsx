@@ -34,7 +34,7 @@ export const AccountPopover = () => {
 
     return (
         <Popover.Content
-            as="section"
+            as="article"
             className={`${styles["account-popover"]} ${editMode ? styles.editable : ""}`}
             // onTransitionEndCapture={(event) => {
             //     console.log("Transition finished", editMode);
@@ -44,24 +44,33 @@ export const AccountPopover = () => {
         >
             {!editMode ? (
                 <>
-                    <h2>Wallet</h2>
+                    <h2 className="text-green-tertiary">Wallet & Avatar</h2>
 
-                    <div>
+                    <section className={styles["avatar-section"]}>
+                        <h3>Your Avatar</h3>
+
+                        <Avatar
+                            size="large"
+                            className="border-green shadow-green"
+                        />
                         <button onClick={() => setEditMode(true)}>
-                            <Avatar size="large" />
+                            Choose custom avatar
                         </button>
+                    </section>
+
+                    <section className={styles["ton-section"]}>
                         <dl>
                             <dt>Your tone address</dt>
                             <dd className="text-5.5">{tonAddress}</dd>
                         </dl>
-                    </div>
 
-                    <button
-                        onClick={onClickHandler}
-                        className={styles["connect-wallet-button"]}
-                    >
-                        Connect another wallet
-                    </button>
+                        <button
+                            onClick={onClickHandler}
+                            className={styles["connect-wallet-button"]}
+                        >
+                            Connect another wallet
+                        </button>
+                    </section>
 
                     <Popover.Close className={styles["popover-close"]}>
                         <ChevronLeft />
@@ -70,7 +79,7 @@ export const AccountPopover = () => {
             ) : (
                 <>
                     <hgroup>
-                        <h2>Avatar</h2>
+                        <h2 className="text-green-tertiary">Avatar</h2>
                         <p>Choose a suitable avatar</p>
                     </hgroup>
 

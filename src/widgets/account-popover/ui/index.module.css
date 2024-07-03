@@ -1,4 +1,7 @@
-.account-popover {
+.account-popover:popover-open {
+    display: grid;
+    row-gap: 3.5rem;
+
     text-align: center;
 
     & h2 {
@@ -7,7 +10,15 @@
         font-size: 2rem;
     }
 
-    & p,
+    & > section {
+        display: grid;
+        place-items: center;
+        row-gap: 0.5rem;
+        max-width: 75%;
+        margin-inline: auto;
+    }
+
+    /* & p,
     dt {
         font-size: 0.875rem;
         color: #757575;
@@ -33,6 +44,43 @@
                 overflow-wrap: break-word;
             }
         }
+    } */
+}
+
+.avatar-section {
+    & > h3 {
+        font-size: 0.875rem;
+        color: #757575;
+    }
+
+    & > img {
+        margin-block-start: 0.5rem;
+    }
+
+    & > button {
+        margin-block-start: 0.5rem;
+        font-size: 1rem;
+        color: var(--text-green);
+        text-decoration: underline;
+    }
+}
+
+.ton-section {
+    & > dl {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-template-columns: subgrid;
+        grid-row: span 2;
+
+        & > dt {
+            font-size: 0.875rem;
+            color: #757575;
+        }
+
+        & > dd {
+            word-break: break-all;
+            overflow-wrap: break-word;
+        }
     }
 }
 
@@ -43,7 +91,7 @@
 }
 
 .connect-wallet-button {
-    margin-block-start: 1.5rem;
+    margin-block-start: 0.5rem;
     font-size: 1rem;
     text-decoration: underline;
 }

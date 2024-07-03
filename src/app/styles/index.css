@@ -7,6 +7,7 @@
 
     --green-green: #18d463;
     --green-light-green: #c6ffdd;
+    --green-pale: #b2f8c0;
 
     --blue-blue: #1bfdeb;
     --blue-light-blue: #cbfffb;
@@ -305,6 +306,10 @@ fieldset {
 
 .text-green-secondary {
     color: var(--green-green);
+}
+
+.text-green-tertiary {
+    color: var(--green-pale);
 }
 
 .text-blue {

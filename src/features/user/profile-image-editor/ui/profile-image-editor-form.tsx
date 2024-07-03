@@ -141,6 +141,7 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
                 // src={`${import.meta.env.VITE_BASE_API_URL}/media/${user?.photo}`}
                 size="large"
                 // forwardRef={avatarRef}
+                className="border-green shadow-green"
             />
 
             <div>

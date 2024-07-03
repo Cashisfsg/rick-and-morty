@@ -98,12 +98,10 @@ export const AccountPage = () => {
             <header>
                 {wallet ? (
                     <Popover.Root>
-                        {/* <AccountPopoverProvider> */}
                         <AccountPopoverTrigger />
                         <Popover.Portal>
                             <AccountPopover />
                         </Popover.Portal>
-                        {/* </AccountPopoverProvider> */}
                     </Popover.Root>
                 ) : (
                     <ConnectWalletButton />
