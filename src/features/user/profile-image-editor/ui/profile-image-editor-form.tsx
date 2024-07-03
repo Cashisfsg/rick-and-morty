@@ -1,16 +1,13 @@
 import { useRef } from "react";
 
-import {
-    useFetchUserInfoQuery,
-    useUpdateUserPhotoMutation,
-} from "@/entities/user";
+import { useUpdateUserPhotoMutation } from "@/entities/user";
 
 import { Avatar } from "@/entities/user/ui/avatar/avatar";
 import { Button } from "@/shared/ui/button";
 
-import { useAccountPopoverContext } from "@/widgets/account-popover/ui/use-account-popover-context";
+// import { useAccountPopoverContext } from "@/widgets/account-popover/ui/use-account-popover-context";
 
-import Avatar1 from "@/assets/img/avatars/avatar-1.png";
+// import Avatar1 from "@/assets/img/avatars/avatar-1.png";
 // import Avatar2 from "@/assets/img/avatars/avatar-2.png";
 // import Avatar3 from "@/assets/img/avatars/avatar-3.png";
 // import Avatar4 from "@/assets/img/avatars/avatar-4.png";
@@ -97,9 +94,9 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
     className = "",
     ...props
 }) => {
-    const { avatarImage, setAvatarImage } = useAccountPopoverContext();
+    // const { avatarImage, setAvatarImage } = useAccountPopoverContext();
 
-    const { data: user } = useFetchUserInfoQuery();
+    // const { data: user } = useFetchUserInfoQuery();
     const [updatePhoto] = useUpdateUserPhotoMutation();
 
     // const avatarRef = useRef<HTMLImageElement>(null);
@@ -113,12 +110,6 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
         if (!target) return;
 
         submitButtonRef.current?.removeAttribute("disabled");
-    };
-
-    const onErrorHandler: React.ReactEventHandler<HTMLImageElement> = (
-        event
-    ) => {
-        event.currentTarget.setAttribute("src", Avatar1);
     };
 
     const onSubmitHandler: React.FormEventHandler<
@@ -146,8 +137,7 @@ export const ProfileImageEditorForm: React.FC<ProfileImageEditorFormProps> = ({
             {...props}
         >
             <Avatar
-                src={`${import.meta.env.VITE_BASE_API_URL}/media/${user?.photo}`}
-                onError={onErrorHandler}
+                // src={`${import.meta.env.VITE_BASE_API_URL}/media/${user?.photo}`}
                 size="large"
                 // forwardRef={avatarRef}
             />

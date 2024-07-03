@@ -10,7 +10,7 @@ import {
 } from "@tonconnect/ui-react";
 
 import {
-    AccountPopoverProvider,
+    // AccountPopoverProvider,
     AccountPopoverTrigger,
     AccountPopover,
 } from "@/widgets/account-popover";
@@ -98,12 +98,12 @@ export const AccountPage = () => {
             <header>
                 {wallet ? (
                     <Popover.Root>
-                        <AccountPopoverProvider>
-                            <AccountPopoverTrigger />
-                            <Popover.Portal>
-                                <AccountPopover />
-                            </Popover.Portal>
-                        </AccountPopoverProvider>
+                        {/* <AccountPopoverProvider> */}
+                        <AccountPopoverTrigger />
+                        <Popover.Portal>
+                            <AccountPopover />
+                        </Popover.Portal>
+                        {/* </AccountPopoverProvider> */}
                     </Popover.Root>
                 ) : (
                     <ConnectWalletButton />
