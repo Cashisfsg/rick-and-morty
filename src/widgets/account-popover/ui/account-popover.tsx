@@ -6,7 +6,7 @@ import { useDisconnectWalletMutation } from "@/entities/wallet";
 import { Avatar } from "@/entities/user/ui/avatar/avatar";
 import { Popover } from "@/shared/ui/popover";
 
-import { useAccountPopoverContext } from "./use-account-popover-context";
+// import { useAccountPopoverContext } from "./use-account-popover-context";
 
 import { ChevronLeft } from "@/assets/icons";
 
@@ -14,7 +14,7 @@ import styles from "./index.module.css";
 
 export const AccountPopover = () => {
     const [editMode, setEditMode] = useState(false);
-    const { avatarImage } = useAccountPopoverContext();
+    // const { avatarImage } = useAccountPopoverContext();
     const tonAddress = useTonAddress();
     const [tonConnectUi] = useTonConnectUI();
     const [disconnectWallet] = useDisconnectWalletMutation();
@@ -48,7 +48,7 @@ export const AccountPopover = () => {
 
                     <div>
                         <button onClick={() => setEditMode(true)}>
-                            <Avatar src={avatarImage} size="large" />
+                            <Avatar size="large" />
                         </button>
                         <dl>
                             <dt>Your tone address</dt>
