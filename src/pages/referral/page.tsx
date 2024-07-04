@@ -1,7 +1,6 @@
 import {
     FetchReferrals,
     ReferralList,
-    // useFetchUserInfoQuery,
     useFetchUserBalanceQuery,
 } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
@@ -23,7 +22,6 @@ export const ReferralPage = () => {
 
     const userId = tg?.initDataUnsafe?.user?.id;
 
-    // const { data: user } = useFetchUserInfoQuery();
     const { data: balance } = useFetchUserBalanceQuery();
 
     return (
@@ -46,27 +44,6 @@ export const ReferralPage = () => {
                     />
                 </h1>
             </header>
-
-            {/* <ul style={{ position: "relative" }}>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <li>1</li>
-                <img
-                    src={Bg}
-                    alt=""
-                    style={{
-                        position: "absolute",
-                        height: "100%",
-                        width: "100%",
-                        inset: 0,
-                        objectFit: "fill",
-                    }}
-                />
-            </ul> */}
 
             <section
                 className={`${styles["image-container"]} bg-image bg-green border-green shadow-green`}

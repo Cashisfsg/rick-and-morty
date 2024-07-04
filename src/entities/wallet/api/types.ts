@@ -1,17 +1,10 @@
+import type { User } from "@/entities/user";
+
 export interface ConnectWalletRequest {
     ton_address: string;
 }
 
-export interface ConnectWalletSuccessResponse {
-    id: number;
-    first_name: string;
-    last_name: string;
-    username: string;
-    language_code: string;
-    is_premium: boolean;
-    ref_id: number;
-    wallet: Wallet;
-}
+export type ConnectWalletSuccessResponse = User;
 
 export interface Wallet {
     user_id: number;

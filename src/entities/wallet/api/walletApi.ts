@@ -20,7 +20,7 @@ export const walletApi = rootApi.enhanceEndpoints({}).injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     await queryFulfilled;
-                    dispatch(userApi.util.invalidateTags(["User", "Balance"]));
+                    dispatch(userApi.util.invalidateTags(["Balance"]));
                 } catch {}
             },
         }),
@@ -32,7 +32,7 @@ export const walletApi = rootApi.enhanceEndpoints({}).injectEndpoints({
             async onQueryStarted(_, { dispatch, queryFulfilled }) {
                 try {
                     await queryFulfilled;
-                    dispatch(userApi.util.invalidateTags(["User", "Balance"]));
+                    dispatch(userApi.util.invalidateTags(["Balance"]));
                 } catch {}
             },
         }),

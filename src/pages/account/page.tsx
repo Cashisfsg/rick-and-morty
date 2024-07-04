@@ -19,10 +19,8 @@ import {
     ConnectWalletButton,
     useConnectWalletMutation,
 } from "@/entities/wallet";
-import {
-    useFetchUserInfoQuery,
-    useFetchUserBalanceQuery,
-} from "@/entities/user";
+import { useStateSelector } from "@/app/providers/redux/hooks";
+import { useFetchUserBalanceQuery } from "@/entities/user";
 import { TicketCounter } from "@/entities/ticket";
 
 import { Popover } from "@/shared/ui/popover";
@@ -35,7 +33,7 @@ import styles from "./index.module.css";
 
 export const AccountPage = () => {
     const wallet = useTonWallet();
-    const { data: user } = useFetchUserInfoQuery();
+    const user = useStateSelector((state) => state.user.user);
     const { data: balance } = useFetchUserBalanceQuery();
     const [connectWallet] = useConnectWalletMutation();
 

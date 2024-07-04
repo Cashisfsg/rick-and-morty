@@ -15,7 +15,12 @@ export interface User {
     updated_at: string;
 }
 
-export type FetchUserInfoResponse = User;
+export interface CreateUserRequest {
+    isPremium: boolean;
+    referralId: string | null;
+}
+
+export type CreateUserResponse = User;
 
 export interface FetchUserBalanceResponse {
     tickets: number;
@@ -30,12 +35,6 @@ export interface Referral {
 }
 
 export type FetchUserReferralsResponse = Referral[];
-
-export interface UpdatePremiumStatusRequest {
-    isPremium: boolean;
-}
-
-export type UpdatePremiumStatusResponse = User;
 
 export interface UpdateUserPhotoRequest {
     photo: string;

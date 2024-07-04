@@ -1,6 +1,6 @@
 import { composeEventHandlers } from "@/shared/lib/compose-event-handlers";
 
-import { useFetchUserInfoQuery } from "../../api";
+import { useStateSelector } from "@/app/providers/redux/hooks";
 
 import AvatarImage from "@/assets/img/avatars/avatar-1.png";
 
@@ -22,7 +22,7 @@ export const Avatar: React.FC<AvatarProps> = ({
     forwardRef,
     ...props
 }) => {
-    const { data: user } = useFetchUserInfoQuery();
+    const user = useStateSelector((state) => state.user.user);
 
     const imageSize = {
         small: 40,

@@ -1,14 +1,16 @@
 import { rootApi } from "@/app/providers/redux/api/rootApi";
 import type {
-    FetchUserInfoResponse,
+    // FetchUserInfoResponse,
     FetchUserBalanceResponse,
     FetchUserReferralsResponse,
-    UpdatePremiumStatusRequest,
-    UpdatePremiumStatusResponse,
+    // UpdatePremiumStatusRequest,
+    // UpdatePremiumStatusResponse,
+    CreateUserRequest,
+    CreateUserResponse,
     UpdateUserPhotoRequest,
     UpdateUserPhotoResponse,
-    JoinReferralRequest,
-    JoinReferralResponse,
+    // JoinReferralRequest,
+    // JoinReferralResponse,
     CreateCaptchaRequest,
     CreateCaptchaResponse,
     VerifyCaptchaRequest,
@@ -17,14 +19,14 @@ import type {
 
 export const userApi = rootApi
     .enhanceEndpoints({
-        addTagTypes: ["User", "Balance", "Referral"],
+        addTagTypes: ["Balance", "Referral"],
     })
     .injectEndpoints({
         endpoints: (builder) => ({
-            fetchUserInfo: builder.query<FetchUserInfoResponse, void>({
-                query: () => "/user/me",
-                providesTags: ["User"],
-            }),
+            // fetchUserInfo: builder.query<FetchUserInfoResponse, void>({
+            //     query: () => "/user/me",
+            //     providesTags: ["User"],
+            // }),
             fetchUserBalance: builder.query<FetchUserBalanceResponse, void>({
                 query: () => "/user/balance",
                 providesTags: ["Balance"],
@@ -44,19 +46,31 @@ export const userApi = rootApi
                             : ["Referral"],
                 }
             ),
-            updatePremiumStatus: builder.mutation<
-                UpdatePremiumStatusResponse,
-                UpdatePremiumStatusRequest
-            >({
-                query: ({ isPremium }) => ({
-                    url: "/user/",
-                    method: "POST",
-                    body: {
-                        is_premium: isPremium,
-                    },
-                }),
-                invalidatesTags: (result, error) => (error ? [] : ["User"]),
-            }),
+            // updatePremiumStatus: builder.mutation<
+            //     UpdatePremiumStatusResponse,
+            //     UpdatePremiumStatusRequest
+            // >({
+            //     query: ({ isPremium }) => ({
+            //         url: "/user/",
+            //         method: "POST",
+            //         body: {
+            //             is_premium: isPremium,
+            //         },
+            //     }),
+            //     invalidatesTags: (result, error) => (error ? [] : ["User"]),
+            // }),
+            createUser: builder.mutation<CreateUserResponse, CreateUserRequest>(
+                {
+                    query: ({ isPremium, referralId }) => ({
+                        url: "/user/create",
+                        method: "POST",
+                        body: {
+                            is_premium: isPremium,
+                            referral_id: referralId,
+                        },
+                    }),
+                }
+            ),
             updateUserPhoto: builder.mutation<
                 UpdateUserPhotoResponse,
                 UpdateUserPhotoRequest
@@ -68,22 +82,21 @@ export const userApi = rootApi
                         photo: photo,
                     },
                 }),
-                invalidatesTags: (result, error) => (error ? [] : ["User"]),
             }),
-            joinReferral: builder.mutation<
-                JoinReferralResponse,
-                JoinReferralRequest
-            >({
-                query: ({ id }) => ({
-                    url: "/user/joined",
-                    method: "POST",
-                    params: {
-                        referral_id: id,
-                    },
-                }),
-                invalidatesTags: (result, error, arg) =>
-                    error ? [] : [{ type: "Referral", id: arg.id }, "Balance"],
-            }),
+            // joinReferral: builder.mutation<
+            //     JoinReferralResponse,
+            //     JoinReferralRequest
+            // >({
+            //     query: ({ id }) => ({
+            //         url: "/user/joined",
+            //         method: "POST",
+            //         params: {
+            //             referral_id: id,
+            //         },
+            //     }),
+            //     invalidatesTags: (result, error) =>
+            //         error ? [] : ["Referral", "Balance"],
+            // }),
             createCaptcha: builder.mutation<
                 CreateCaptchaResponse,
                 CreateCaptchaRequest
@@ -108,15 +121,14 @@ export const userApi = rootApi
     });
 
 export const {
-    useFetchUserInfoQuery,
-    useLazyFetchUserInfoQuery,
+    // useFetchUserInfoQuery,
+    // useLazyFetchUserInfoQuery,
     useFetchUserBalanceQuery,
     useLazyFetchUserBalanceQuery,
     useFetchUserReferralsQuery,
     useLazyFetchUserReferralsQuery,
-    useUpdatePremiumStatusMutation,
+    useCreateUserMutation,
     useUpdateUserPhotoMutation,
-    useJoinReferralMutation,
     useCreateCaptchaMutation,
     useVerifyCaptchaMutation,
 } = userApi;
