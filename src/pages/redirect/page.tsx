@@ -35,6 +35,8 @@ export const RedirectPage = () => {
                     fetchChannels().unwrap(),
                 ]);
 
+                console.log("User: ", user, "Channels: ", channels);
+
                 if (user?.is_verified) {
                     navigate("/root/app/verify");
                     return;
