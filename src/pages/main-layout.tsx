@@ -1,21 +1,22 @@
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef } from "react";
 
 import { Outlet } from "react-router-dom";
 
-import Cats from "@/assets/video/cats.webm";
+// import Cats from "@/assets/video/cats.webm";
+import Cats from "@/assets/img/cats.gif";
 
 export const MainLayout = () => {
-    const backgroundVideoRef = useRef<HTMLVideoElement>(null);
+    // const backgroundVideoRef = useRef<HTMLVideoElement>(null);
 
-    useEffect(() => {
-        if (!backgroundVideoRef.current) return;
+    // useEffect(() => {
+    //     if (!backgroundVideoRef.current) return;
 
-        backgroundVideoRef.current.play();
-    }, []);
+    //     backgroundVideoRef.current.play();
+    // }, []);
 
     return (
         <>
-            <video
+            {/* <video
                 autoPlay
                 muted
                 loop
@@ -27,12 +28,12 @@ export const MainLayout = () => {
             >
                 <source src={Cats} type="video/webm" />
                 Your browser does not support the video tag.
-            </video>
-            {/* <img
+            </video> */}
+            <img
                 src={Cats}
                 alt="Background animation"
                 className="background-video content-wrapper"
-            /> */}
+            />
 
             <Outlet />
         </>

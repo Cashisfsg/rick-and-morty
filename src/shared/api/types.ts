@@ -80,6 +80,8 @@ interface WebApp {
     isClosingConfirmationEnabled: boolean;
     BackButton: BackButton;
     MainButton: MainButton;
+    setHeaderColor: (color: string) => void;
+    setBackgroundColor: (color: string) => void;
     openLink: (url: string) => void;
     openTelegramLink: (url: string) => void;
     showScanQrPopup: (text?: string) => void;

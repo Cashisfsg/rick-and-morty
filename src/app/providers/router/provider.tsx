@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense } from "react";
 
 import {
     createBrowserRouter,
@@ -139,6 +139,11 @@ export const Provider = () => {
     )?.Telegram?.WebApp;
 
     const router = tg?.platform === "tdesktop" ? desktopRouter : mobileRouter;
+
+    useEffect(() => {
+        tg?.setHeaderColor("#000000");
+        tg?.setBackgroundColor("#000000");
+    }, []);
 
     return <RouterProvider router={router} />;
 };
